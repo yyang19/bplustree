@@ -1,0 +1,48 @@
+#ifndef _HEADER_BPLUSTREE_
+#define _HEADER_BPLUSTREE_
+
+enum {
+    BPLUS_TREE_LEAF,
+    BPLUS_TREE_NON_LEAF = 1,
+};
+
+enum {
+    BORROW_FROM_LEFT,
+    BORROW_FROM_RIGHT = 1,
+};
+
+typedef struct node {
+    
+    int type;
+    int b_factor;
+    int n;
+    
+    int *key;
+    struct non_leaf *parent;
+}node_t;
+
+typedef struct non_leaf {
+    struct node *node;
+    struct node **sub_ptr;
+}nonleaf_t;
+
+typedef struct leaf {
+    struct node *node;
+    struct leaf *next;
+    int *data;
+}leaf;
+
+struct tree {
+    int b_factor;
+    struct node *root;
+    struct node *head[MAX_LEVEL]; //to be removed
+};
+
+typedef struct tree bpt_t;
+
+bpt_t * bptInit( int );
+int bptGet( bpt_t *, int );
+void bptPut( bpt_t *, int, int );
+void bptRemove( bpt_t *, int );
+
+#endif
