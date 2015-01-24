@@ -12,7 +12,6 @@ enum {
 };
 
 typedef struct node {
-    
     int type;
     int b_factor;
     int n;
@@ -22,15 +21,15 @@ typedef struct node {
 }node_t;
 
 typedef struct non_leaf {
-    struct node *node;
-    struct node **sub_ptr;
+    node_t *node;
+    node_t **sub_ptr;
 }nonleaf_t;
 
 typedef struct leaf {
-    struct node *node;
+    node_t *node;
     struct leaf *next;
     int *data;
-}leaf;
+}leaf_t;
 
 struct tree {
     int b_factor;
