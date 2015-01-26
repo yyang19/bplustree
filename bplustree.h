@@ -22,12 +22,12 @@ typedef struct node {
 }node_t;
 
 typedef struct non_leaf {
-    node_t *node;
+    node_t node;
     node_t **sub_ptr;
 }nonleaf_t;
 
 typedef struct leaf {
-    node_t *node;
+    node_t node;
     struct leaf *next;
     int *data;
 }leaf_t;
