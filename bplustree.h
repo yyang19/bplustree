@@ -1,6 +1,7 @@
 #ifndef _HEADER_BPLUSTREE_
 #define _HEADER_BPLUSTREE_
 
+#define MAX_LEVEL (20)
 enum {
     BPLUS_TREE_LEAF,
     BPLUS_TREE_NON_LEAF = 1,
@@ -43,5 +44,5 @@ bpt_t * bptInit( int );
 int bptGet( bpt_t *, int );
 void bptPut( bpt_t *, int, int );
 void bptRemove( bpt_t *, int );
-
+void bptDump( bpt_t * );
 #endif

@@ -3,6 +3,8 @@
 #include <math.h>
 #include <assert.h>
 
+#include "bplustree.h"
+
 static void
 _help( void ){
     printf( "B+ Tree options:\n" );
@@ -42,7 +44,7 @@ int main( int argc, char *argv[] ){
      bptPut(t, 44, 44);
      bptPut(t, 68, 68);
      bptPut(t, 74, 74);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
 #endif
 #if 0
      bptPut(t, 10, 10);
@@ -61,7 +63,7 @@ int main( int argc, char *argv[] ){
      bptPut(t, 78, 78);
      bptPut(t, 81, 81);
      bptPut(t, 84, 84);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
 #endif
 #if 0
      printf("key:24 data:%d\n", get(24));
@@ -85,31 +87,31 @@ int main( int argc, char *argv[] ){
 #endif
 #if 0
      bptPut(t, 90, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 88, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 74, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 72, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 68, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 63, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 53, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 44, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 39, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 24, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 15, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 10, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      bptPut(t, 1, 0);
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
 #endif
 #define MAX_KEY 100
      int i;
@@ -117,40 +119,40 @@ int main( int argc, char *argv[] ){
      for (i = 1; i <= MAX_KEY; i++) {
          bptPut(t, i, i);
      }
-     bplus_tree_dump(bplus_tree);
+     
+     bptDump(t);
+     
      for (i = 1; i <= MAX_KEY; i++) {
          bptRemove(t, i);
      }
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      /* Ordered insertion and reversed deletion */
      for (i = 1; i <= MAX_KEY; i++) {
          bptPut(t, i, i);
      }
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      while (--i > 0) {
          bptRemove(t, i);
      }
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      /* Reversed insertion and ordered deletion */
      for (i = MAX_KEY; i > 0; i--) {
          bptPut(t, i, i);
      }
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      for (i = 1; i <= MAX_KEY; i++) {
          bptRemove(t, i);
      }
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      /* Reversed insertion and reversed deletion */
      for (i = MAX_KEY; i > 0; i--) {
          bptPut(t, i, i);
      }
-     bplus_tree_dump(bplus_tree);
+     bptDump(t);
      for (i = MAX_KEY; i > 0; i--) {
          bptRemove(t, i);
      }
-     bplus_tree_dump(bplus_tree);
-     return 0;
-}
+     bptDump(t);
 
     return result;
 }
