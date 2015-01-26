@@ -40,14 +40,14 @@ node_new( bpt_t *tree, int type )
     node_t *new;
     int nKeys = tree->b_factor*2-1;
 
-    struct node_t *new = (node_t *)malloc(sizeof(*node));
+    new = (node_t *)malloc(sizeof(node_t));
 
     assert(new != NULL);
     
     new->type = type;
     new->b_factor = tree->b_factor;
-    new->node.n = 0;
-    new->node.parent = NULL;
+    new->n = 0;
+    new->parent = NULL;
     
     new->key =  (int *) malloc ( sizeof(int)*nKeys );
     memset( new->key, 0, nKeys * sizeof(int) );
@@ -86,13 +86,13 @@ non_leaf_new( bpt_t *tree )
 static void 
 non_leaf_destroy( nonleaf_t *nonleaf )
 {
-    free( nonleaf->sub_ptr )
+    free( nonleaf->sub_ptr );
     node_destroy( nonleaf->node );
 
     return;
 }
 
-static struct leaf *
+static leaf_t *
 leaf_new( bpt_t *tree )
 {
     int nKeys = tree->b_factor*2-1;
@@ -132,7 +132,7 @@ _node_search( node_t *node, int key ){
 
     if( node->type == BPLUS_TREE_LEAF ){
         ln = (leaf_t *)node;
-        i = key_binary_search(ln->key, ln->n, key);
+        i = key_binary_search(ln->node->key, ln->node->n, key);
         if (i >= 0)
             return ln->data[i];
         else 
@@ -142,221 +142,225 @@ _node_search( node_t *node, int key ){
     assert( node->type == BPLUS_TREE_NON_LEAF );
     
     nln = (nonleaf_t *)node;
-    i = key_binary_search(nln->key, nln->n - 1, key);
+    i = key_binary_search(nln->node->key, nln->node->n-1, key);
 
-    if (i >= 0)
+    if(i >= 0)
         child = nln->sub_ptr[i + 1];
     else{
         i = -i - 1;
         child = nln->sub_ptr[i];
     }
 
-    return _node_search( node, key );
+    return _node_search( child, key );
 }
 
 static void
-non_leaf_insert( bpt_t *tree, struct non_leaf *node, struct node *sub_node, int key, int level)
+non_leaf_insert( bpt_t *tree, nonleaf_t *nl, node_t *sub_node, int key, int level )
 {
         int i, j, split_key;
         int split = 0;
-        struct non_leaf *sibling;
+        nonleaf_t *sibling;
 
-        int insert = key_binary_search(node->key, node->n - 1, key);
+        int insert = key_binary_search(nl->node->key, nl->node->n - 1, key);
         assert(insert < 0);
         insert = -insert - 1;
 
         /* node full */
-        if (node->n == ORDER) {
+        if (nl->node->n == nl->node->b_factor*2+1) {
                 /* split key index */
-                split = (ORDER + 1) / 2;
+                split = nl->node->b_factor;
                 /* splited sibling node */
-                sibling = non_leaf_new();
-                sibling->next = node->next;
-                node->next = sibling;
-                node->n = split + 1;
+                sibling = non_leaf_new(tree);
+                //sibling->next = nl->node->next;
+                //nl->node->next = sibling;
+                nl->node->n = split + 1;
                 /* sibling node replication */
                 if (insert < split) {
                         i = split - 1, j = 0;
-                        split_key = node->key[i];
-                        sibling->sub_ptr[j] = node->sub_ptr[i + 1];
-                        node->sub_ptr[i + 1]->parent = sibling;
+                        split_key = nl->node->key[i];
+                        sibling->sub_ptr[j] = nl->sub_ptr[i + 1];
+                        nl->sub_ptr[i + 1]->parent = sibling;
                         i++;
-                        for (; i < ORDER - 1; i++, j++) {
-                                sibling->key[j] = node->key[i];
-                                sibling->sub_ptr[j + 1] = node->sub_ptr[i + 1];
-                                node->sub_ptr[i + 1]->parent = sibling;
+                        for (; i < nl->node->b_factor*2; i++, j++) {
+                                sibling->node->key[j] = nl->node->key[i];
+                                sibling->sub_ptr[j+1] = nl->sub_ptr[i+1];
+                                nl->sub_ptr[i+1]->parent = sibling;
                         }
-                        sibling->n = j + 1;
+                        sibling->node->n = j + 1;
                         /* node insertion and its n count stays unchanged(split + 1) */
-                        for (i = node->n - 1; i > insert; i--) {
-                                node->key[i] = node->key[i - 1];
-                                node->sub_ptr[i + 1] = node->sub_ptr[i];
+                        for (i = nl->node->n - 1; i > insert; i--) {
+                                nl->node->key[i] = nl->node->key[i - 1];
+                                nl->sub_ptr[i + 1] = nl->sub_ptr[i];
                         }
-                        node->key[i] = key;
-                        node->sub_ptr[i + 1] = sub_node;
+                        nl->node->key[i] = key;
+                        nl->sub_ptr[i + 1] = sub_node;
                 } else if (insert == split) {
                         i = split, j = 0;
                         split_key = key;
                         sibling->sub_ptr[j] = sub_node;
                         sub_node->parent = sibling;
                         i++;
-                        for (; i < ORDER - 1; i++, j++) {
-                                sibling->key[j] = node->key[i];
-                                sibling->sub_ptr[j + 1] = node->sub_ptr[i + 1];
-                                node->sub_ptr[i + 1]->parent = sibling;
+                        for (; i < nl->node->b_factor*2; i++, j++) {
+                                sibling->node->key[j] = nl->node->key[i];
+                                sibling->sub_ptr[j + 1] = nl->sub_ptr[i + 1];
+                                nl->sub_ptr[i + 1]->parent = sibling;
                         }
-                        sibling->n = j + 1;
+                        sibling->node->n = j + 1;
                 } else {
                         i = split, j = 0;
-                        split_key = node->key[i];
-                        sibling->sub_ptr[j] = node->sub_ptr[i + 1];
-                        node->sub_ptr[i + 1]->parent = sibling;
+                        split_key = nl->node->key[i];
+                        sibling->sub_ptr[j] = nl->sub_ptr[i + 1];
+                        nl->sub_ptr[i + 1]->parent = sibling;
                         i++;
-                        while (i < ORDER - 1) {
+                        while (i < nl->node->b_factor*2) {
                                 if (j != insert - split) {
-                                        sibling->key[j] = node->key[i];
-                                        sibling->sub_ptr[j + 1] = node->sub_ptr[i + 1];
-                                        node->sub_ptr[i + 1]->parent = sibling;
+                                        sibling->node->key[j] = nl->node->key[i];
+                                        sibling->sub_ptr[j + 1] = nl->sub_ptr[i + 1];
+                                        nl->sub_ptr[i + 1]->parent = sibling;
                                         i++;
                                 }
                                 j++;
                         }
                         /* sibling node n count */
                         if (j > insert - split) {
-                                sibling->n = j + 1;
+                                sibling->node->n = j + 1;
                         } else {
-                                sibling->n = insert - split + 1;
+                                sibling->node->n = insert - split + 1;
                         }
                         /* insert new key */
                         j = insert - split - 1;
-                        sibling->key[j] = key;
+                        sibling->node->key[j] = key;
                         sibling->sub_ptr[j + 1] = sub_node;
                         sub_node->parent = sibling;
                 }
         } else {
                 /* simple insertion */
-                for (i = node->n - 1; i > insert; i--) {
-                        node->key[i] = node->key[i - 1];
-                        node->sub_ptr[i + 1] = node->sub_ptr[i];
+                for (i = nl->node->n - 1; i > insert; i--) {
+                        nl->node->key[i] = nl->node->key[i - 1];
+                        nl->sub_ptr[i + 1] = nl->sub_ptr[i];
                 }
-                node->key[i] = key;
-                node->sub_ptr[i + 1] = sub_node;
-                node->n++;
+                nl->node->key[i] = key;
+                nl->sub_ptr[i + 1] = sub_node;
+                nl->node->n++;
         }
 
         if (split) {
-                struct non_leaf *parent = node->parent;
+                nonleaf_t *parent = nl->node->parent;
                 if (parent == NULL) {
                         /* new parent */
-                        parent = non_leaf_new();
-                        parent->key[0] = split_key;
-                        parent->sub_ptr[0] = (struct node *)node;
-                        parent->sub_ptr[1] = (struct node *)sibling;
-                        parent->n = 2;
+                        parent = non_leaf_new(tree);
+                        parent->node->key[0] = split_key;
+                        parent->sub_ptr[0] = (node_t *)nl->node;
+                        parent->sub_ptr[1] = (node_t *)sibling->node;
+                        parent->node->n = 2;
                         /* new root */
-                        tree->root = (struct node *)parent;
-                        if (++level >= MAX_LEVEL) {
-                                fprintf(stderr, "!!Panic: Level exceeded, please expand the non-leaf order or leaf capacity of the tree!\n");
-                                assert(0);
-                        }
-                        tree->head[level] = (struct node *)parent;
-                        node->parent = parent;
-                        sibling->parent = parent;
+                        tree->root = (node_t *)parent;
+                        
+                        //tree->head[level] = (struct node *)parent;
+                        nl->node->parent = parent;
+                        sibling->node->parent = parent;
                 } else {
                         /* Trace upwards */
-                        sibling->parent = parent;
-                        non_leaf_insert(tree, parent, (struct node *)sibling, split_key, level + 1);
+                        sibling->node->parent = parent;
+                        non_leaf_insert(tree, parent, (node_t*)sibling, split_key, level + 1);
                 }
         }
 }
 
 static void
-leaf_insert(bpt_t *tree, struct leaf *leaf, int key, int data)
+leaf_insert(bpt_t *tree, leaf_t *leaf, int key, int data)
 {
-        int i, j, split = 0;
-        struct leaf *sibling;
+    int i, j, split = 0;
+    leaf_t *sibling;
 
-        int insert = key_binary_search(leaf->key, leaf->entries, key);
-        if (insert >= 0) {
-                /* Already exists */
-                return;
-        }
-        insert = -insert - 1;
+    int insert = key_binary_search(leaf->node->key, leaf->node->n, key);
+    if (insert >= 0) {
+        /* Already exists */
+        leaf->data[insert] = data;
+        return;
+    }
 
-        /* node full */
-        if (leaf->entries == ENTRIES) {
-                /* split = [m/2] */
-                split = (ENTRIES + 1) / 2;
-                /* splited sibling node */
-                sibling = leaf_new();
-                sibling->next = leaf->next;
-                leaf->next = sibling;
-                leaf->entries = split;
-                /* sibling leaf replication */
-                if (insert < split) {
-                        for (i = split - 1, j = 0; i < ENTRIES; i++, j++) {
-                                sibling->key[j] = leaf->key[i];
-                                sibling->data[j] = leaf->data[i];
-                        }
-                        sibling->entries = j;
-                        /* leaf insertion and its entry count stays unchanged(split + 1) */
-                        for (i = leaf->entries; i > insert; i--) {
-                                leaf->key[i] = leaf->key[i - 1];
-                                leaf->data[i] = leaf->data[i - 1];
-                        }
-                        leaf->key[i] = key;
-                        leaf->data[i] = data;
-                } else {
-                        i = split, j = 0;
-                        while (i < ENTRIES) {
-                                if (j != insert - split) {
-                                        sibling->key[j] = leaf->key[i];
-                                        sibling->data[j] = leaf->data[i];
-                                        i++;
-                                }
-                                j++;
-                        }
-                        /* sibling leaf entries */
-                        if (j > insert - split) {
-                                sibling->entries = j;
-                        } else {
-                                sibling->entries = insert - split + 1;
-                        }
-                        /* insert new key */
-                        j = insert - split;
-                        sibling->key[j] = key;
-                        sibling->data[j] = data;
+    insert = -insert - 1;
+
+    /* node full */
+    if (leaf->node->n == leaf->node->b_factor*2-1 ) {
+            /* split = [m/2] */
+            split = tree->b_factor;;
+            /* splited sibling node */
+            sibling = leaf_new(tree);
+            sibling->next = leaf->next;
+            leaf->next = sibling;
+            leaf->node->n = split;
+
+            /* sibling leaf replication */
+            if (insert < split) {
+                for (i = split - 1, j = 0; i < leaf->node->b_factor*2-1; i++, j++) {
+                    sibling->node->key[j] = leaf->node->key[i];
+                    sibling->data[j] = leaf->data[i];
                 }
-        } else {
-                /* simple insertion */
-                for (i = leaf->entries; i > insert; i--) {
-                        leaf->key[i] = leaf->key[i - 1];
-                        leaf->data[i] = leaf->data[i - 1];
+                
+                sibling->node->n = j;
+                
+                /* leaf insertion and its entry count stays unchanged(split + 1) */
+                for (i = leaf->node->n; i > insert; i--) {
+                    leaf->node->key[i] = leaf->node->key[i - 1];
+                    leaf->data[i] = leaf->data[i - 1];
                 }
-                leaf->key[i] = key;
+
+                leaf->node->key[i] = key;
                 leaf->data[i] = data;
-                leaf->entries++;
-        }
-
-        if (split) {
-                struct non_leaf *parent = leaf->parent;
-                if (parent == NULL) {
-                        parent = non_leaf_new();
-                        parent->key[0] = sibling->key[0];
-                        parent->sub_ptr[0] = (struct node *)leaf;
-                        parent->sub_ptr[1] = (struct node *)sibling;
-                        parent->n = 2;
-                        /* new root */
-                        tree->root = (struct node *)parent;
-                        tree->head[1] = (struct node *)parent;
-                        leaf->parent = parent;
-                        sibling->parent = parent;
-                } else {
-                        /* trace upwards */
-                        sibling->parent = parent;
-                        non_leaf_insert(tree, parent, (struct node *)sibling, sibling->key[0], 1);
+            } else {
+                i = split;
+                j = 0;
+                while (i < leaf->node->n ) {
+                    if (j != insert - split) {
+                        sibling->node->key[j] = leaf->node->key[i];
+                        sibling->data[j] = leaf->data[i];
+                        i++;
+                    }
+                    j++;
                 }
+                /* sibling leaf entries */
+                if (j > insert - split) {
+                    sibling->node->n = j;
+                } else {
+                    sibling->node->n = insert - split + 1;
+                }
+
+                /* insert new key */
+                j = insert - split;
+                sibling->node->key[j] = key;
+                sibling->data[j] = data;
+            }
+    } else {
+        /* simple insertion */
+        for (i = leaf->node->n; i > insert; i--) {
+            leaf->node->key[i] = leaf->node->key[i - 1];
+            leaf->data[i] = leaf->data[i - 1];
         }
+        leaf->node->key[i] = key;
+        leaf->data[i] = data;
+        leaf->node->n++;
+    }
+
+    if (split) {
+        nonleaf_t *parent = leaf->node->parent;
+        if (parent == NULL) {
+            parent = non_leaf_new(tree);
+            parent->node->key[0] = sibling->node->key[0];
+            parent->sub_ptr[0] = (node_t *)leaf;
+            parent->sub_ptr[1] = (node_t *)sibling;
+            parent->node->n = 2;
+            /* new root */
+            tree->root = (node_t *)parent;
+            leaf->node->parent = parent;
+            sibling->node->parent = parent;
+        } else {
+            /* trace upwards */
+            sibling->node->parent = parent;
+            non_leaf_insert(tree, parent, (node_t *)sibling, sibling->node->key[0], 1);
+        }
+    }
 }
 
 void
@@ -368,382 +372,368 @@ _insert( bpt_t *tree, int key, int data )
     struct leaf *ln;
 
     if (node == NULL) {
-        struct leaf *leaf = leaf_new();
-        leaf->key[0] = key;
+        leaf_t *leaf = leaf_new(tree);
+        leaf->node->key[0] = key;
         leaf->data[0] = data;
-        leaf->entries = 1;
-        tree->head[0] = (struct node *)leaf;
-        tree->root = (struct node *)leaf;
+        leaf->node->n = 1;
+        tree->root = (node_t *)leaf;
         return;
     }
 
     while (node != NULL) {
-            switch (node->type) {
-                    case BPLUS_TREE_NON_LEAF:
-                            nln = (struct non_leaf *)node;
-                            i = key_binary_search(nln->key, nln->n - 1, key);
-                            if (i >= 0) {
-                                    node = nln->sub_ptr[i + 1];
-                            } else {
-                                    i = -i - 1;
-                                    node = nln->sub_ptr[i];
-                            }
-                            break;
-                    case BPLUS_TREE_LEAF:
-                            ln = (struct leaf *)node;
-                            leaf_insert(tree, ln, key, data);
-                            return;
-                    default:
-                            break;
-            }
+        switch (node->type) {
+            case BPLUS_TREE_NON_LEAF:
+                nln = (nonleaf_t *)node;
+                i = key_binary_search(nln->node->key, nln->node->n - 1, key);
+                if (i >= 0) 
+                    node = nln->sub_ptr[i + 1];
+                else{ 
+                    i = -i - 1;
+                    node = nln->sub_ptr[i];
+                }
+                break;
+            case BPLUS_TREE_LEAF:
+                    ln = (leaf_t *)node;
+                    leaf_insert(tree, ln, key, data);
+                    return;
+            default:
+                    break;
+        }
     }
 }
 
 static void
-non_leaf_remove(bpt_t *tree, struct non_leaf *node, int remove, int level)
+non_leaf_remove(bpt_t *tree, nonleaf_t *nl, int remove, int level)
 {
-        int i, j, k;
-        struct non_leaf *sibling;
+    int i, j, k;
+    nonleaf_t *sibling;
 
-        if (node->n <= (ORDER + 1) / 2) {
-                struct non_leaf *parent = node->parent;
-                if (parent != NULL) {
-                        int borrow = 0;
-                        /* find which sibling node with same parent to be borrowed from */
-                        i = key_binary_search(parent->key, parent->n - 1, node->key[0]);
-                        assert(i < 0);
-                        i = -i - 1;
-                        if (i == 0) {
-                                /* no left sibling, choose right one */
-                                sibling = (struct non_leaf *)parent->sub_ptr[i + 1];
-                                borrow = BORROW_FROM_RIGHT;
-                        } else if (i == parent->n - 1) {
-                                /* no right sibling, choose left one */
-                                sibling = (struct non_leaf *)parent->sub_ptr[i - 1];
-                                borrow = BORROW_FROM_LEFT;
-                        } else {
-                                struct non_leaf *l_sib = (struct non_leaf *)parent->sub_ptr[i - 1];
-                                struct non_leaf *r_sib = (struct non_leaf *)parent->sub_ptr[i + 1];
-                                /* if both left and right sibling found, choose the one with more n */
-                                sibling = l_sib->n >= r_sib->n ? l_sib : r_sib;
-                                borrow = l_sib->n >= r_sib->n ? BORROW_FROM_LEFT : BORROW_FROM_RIGHT;
+    if (nl->node->n <= tree->b_factor ) {
+        nonleaf_t *parent = nl->node->parent;
+        if (parent != NULL) {
+            int borrow = 0;
+            
+            /* find which sibling node with same parent to be borrowed from */
+            i = key_binary_search(parent->node->key, parent->node->n-1, nl->node->key[0]);
+            assert(i < 0);
+            i = -i - 1;
+            if (i == 0) {
+                /* no left sibling, choose right one */
+                sibling = (nonleaf_t *)parent->sub_ptr[i + 1];
+                borrow = BORROW_FROM_RIGHT;
+            }else if (i == parent->node->n-1) {
+                /* no right sibling, choose left one */
+                sibling = (nonleaf_t *)parent->sub_ptr[i - 1];
+                borrow = BORROW_FROM_LEFT;
+            }else{
+                nonleaf_t *l_sib = (nonleaf_t *)parent->sub_ptr[i - 1];
+                nonleaf_t *r_sib = (nonleaf_t *)parent->sub_ptr[i + 1];
+                /* if both left and right sibling found, choose the one with more n */
+                sibling = l_sib->node->n >= r_sib->node->n ? l_sib : r_sib;
+                borrow = l_sib->node->n >= r_sib->node->n ? BORROW_FROM_LEFT : BORROW_FROM_RIGHT;
+            }
+
+            /* locate parent node key index */
+            if (i > 0) 
+                i = i - 1;
+
+            if (borrow == BORROW_FROM_LEFT) {
+               if (sibling->node->n > tree->b_factor ) {
+                   /* node right shift */
+                   for (j = remove; j > 0; j--) 
+                       nl->node->key[j] = nl->node->key[j - 1];
+                   
+                   for (j = remove + 1; j > 0; j--) 
+                       nl->sub_ptr[j] = nl->sub_ptr[j - 1];
+                   
+                   /* right rotate key */
+                   nl->node->key[0] = parent->node->key[i];
+                   parent->node->key[i] = sibling->node->key[sibling->node->n-2];
+
+                   /* move left sibling's last sub-node into node's first location */
+                   nl->sub_ptr[0] = sibling->sub_ptr[sibling->node->n - 1];
+                   sibling->sub_ptr[sibling->node->n-1]->parent = nl;
+                   sibling->node->n--;
+               } else {
+                   /* move parent key down */
+                   sibling->node->key[sibling->node->n-1] = parent->node->key[i];
+                   /* merge node and left sibling */
+
+                   for (j = sibling->node->n, k = 0; k < nl->node->n - 1; k++) {
+                       if (k != remove) {
+                           sibling->node->key[j] = nl->node->key[k];
+                           j++;
+                       }
+                   }
+
+                   for (j = sibling->node->n, k = 0; k < nl->node->n-1; k++) {
+                       if (k != remove + 1) {
+                           sibling->sub_ptr[j] = nl->sub_ptr[k];
+                           nl->sub_ptr[k]->parent = sibling;
+                           j++;
+                        }
+                   }
+
+                   sibling->node->n = j;
+
+                   /* delete merged node */
+                   //sibling->next = nl->next;
+                   non_leaf_destroy(nl);
+                   /* trace upwards */
+                   non_leaf_remove(tree, parent, i, level + 1);
+               }
+            } else {
+                    /* remove key first in case of overflow merging with sibling node */
+                    for (; remove < nl->node->n - 2; remove++) {
+                            nl->node->key[remove] = nl->node->key[remove + 1];
+                            nl->sub_ptr[remove + 1] = nl->sub_ptr[remove + 2];
+                    }
+                    nl->node->n--;
+
+                    if (sibling->node->n > tree->b_factor) {
+                        /* left rotate key */
+                        nl->node->key[nl->node->n - 1] = parent->node->key[i];
+                        parent->node->key[i] = sibling->node->key[0];
+                        nl->node->n++;
+
+                        /* move right sibling's first sub-node into node's last location */
+                        nl->sub_ptr[nl->node->n - 1] = sibling->sub_ptr[0];
+                        sibling->sub_ptr[0]->parent = nl;
+
+                        /* right sibling left shift */
+                        for (j = 0; j < sibling->node->n - 2; j++) {
+                            sibling->node->key[j] = sibling->node->key[j + 1];
+                        }
+                        for (j = 0; j < sibling->node->n - 1; j++) {
+                            sibling->sub_ptr[j] = sibling->sub_ptr[j + 1];
+                        }
+                        sibling->node->n--;
+                    } else {
+                        /* move parent key down */
+                        nl->node->key[nl->node->n - 1] = parent->node->key[i];
+                        nl->node->n++;
+
+                        /* merge node and right sibling */
+                        for (j = nl->node->n - 1, k = 0; k < sibling->node->n - 1; j++, k++) {
+                                nl->node->key[j] = sibling->node->key[k];
+                        }
+                        for (j = nl->node->n - 1, k = 0; k < sibling->node->n; j++, k++) {
+                                nl->sub_ptr[j] = sibling->sub_ptr[k];
+                                sibling->sub_ptr[k]->parent = nl;
                         }
 
-                        /* locate parent node key index */
-                        if (i > 0) {
-                                i = i - 1;
-                        }
+                        nl->node->n = j;
+                        /* delete merged sibling */
+                        //nl->next = sibling->next;
+                        non_leaf_destroy(sibling);
+                        /* trace upwards */
+                        non_leaf_remove(tree, parent, i, level + 1);
+                    }
+            }
+            /* deletion finishes */
+            return;
 
-                        if (borrow == BORROW_FROM_LEFT) {
-                                if (sibling->n > (ORDER + 1) / 2) {
-                                        /* node right shift */
-                                        for (j = remove; j > 0; j--) {
-                                                node->key[j] = node->key[j - 1];
-                                        }
-                                        for (j = remove + 1; j > 0; j--) {
-                                                node->sub_ptr[j] = node->sub_ptr[j - 1];
-                                        }
-                                        /* right rotate key */
-                                        node->key[0] = parent->key[i];
-                                        parent->key[i] = sibling->key[sibling->n - 2];
-                                        /* move left sibling's last sub-node into node's first location */
-                                        node->sub_ptr[0] = sibling->sub_ptr[sibling->n - 1];
-                                        sibling->sub_ptr[sibling->n - 1]->parent = node;
-                                        sibling->n--;
-                                } else {
-                                        /* move parent key down */
-                                        sibling->key[sibling->n - 1] = parent->key[i];
-                                        /* merge node and left sibling */
-                                        for (j = sibling->n, k = 0; k < node->n - 1; k++) {
-                                                if (k != remove) {
-                                                        sibling->key[j] = node->key[k];
-                                                        j++;
-                                                }
-                                        }
-                                        for (j = sibling->n, k = 0; k < node->n - 1; k++) {
-                                                if (k != remove + 1) {
-                                                        sibling->sub_ptr[j] = node->sub_ptr[k];
-                                                        node->sub_ptr[k]->parent = sibling;
-                                                        j++;
-                                                }
-                                        }
-                                        sibling->n = j;
-                                        /* delete merged node */
-                                        sibling->next = node->next;
-                                        non_leaf_destroy(node);
-                                        /* trace upwards */
-                                        non_leaf_remove(tree, parent, i, level + 1);
-                                }
-                        } else {
-                                /* remove key first in case of overflow merging with sibling node */
-                                for (; remove < node->n - 2; remove++) {
-                                        node->key[remove] = node->key[remove + 1];
-                                        node->sub_ptr[remove + 1] = node->sub_ptr[remove + 2];
-                                }
-                                node->n--;
-                                if (sibling->n > (ORDER + 1) / 2) {
-                                        /* left rotate key */
-                                        node->key[node->n - 1] = parent->key[i];
-                                        parent->key[i] = sibling->key[0];
-                                        node->n++;
-                                        /* move right sibling's first sub-node into node's last location */
-                                        node->sub_ptr[node->n - 1] = sibling->sub_ptr[0];
-                                        sibling->sub_ptr[0]->parent = node;
-                                        /* right sibling left shift */
-                                        for (j = 0; j < sibling->n - 2; j++) {
-                                                sibling->key[j] = sibling->key[j + 1];
-                                        }
-                                        for (j = 0; j < sibling->n - 1; j++) {
-                                                sibling->sub_ptr[j] = sibling->sub_ptr[j + 1];
-                                        }
-                                        sibling->n--;
-                                } else {
-                                        /* move parent key down */
-                                        node->key[node->n - 1] = parent->key[i];
-                                        node->n++;
-                                        /* merge node and right sibling */
-                                        for (j = node->n - 1, k = 0; k < sibling->n - 1; j++, k++) {
-                                                node->key[j] = sibling->key[k];
-                                        }
-                                        for (j = node->n - 1, k = 0; k < sibling->n; j++, k++) {
-                                                node->sub_ptr[j] = sibling->sub_ptr[k];
-                                                sibling->sub_ptr[k]->parent = node;
-                                        }
-                                        node->n = j;
-                                        /* delete merged sibling */
-                                        node->next = sibling->next;
-                                        non_leaf_destroy(sibling);
-                                        /* trace upwards */
-                                        non_leaf_remove(tree, parent, i, level + 1);
-                                }
-                        }
-                        /* deletion finishes */
-                        return;
-                } else {
-                        if (node->n == 2) {
-                                /* delete old root node */
-                                assert(remove == 0);
-                                node->sub_ptr[0]->parent = NULL;
-                                tree->root = node->sub_ptr[0];
-                                tree->head[level] = NULL;
-                                non_leaf_destroy(node);
-                                return;
-                        }
+            } 
+            else {
+                if (nl->node->n == 2) {
+                    /* delete old root node */
+                    assert(remove == 0);
+                    nl->sub_ptr[0]->parent = NULL;
+                    tree->root = nl->sub_ptr[0];
+                    //tree->head[level] = NULL;
+                    non_leaf_destroy(nl);
+                    return;
                 }
-        }
-        
-        /* simple deletion */
-        assert(node->n > 2);
-        for (; remove < node->n - 2; remove++) {
-                node->key[remove] = node->key[remove + 1];
-                node->sub_ptr[remove + 1] = node->sub_ptr[remove + 2];
-        }
-        node->n--;
+            }
+    }
+    
+    /* simple deletion */
+    assert(nl->node->n > 2);
+    for (; remove < nl->node->n - 2; remove++) {
+        nl->node->key[remove] = nl->node->key[remove + 1];
+        nl->sub_ptr[remove + 1] = nl->sub_ptr[remove + 2];
+    }
+    
+    nl->node->n--;
+
+    return;
 }
 
 static void
-leaf_remove(bpt_t *tree, struct leaf *leaf, int key)
+leaf_remove(bpt_t *tree, leaf_t *leaf, int key)
 {
-        int i, j, k;
-        struct leaf *sibling;
+    int i, j, k;
+    leaf_t *sibling;
 
-        int remove = key_binary_search(leaf->key, leaf->entries, key);
-        if (remove < 0) {
-                return;
-        }
+    int remove = key_binary_search(leaf->node->key, leaf->node->n, key);
+    
+    if (remove < 0) 
+        return;
 
-        if (leaf->entries <= (ENTRIES + 1) / 2) {
-                struct non_leaf *parent = leaf->parent;
-                if (parent != NULL) {
-                        int borrow = 0;
-                        /* find which sibling node with same parent to be borrowed from */
-                        i = key_binary_search(parent->key, parent->n - 1, leaf->key[0]);
-                        if (i >= 0) {
-                                i = i + 1;
-                                if (i == parent->n - 1) {
-                                        /* the last node, no right sibling, choose left one */
-                                        sibling = (struct leaf *)parent->sub_ptr[i - 1];
-                                        borrow = BORROW_FROM_LEFT;
-                                }  else {
-                                        struct leaf *l_sib = (struct leaf *)parent->sub_ptr[i - 1];
-                                        struct leaf *r_sib = (struct leaf *)parent->sub_ptr[i + 1];
-                                        /* if both left and right sibling found, choose the one with more entries */
-                                        sibling = l_sib->entries >= r_sib->entries ? l_sib : r_sib;
-                                        borrow = l_sib->entries >= r_sib->entries ? BORROW_FROM_LEFT : BORROW_FROM_RIGHT;
-                                }
-                        } else {
-                                i = -i - 1;
-                                if (i == 0) {
-                                        /* the frist node, no left sibling, choose right one */
-                                        sibling = (struct leaf *)parent->sub_ptr[i + 1];
-                                        borrow = BORROW_FROM_RIGHT;
-                                } else if (i == parent->n - 1) {
-                                        /* the last node, no right sibling, choose left one */
-                                        sibling = (struct leaf *)parent->sub_ptr[i - 1];
-                                        borrow = BORROW_FROM_LEFT;
-                                } else {
-                                        struct leaf *l_sib = (struct leaf *)parent->sub_ptr[i - 1];
-                                        struct leaf *r_sib = (struct leaf *)parent->sub_ptr[i + 1];
-                                        /* if both left and right sibling found, choose the one with more entries */
-                                        sibling = l_sib->entries >= r_sib->entries ? l_sib : r_sib;
-                                        borrow = l_sib->entries >= r_sib->entries ? BORROW_FROM_LEFT : BORROW_FROM_RIGHT;
-                                }
-                        }
+    if (leaf->node->n <= leaf->node->b_factor) {
+        nonleaf_t *parent = leaf->node->parent;
+        if (parent != NULL) {
+            int borrow = 0;
+            
+            /* find which sibling node with same parent to be borrowed from */
+            i = key_binary_search(parent->node->key, parent->node->n-1, leaf->node->key[0]);
+            if (i >= 0) {
+                i = i + 1;
+                if (i == parent->node->n-1){
+                    /* the last node, no right sibling, choose left one */
+                    sibling = (leaf_t *)parent->sub_ptr[i-1];
+                    borrow = BORROW_FROM_LEFT;
+                }  
+                else {
+                    leaf_t *l_sib = (leaf_t *)parent->sub_ptr[i - 1];
+                    leaf_t *r_sib = (leaf_t *)parent->sub_ptr[i + 1];
 
-                        /* locate parent node key index */
-                        if (i > 0) {
-                                i = i - 1;
-                        }
-
-                        if (borrow == BORROW_FROM_LEFT) {
-                                if (sibling->entries > (ENTRIES + 1) / 2) {
-                                        /* leaf node right shift */
-                                        parent->key[i] = sibling->key[sibling->entries - 1];
-                                        for (; remove > 0; remove--) {
-                                                leaf->key[remove] = leaf->key[remove - 1];
-                                                leaf->data[remove] = leaf->data[remove - 1];
-                                        }
-                                        leaf->key[0] = sibling->key[sibling->entries - 1];
-                                        leaf->data[0] = sibling->data[sibling->entries - 1];
-                                        sibling->entries--;
-                                        /* adjust parent key */
-                                        parent->key[i] = leaf->key[0];
-                                } else {
-                                        /* merge leaf and left sibling */
-                                        for (j = sibling->entries, k = 0; k < leaf->entries; k++) {
-                                                if (k != remove) {
-                                                        sibling->key[j] = leaf->key[k];
-                                                        sibling->data[j] = leaf->data[k];
-                                                        j++;
-                                                }
-                                        }
-                                        sibling->entries = j;
-                                        /* delete merged leaf */
-                                        sibling->next = leaf->next;
-                                        leaf_destroy(leaf);
-                                        /* trace upwards */
-                                        non_leaf_remove(tree, parent, i, 1);
-                                }
-                        } else {
-                                /* remove entry first in case of overflow merging with sibling node */
-                                for (; remove < leaf->entries - 1; remove++) {
-                                        leaf->key[remove] = leaf->key[remove + 1];
-                                        leaf->data[remove] = leaf->data[remove + 1];
-                                }
-                                leaf->entries--;
-                                if (sibling->entries > (ENTRIES + 1) / 2) {
-                                        /* borrow */
-                                        leaf->key[leaf->entries] = sibling->key[0];
-                                        leaf->data[leaf->entries] = sibling->data[0];
-                                        leaf->entries++;
-                                        /* right sibling node left shift */
-                                        for (j = 0; j < sibling->entries - 1; j++) {
-                                                sibling->key[j] = sibling->key[j + 1];
-                                                sibling->data[j] = sibling->data[j + 1];
-                                        }
-                                        sibling->entries--;
-                                        /* adjust parent key */
-                                        parent->key[i] = sibling->key[0];
-                                } else {
-                                        /* merge leaf node */
-                                        for (j = leaf->entries, k = 0; k < sibling->entries; j++, k++) {
-                                                leaf->key[j] = sibling->key[k];
-                                                leaf->data[j] = sibling->data[k];
-                                        }
-                                        leaf->entries = j;
-                                        /* delete merged sibling */
-                                        leaf->next = sibling->next;
-                                        leaf_destroy(sibling);
-                                        /* trace upwards */
-                                        non_leaf_remove(tree, parent, i, 1);
-                                }
-                        }
-                        /* deletion finishes */
-                        return;
+                    /* if both left and right sibling found, choose the one with more entries */
+                    sibling = l_sib->node->n>= r_sib->node->n ? l_sib : r_sib;
+                    borrow = l_sib->node->n >= r_sib->node->n ? BORROW_FROM_LEFT : BORROW_FROM_RIGHT;
+                }
+             } else {
+                i = -i - 1;
+                if (i == 0) {
+                    /* the frist node, no left sibling, choose right one */
+                    sibling = (leaf_t *)parent->sub_ptr[i + 1];
+                    borrow = BORROW_FROM_RIGHT;
+                } else if (i == parent->node->n-1) {
+                    /* the last node, no right sibling, choose left one */
+                    sibling = (leaf_t *)parent->sub_ptr[i - 1];
+                    borrow = BORROW_FROM_LEFT;
                 } else {
-                        if (leaf->entries == 1) {
-                                /* delete the only last node */
-                                assert(key == leaf->key[0]);
-                                tree->root = NULL;
-                                tree->head[0] = NULL;
-                                leaf_destroy(leaf);
-                                return;
-                        }
+                    leaf_t *l_sib = (leaf_t *)parent->sub_ptr[i - 1];
+                    leaf_t *r_sib = (leaf_t *)parent->sub_ptr[i + 1];
+                    /* if both left and right sibling found, choose the one with more entries */
+                    sibling = l_sib->node->n >= r_sib->node->n ? l_sib : r_sib;
+                    borrow = l_sib->node->n >= r_sib->node->n ? BORROW_FROM_LEFT : BORROW_FROM_RIGHT;
                 }
-        }
+             }
 
-        /* simple deletion */
-        for (; remove < leaf->entries - 1; remove++) {
-                leaf->key[remove] = leaf->key[remove + 1];
-                leaf->data[remove] = leaf->data[remove + 1];
-        }
-        leaf->entries--;
+             /* locate parent node key index */
+             if (i > 0)
+                 i = i - 1;
+
+             if (borrow == BORROW_FROM_LEFT) {
+                 if (sibling->node->n > tree->b_factor) {
+                     /* leaf node right shift */
+                     parent->node->key[i] = sibling->node->key[sibling->node->n - 1];
+                     for (; remove > 0; remove--) {
+                         leaf->node->key[remove] = leaf->node->key[remove - 1];
+                         leaf->data[remove] = leaf->data[remove - 1];
+                     }
+                     leaf->node->key[0] = sibling->node->key[sibling->node->n - 1];
+                     leaf->data[0] = sibling->data[sibling->node->n - 1];
+                     sibling->node->n--;
+                     /* adjust parent key */
+                     parent->node->key[i] = leaf->node->key[0];
+                 } else {
+                         /* merge leaf and left sibling */
+                     for (j = sibling->node->n, k = 0; k < leaf->node->n; k++) {
+                        if (k != remove) {
+                            sibling->node->key[j] = leaf->node->key[k];
+                            sibling->data[j] = leaf->data[k];
+                            j++;
+                        }
+                     }
+                     sibling->node->n = j;
+                     /* delete merged leaf */
+                     sibling->next = leaf->next;
+                     leaf_destroy(leaf);
+                     /* trace upwards */
+                     non_leaf_remove(tree, parent, i, 1);
+                 }
+             } else {
+                 /* remove entry first in case of overflow merging with sibling node */
+                 for (; remove < leaf->node->n - 1; remove++) {
+                         leaf->node->key[remove] = leaf->node->key[remove + 1];
+                         leaf->data[remove] = leaf->data[remove + 1];
+                 }
+                 leaf->node->n--;
+                 if (sibling->node->n > tree->b_factor ) {
+                         /* borrow */
+                         leaf->node->key[leaf->node->n] = sibling->node->key[0];
+                         leaf->data[leaf->node->n] = sibling->data[0];
+                         leaf->node->n++;
+                         /* right sibling node left shift */
+                         for (j = 0; j < sibling->node->n - 1; j++) {
+                                 sibling->node->key[j] = sibling->node->key[j + 1];
+                                 sibling->data[j] = sibling->data[j + 1];
+                         }
+                         sibling->node->n--;
+                         /* adjust parent key */
+                         parent->node->key[i] = sibling->node->key[0];
+                 } else {
+                         /* merge leaf node */
+                         for (j = leaf->node->n, k = 0; k < sibling->node->n; j++, k++) {
+                                 leaf->node->key[j] = sibling->node->key[k];
+                                 leaf->data[j] = sibling->data[k];
+                         }
+                         leaf->node->n = j;
+                         /* delete merged sibling */
+                         leaf->next = sibling->next;
+                         leaf_destroy(sibling);
+                         /* trace upwards */
+                         non_leaf_remove(tree, parent, i, 1);
+                 }
+             }
+                    /* deletion finishes */
+                    return;
+            } else {
+                if (leaf->node->n == 1) {
+                    /* delete the only last node */
+                    assert(key == leaf->node->key[0]);
+                    tree->root = NULL;
+                    tree->head[0] = NULL;
+                    leaf_destroy(leaf);
+                    return;
+                }
+            }
+}
+
+    /* simple deletion */
+    for(; remove < leaf->node->n-1; remove++) {
+        leaf->node->key[remove] = leaf->node->key[remove + 1];
+        leaf->data[remove] = leaf->data[remove + 1];
+    }
+
+    leaf->node->n--;
+
+    return;
 }
 
 void
-bplus_tree_delete(bpt_t *tree, int key)
+bptDump(bpt_t *tree)
 {
-        int i;
-        struct node *node = tree->root;
-        struct non_leaf *nln;
-        struct leaf *ln;
+    int i;
+    int key,data;
+    node_t *node;
+    leaf_t *leaf;
 
-        while (node != NULL) {
-                switch (node->type) {
-                        case BPLUS_TREE_NON_LEAF:
-                                nln = (struct non_leaf *)node;
-                                i = key_binary_search(nln->key, nln->n - 1, key);
-                                if (i >= 0) {
-                                        node = nln->sub_ptr[i + 1];
-                                } else {
-                                        i = -i - 1;
-                                        node = nln->sub_ptr[i];
-                                }
-                                break;
-                        case BPLUS_TREE_LEAF:
-                                ln = (struct leaf *)node;
-                                leaf_remove(tree, ln, key);
-                                return;
-                        default:
-                                break;
-                }
-        }
-}
+    if( !tree->root ){
+        printf("Empty tree\n");
+        return;
+    }
 
-void
-bplus_tree_dump(bpt_t *tree)
-{
-        int i, j;
+    while( node->type == BPLUS_TREE_NON_LEAF )
+        node = ((nonleaf_t *)node)->sub_ptr[0];
+        
+    assert( node->type == BPLUS_TREE_LEAF );
 
-        for (i = MAX_LEVEL; i > 0; i--) {
-                struct non_leaf *node = (struct non_leaf *)tree->head[i];
-                if (node != NULL) {
-                        printf("LEVEL %d:\n", i);
-                        while (node != NULL) {
-                                printf("node: ");
-                                for (j = 0; j < node->n - 1; j++) {
-                                        printf("%d ", node->key[j]);
-                                }
-                                printf("\n");
-                                node = node->next;
-                        }
-                }
+    leaf = (leaf_t *) node;
+
+    while( leaf->next ){
+        for(i=0; i<leaf->node->n; i++){
+            key = leaf->node->key[i];
+            data = leaf->data[i];
+            printf("Key=%d, data=%d\n", key, data);                
         }
 
-        struct leaf *leaf = (struct leaf *)tree->head[0];
-        if (leaf != NULL) {
-                printf("LEVEL 0:\n");
-                while (leaf != NULL) {
-                        printf("leaf: ");
-                        for (j = 0; j < leaf->entries; j++) {
-                                printf("%d ", leaf->key[j]);
-                        }
-                        printf("\n");
-                        leaf = leaf->next;
-                }
-        } else {
-                printf("Empty tree!\n");
-        }
+        leaf = leaf->next;
+    }
+
+    return;
 }
 
 int
@@ -764,7 +754,33 @@ bptPut( bpt_t *tree, int key, int data)
 
 void
 bptRemove( bpt_t *tree, int key ){
-    bplus_tree_delete(tree, key);    
+    
+    int i;
+    node_t *node = tree->root;
+    nonleaf_t *nln;
+    leaf_t *ln;
+
+    while (node != NULL) {
+        switch (node->type) {
+            case BPLUS_TREE_NON_LEAF:
+                nln = (nonleaf_t *)node;
+                i = key_binary_search(nln->node->key, nln->node->n - 1, key);
+                if (i >= 0) {
+                    node = nln->sub_ptr[i + 1];
+                } else {
+                    i = -i - 1;
+                    node = nln->sub_ptr[i];
+                }
+                break;
+            case BPLUS_TREE_LEAF:
+                ln = (leaf_t *)node;
+                leaf_remove(tree, ln, key);
+                return;
+            default:
+                break;
+        }
+    }
+    
     return;
 }
 
