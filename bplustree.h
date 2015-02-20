@@ -54,6 +54,8 @@ typedef struct node {
     int *key;
     int type;
     int n;
+
+    int wr_count;
 }node_t;
 
 typedef struct non_leaf {
@@ -70,6 +72,9 @@ typedef struct leaf {
 struct tree {
     int b_factor;
     struct node *root;
+
+    int leaf_size;
+    int nonleaf_size;
 };
 
 typedef struct tree bpt_t;
