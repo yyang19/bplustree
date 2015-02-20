@@ -1,0 +1,849 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - bplustree/bplus_tree.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">bplustree</a> - bplus_tree.c<span style="font-size: 80%;"> (source / <a href="bplus_tree.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">331</td>
+            <td class="headerCovTableEntry">335</td>
+            <td class="headerCovTableEntryHi">98.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2015-02-19 23:35:39</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /********************************************</a>
+<span class="lineNum">       2 </span>            : *
+<span class="lineNum">       3 </span>            : * Author: Yue Yang &lt;yueyang2010@gmail.com&gt;
+<span class="lineNum">       4 </span>            : *
+<span class="lineNum">       5 </span>            : ********************************************/
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">       8 </span>            : #include &lt;stdlib.h&gt;
+<span class="lineNum">       9 </span>            : #include &lt;assert.h&gt;
+<span class="lineNum">      10 </span>            : #include &lt;string.h&gt;
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : #include &quot;bplustree.h&quot;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : static void _descend( bpt_t *tree, node_t *node, int key );
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<span class="lineNum">      16 </span>            : static int
+<span class="lineNum">      17 </span><span class="lineCov">      10122 : key_binary_search(int *arr, int len, int key)</span>
+<span class="lineNum">      18 </span>            : {
+<span class="lineNum">      19 </span><span class="lineCov">      10122 :     int low = -1;</span>
+<span class="lineNum">      20 </span><span class="lineCov">      10122 :     int high = len;</span>
+<span class="lineNum">      21 </span>            :     int mid;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">      41787 :     while (low + 1 &lt; high) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">      21543 :         mid = low + (high - low) / 2;</span>
+<span class="lineNum">      25 </span><span class="lineCov">      21543 :         if (key &gt; arr[mid]) </span>
+<span class="lineNum">      26 </span><span class="lineCov">      11056 :             low = mid;</span>
+<span class="lineNum">      27 </span>            :         else
+<span class="lineNum">      28 </span><span class="lineCov">      10487 :             high = mid;</span>
+<span class="lineNum">      29 </span>            :     }
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">      10122 :     if (high &gt;= len || arr[high] != key) </span>
+<span class="lineNum">      32 </span><span class="lineCov">       7705 :         return -high - 1;</span>
+<span class="lineNum">      33 </span>            :     else 
+<span class="lineNum">      34 </span><span class="lineCov">       2417 :         return high;</span>
+<span class="lineNum">      35 </span>            : }
+<a name="36"><span class="lineNum">      36 </span>            : </a>
+<span class="lineNum">      37 </span>            : static int
+<span class="lineNum">      38 </span><span class="lineCov">       1292 : _nodeInit( node_t *new, bpt_t *tree, int type )</span>
+<span class="lineNum">      39 </span>            : {
+<span class="lineNum">      40 </span><span class="lineCov">       1292 :     int nKeys = tree-&gt;b_factor*2-1;</span>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">       1292 :     new-&gt;type = type;</span>
+<span class="lineNum">      43 </span><span class="lineCov">       1292 :     new-&gt;b_factor = tree-&gt;b_factor;</span>
+<span class="lineNum">      44 </span><span class="lineCov">       1292 :     new-&gt;n = 0;</span>
+<span class="lineNum">      45 </span>            :     
+<span class="lineNum">      46 </span><span class="lineCov">       1292 :     new-&gt;key =  (int *) malloc ( sizeof(int)*nKeys );</span>
+<span class="lineNum">      47 </span><span class="lineCov">       1292 :     memset( new-&gt;key, 0xff, nKeys * sizeof(int) );</span>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">       1292 :     return 0;    </span>
+<span class="lineNum">      50 </span>            : }
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<span class="lineNum">      52 </span>            : static void
+<span class="lineNum">      53 </span><span class="lineCov">       1292 : _nodeDestroy( node_t *node )</span>
+<span class="lineNum">      54 </span>            : {
+<span class="lineNum">      55 </span><span class="lineCov">       1292 :     free( node-&gt;key );</span>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">       1292 :     return;</span>
+<span class="lineNum">      58 </span>            : }
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<span class="lineNum">      60 </span>            : static struct non_leaf *
+<span class="lineNum">      61 </span><span class="lineCov">        405 : non_leaf_new( bpt_t *tree )</span>
+<span class="lineNum">      62 </span>            : {
+<span class="lineNum">      63 </span><span class="lineCov">        405 :     int nKeys = tree-&gt;b_factor*2-1;</span>
+<span class="lineNum">      64 </span><span class="lineCov">        405 :     int nChildren = nKeys+1;</span>
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span><span class="lineCov">        405 :     nonleaf_t *new = (nonleaf_t *)malloc(sizeof(nonleaf_t));</span>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineCov">        405 :     assert(new);</span>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineCov">        405 :     _nodeInit( &amp;new-&gt;node, tree, BPLUS_TREE_NON_LEAF );</span>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span><span class="lineCov">        405 :     new-&gt;children = (node_t **)malloc(nChildren * sizeof(node_t *)); </span>
+<span class="lineNum">      73 </span><span class="lineCov">        405 :     memset(new-&gt;children, 0, nChildren * sizeof(node_t *));</span>
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span><span class="lineCov">        405 :     return new;</span>
+<span class="lineNum">      76 </span>            : }
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<span class="lineNum">      78 </span>            : static void 
+<span class="lineNum">      79 </span><span class="lineCov">        405 : non_leaf_destroy( nonleaf_t **nonleaf )</span>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span><span class="lineCov">        405 :     free( (*nonleaf)-&gt;children );</span>
+<span class="lineNum">      82 </span><span class="lineCov">        405 :     _nodeDestroy( &amp;(*nonleaf)-&gt;node );</span>
+<span class="lineNum">      83 </span><span class="lineCov">        405 :     free( *nonleaf );</span>
+<span class="lineNum">      84 </span><span class="lineCov">        405 :     *nonleaf = NULL;</span>
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineCov">        405 :     return;</span>
+<span class="lineNum">      87 </span>            : }
+<a name="88"><span class="lineNum">      88 </span>            : </a>
+<span class="lineNum">      89 </span>            : static leaf_t *
+<span class="lineNum">      90 </span><span class="lineCov">        887 : leaf_new( bpt_t *tree )</span>
+<span class="lineNum">      91 </span>            : {
+<span class="lineNum">      92 </span><span class="lineCov">        887 :     int nKeys = tree-&gt;b_factor*2-1;</span>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineCov">        887 :     leaf_t *new = (leaf_t*)malloc(sizeof(leaf_t));</span>
+<span class="lineNum">      95 </span><span class="lineCov">        887 :     assert(new);</span>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineCov">        887 :     _nodeInit( &amp;new-&gt;node, tree, BPLUS_TREE_LEAF );</span>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span><span class="lineCov">        887 :     new-&gt;data = (int *) malloc ( sizeof(int)*nKeys );</span>
+<span class="lineNum">     100 </span><span class="lineCov">        887 :     assert( new-&gt;data );</span>
+<span class="lineNum">     101 </span><span class="lineCov">        887 :     memset( new-&gt;data, 0xff, nKeys * sizeof(int) );</span>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span><span class="lineCov">        887 :     new-&gt;next = NULL;</span>
+<span class="lineNum">     104 </span><span class="lineCov">        887 :     new-&gt;node.type = BPLUS_TREE_LEAF;</span>
+<span class="lineNum">     105 </span>            :     
+<span class="lineNum">     106 </span><span class="lineCov">        887 :     return new;</span>
+<span class="lineNum">     107 </span>            : }
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<span class="lineNum">     109 </span>            : static void
+<span class="lineNum">     110 </span><span class="lineCov">        887 : leaf_destroy( leaf_t **leaf )</span>
+<span class="lineNum">     111 </span>            : {
+<span class="lineNum">     112 </span><span class="lineCov">        887 :     free( (*leaf)-&gt;data );</span>
+<span class="lineNum">     113 </span><span class="lineCov">        887 :     _nodeDestroy( &amp;(*leaf)-&gt;node );</span>
+<span class="lineNum">     114 </span><span class="lineCov">        887 :     free( *leaf );</span>
+<span class="lineNum">     115 </span><span class="lineCov">        887 :     *leaf = NULL;</span>
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineCov">        887 :     return;</span>
+<span class="lineNum">     118 </span>            : }
+<a name="119"><span class="lineNum">     119 </span>            : </a>
+<span class="lineNum">     120 </span>            : static int
+<span class="lineNum">     121 </span><span class="lineCov">         46 : _node_search( node_t *node, int key ){</span>
+<span class="lineNum">     122 </span>            :     
+<span class="lineNum">     123 </span>            :     int i;
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            :     nonleaf_t *nln;
+<span class="lineNum">     126 </span>            :     leaf_t *ln;
+<span class="lineNum">     127 </span>            :     node_t *child;
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span><span class="lineCov">         46 :     if( node-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     130 </span><span class="lineCov">         23 :         ln = (leaf_t *)node;</span>
+<span class="lineNum">     131 </span><span class="lineCov">         23 :         i = key_binary_search(ln-&gt;node.key, ln-&gt;node.n, key );</span>
+<span class="lineNum">     132 </span><span class="lineCov">         23 :         if (i &gt;= 0)</span>
+<span class="lineNum">     133 </span><span class="lineCov">         14 :             return ln-&gt;data[i];</span>
+<span class="lineNum">     134 </span>            :         else 
+<span class="lineNum">     135 </span><span class="lineCov">          9 :             return DATA_NOT_EXIST;</span>
+<span class="lineNum">     136 </span>            :     }
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span><span class="lineCov">         23 :     assert( node-&gt;type == BPLUS_TREE_NON_LEAF );</span>
+<span class="lineNum">     139 </span>            :     
+<span class="lineNum">     140 </span><span class="lineCov">         23 :     nln = (nonleaf_t *)node;</span>
+<span class="lineNum">     141 </span><span class="lineCov">         23 :     i = key_binary_search(nln-&gt;node.key, nln-&gt;node.n, key );</span>
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span><span class="lineCov">         23 :     if(i &gt;= 0)</span>
+<span class="lineNum">     144 </span><span class="lineCov">          4 :         child = nln-&gt;children[i];</span>
+<span class="lineNum">     145 </span>            :     else{
+<span class="lineNum">     146 </span><span class="lineCov">         19 :         i = -i - 1;</span>
+<span class="lineNum">     147 </span><span class="lineCov">         19 :         child = nln-&gt;children[i];</span>
+<span class="lineNum">     148 </span>            :     }
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineCov">         23 :     return _node_search( child, key );</span>
+<span class="lineNum">     151 </span>            : }
+<a name="152"><span class="lineNum">     152 </span>            : </a>
+<span class="lineNum">     153 </span>            : void
+<span class="lineNum">     154 </span><span class="lineCov">         36 : bptDump(bpt_t *tree)</span>
+<span class="lineNum">     155 </span>            : {
+<span class="lineNum">     156 </span>            :     int i;
+<span class="lineNum">     157 </span>            :     node_t *node;
+<span class="lineNum">     158 </span>            :     leaf_t *leaf;
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span><span class="lineCov">         36 :     printf(&quot;*******Tree dump*******\n&quot;);</span>
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span><span class="lineCov">         36 :     if( !tree-&gt;root ){</span>
+<span class="lineNum">     163 </span><span class="lineCov">          6 :         printf(&quot;Empty tree\n&quot;);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          6 :         return;</span>
+<span class="lineNum">     165 </span>            :     }
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span><span class="lineCov">         30 :     node = tree-&gt;root;</span>
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span><span class="lineCov">         99 :     while( node )</span>
+<span class="lineNum">     170 </span><span class="lineCov">         69 :         if( node-&gt;type == BPLUS_TREE_NON_LEAF )</span>
+<span class="lineNum">     171 </span><span class="lineCov">         39 :             node = ((nonleaf_t *)node)-&gt;children[0];</span>
+<span class="lineNum">     172 </span>            :         else
+<span class="lineNum">     173 </span><span class="lineCov">         30 :             break;</span>
+<span class="lineNum">     174 </span>            :         
+<span class="lineNum">     175 </span><span class="lineCov">         30 :     assert( node-&gt;type == BPLUS_TREE_LEAF );</span>
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span><span class="lineCov">         30 :     leaf = (leaf_t *) node;</span>
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span><span class="lineCov">       1002 :     while( leaf ){</span>
+<span class="lineNum">     180 </span><span class="lineCov">       3361 :         for(i=0; i&lt;leaf-&gt;node.n; i++)</span>
+<span class="lineNum">     181 </span><span class="lineCov">       2419 :             printf(&quot;Key=%d, data=%d\n&quot;, leaf-&gt;node.key[i], leaf-&gt;data[i] );  </span>
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span><span class="lineCov">        942 :         leaf = leaf-&gt;next;</span>
+<span class="lineNum">     184 </span>            :     }
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span><span class="lineCov">         30 :     return;</span>
+<span class="lineNum">     187 </span>            : }
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<span class="lineNum">     189 </span>            : int
+<span class="lineNum">     190 </span><span class="lineCov">         23 : bptGet( bpt_t *tree, int key )</span>
+<span class="lineNum">     191 </span>            : {
+<span class="lineNum">     192 </span><span class="lineCov">         23 :     if( !tree-&gt;root )</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :         return 0;</span>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span><span class="lineCov">         23 :     return _node_search( tree-&gt;root, key );</span>
+<span class="lineNum">     196 </span>            : }
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<span class="lineNum">     198 </span>            : static void
+<span class="lineNum">     199 </span><span class="lineCov">       1263 : _split_child( bpt_t *tree, node_t *node, int i )</span>
+<span class="lineNum">     200 </span>            : {
+<span class="lineNum">     201 </span>            :     int j;
+<span class="lineNum">     202 </span><span class="lineCov">       1263 :     int t = tree-&gt;b_factor;</span>
+<span class="lineNum">     203 </span>            :     node_t *y, *z;
+<span class="lineNum">     204 </span><span class="lineCov">       1263 :     nonleaf_t *nln = (nonleaf_t *)node;</span>
+<span class="lineNum">     205 </span>            :     nonleaf_t *y_nln, *z_nln;
+<span class="lineNum">     206 </span>            :     leaf_t *y_ln, *z_ln;
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span><span class="lineCov">       1263 :     y = nln-&gt;children[i];</span>
+<span class="lineNum">     209 </span>            :     
+<span class="lineNum">     210 </span><span class="lineCov">       1263 :     if( y-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     211 </span><span class="lineCov">        881 :         y_ln = (leaf_t *)y;</span>
+<span class="lineNum">     212 </span><span class="lineCov">        881 :         z_ln = leaf_new(tree);</span>
+<span class="lineNum">     213 </span><span class="lineCov">        881 :         z = &amp;z_ln-&gt;node;</span>
+<span class="lineNum">     214 </span>            :     }
+<span class="lineNum">     215 </span>            :     else{
+<span class="lineNum">     216 </span><span class="lineCov">        382 :         y_nln = (nonleaf_t *)y;</span>
+<span class="lineNum">     217 </span><span class="lineCov">        382 :         z_nln = non_leaf_new(tree);</span>
+<span class="lineNum">     218 </span><span class="lineCov">        382 :         z = &amp;z_nln-&gt;node;</span>
+<span class="lineNum">     219 </span>            :     }
+<span class="lineNum">     220 </span>            : 
+<span class="lineNum">     221 </span><span class="lineCov">       1263 :     z-&gt;n = t-1;</span>
+<span class="lineNum">     222 </span>            : 
+<span class="lineNum">     223 </span>            :     //move the largest t-1 keys and tchildren of y into z
+<span class="lineNum">     224 </span><span class="lineCov">       3789 :     for( j=0; j&lt;z-&gt;n; j++ )</span>
+<span class="lineNum">     225 </span><span class="lineCov">       2526 :         z-&gt;key[j] = y-&gt;key[t+j];</span>
+<span class="lineNum">     226 </span>            :     
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span><span class="lineCov">       1263 :     if( y-&gt;type != BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     229 </span><span class="lineCov">       1528 :         for( j=0; j&lt;=z-&gt;n; j++ )</span>
+<span class="lineNum">     230 </span><span class="lineCov">       1146 :             z_nln-&gt;children[j] = y_nln-&gt;children[t+j];</span>
+<span class="lineNum">     231 </span>            :     }
+<span class="lineNum">     232 </span>            :     else{
+<span class="lineNum">     233 </span><span class="lineCov">       2643 :         for( j=0; j&lt;z-&gt;n; j++ )</span>
+<span class="lineNum">     234 </span><span class="lineCov">       1762 :             z_ln-&gt;data[j] = y_ln-&gt;data[t+j];</span>
+<span class="lineNum">     235 </span>            :     }
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span><span class="lineCov">       1263 :     if( y-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     238 </span><span class="lineCov">        881 :         y-&gt;n = t;</span>
+<span class="lineNum">     239 </span><span class="lineCov">        881 :         z_ln-&gt;next = y_ln-&gt;next;</span>
+<span class="lineNum">     240 </span><span class="lineCov">        881 :         y_ln-&gt;next = z_ln;    </span>
+<span class="lineNum">     241 </span>            :     }
+<span class="lineNum">     242 </span>            :     else
+<span class="lineNum">     243 </span><span class="lineCov">        382 :         y-&gt;n = t-1;</span>
+<span class="lineNum">     244 </span>            : 
+<span class="lineNum">     245 </span>            :     //shift child pointers in node dest the right dest create a room for z
+<span class="lineNum">     246 </span>            :     
+<span class="lineNum">     247 </span><span class="lineCov">       4699 :     for( j=node-&gt;n+1; j&gt;i; j-- )</span>
+<span class="lineNum">     248 </span><span class="lineCov">       3436 :         nln-&gt;children[j] = nln-&gt;children[j-1];</span>
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span><span class="lineCov">       1263 :     nln-&gt;children[i+1] = z;</span>
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span><span class="lineCov">       3436 :     for( j=node-&gt;n; j&gt;i; j-- )</span>
+<span class="lineNum">     253 </span><span class="lineCov">       2173 :         node-&gt;key[j] = node-&gt;key[j-1];</span>
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span><span class="lineCov">       1263 :     node-&gt;key[i] = y-&gt;key[t-1];</span>
+<span class="lineNum">     256 </span><span class="lineCov">       1263 :     node-&gt;n++;</span>
+<span class="lineNum">     257 </span>            : 
+<span class="lineNum">     258 </span>            :     //NODE_WRITE(y);
+<span class="lineNum">     259 </span>            :     //NODE_WRITE(z);
+<span class="lineNum">     260 </span>            :     //NODE_WRITE(node);
+<span class="lineNum">     261 </span>            : 
+<span class="lineNum">     262 </span><span class="lineCov">       1263 : }</span>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<span class="lineNum">     264 </span>            : static void
+<span class="lineNum">     265 </span><span class="lineCov">      10277 : _insert_nonfull( bpt_t *tree, node_t *node, int key, int data )</span>
+<span class="lineNum">     266 </span>            : {
+<span class="lineNum">     267 </span><span class="lineCov">      10277 :     int i = node-&gt;n;</span>
+<span class="lineNum">     268 </span>            :     nonleaf_t *nln;
+<span class="lineNum">     269 </span>            :     leaf_t *ln;
+<span class="lineNum">     270 </span>            :     
+<span class="lineNum">     271 </span><span class="lineCov">      10277 :     if( node-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     272 </span><span class="lineCov">       2263 :         ln = (leaf_t *)node;</span>
+<span class="lineNum">     273 </span><span class="lineCov">       8611 :         while( i&gt;=1 &amp;&amp; key&lt;node-&gt;key[i-1] ){</span>
+<span class="lineNum">     274 </span><span class="lineCov">       4085 :             node-&gt;key[i] = node-&gt;key[i-1];</span>
+<span class="lineNum">     275 </span><span class="lineCov">       4085 :             ln-&gt;data[i] = ln-&gt;data[i-1];</span>
+<span class="lineNum">     276 </span><span class="lineCov">       4085 :             i--;    </span>
+<span class="lineNum">     277 </span>            :         }
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span><span class="lineCov">       2263 :         node-&gt;key[i] = key;</span>
+<span class="lineNum">     280 </span><span class="lineCov">       2263 :         ln-&gt;data[i] = data;</span>
+<span class="lineNum">     281 </span>            : 
+<span class="lineNum">     282 </span><span class="lineCov">       2263 :         node-&gt;n ++;</span>
+<span class="lineNum">     283 </span>            :         //NODE_WRITE(node);
+<span class="lineNum">     284 </span>            :     }
+<span class="lineNum">     285 </span>            :     else{
+<span class="lineNum">     286 </span><span class="lineCov">       8014 :         assert( node-&gt;type == BPLUS_TREE_NON_LEAF );</span>
+<span class="lineNum">     287 </span>            : 
+<span class="lineNum">     288 </span><span class="lineCov">      27455 :         while( i&gt;=1 &amp;&amp; key&lt;node-&gt;key[i-1] )</span>
+<span class="lineNum">     289 </span><span class="lineCov">      11427 :             i--;</span>
+<span class="lineNum">     290 </span>            : 
+<span class="lineNum">     291 </span><span class="lineCov">       8014 :         i++;</span>
+<span class="lineNum">     292 </span>            :         //NODE_READ(node);
+<span class="lineNum">     293 </span>            :         
+<span class="lineNum">     294 </span><span class="lineCov">       8014 :         nln = (nonleaf_t *)node;</span>
+<span class="lineNum">     295 </span>            : 
+<span class="lineNum">     296 </span><span class="lineCov">       8014 :         if( nln-&gt;children[i-1]-&gt;n == tree-&gt;b_factor*2-1 ){</span>
+<span class="lineNum">     297 </span><span class="lineCov">       1240 :             _split_child( tree, node, i-1 );</span>
+<span class="lineNum">     298 </span><span class="lineCov">       1240 :             if( key&gt;node-&gt;key[i-1] )</span>
+<span class="lineNum">     299 </span><span class="lineCov">        511 :                 i=i+1;</span>
+<span class="lineNum">     300 </span>            :         }
+<span class="lineNum">     301 </span>            : 
+<span class="lineNum">     302 </span><span class="lineCov">       8014 :         _insert_nonfull( tree, nln-&gt;children[i-1], key, data );</span>
+<span class="lineNum">     303 </span>            :     }
+<span class="lineNum">     304 </span><span class="lineCov">      10277 : }</span>
+<span class="lineNum">     305 </span>            : 
+<a name="306"><span class="lineNum">     306 </span>            : </a>
+<span class="lineNum">     307 </span>            : void
+<span class="lineNum">     308 </span><span class="lineCov">       2263 : bptPut( bpt_t *tree, int key, int data)</span>
+<span class="lineNum">     309 </span>            : {
+<span class="lineNum">     310 </span>            :     node_t *node;
+<span class="lineNum">     311 </span>            :     nonleaf_t *s;
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span><span class="lineCov">       2263 :     if (tree-&gt;root == NULL) { //empty tree</span>
+<span class="lineNum">     314 </span><span class="lineCov">          6 :         leaf_t *leaf = leaf_new(tree);</span>
+<span class="lineNum">     315 </span><span class="lineCov">          6 :         tree-&gt;root = &amp;leaf-&gt;node;</span>
+<span class="lineNum">     316 </span>            :     }
+<span class="lineNum">     317 </span>            : 
+<span class="lineNum">     318 </span><span class="lineCov">       2263 :     node = tree-&gt;root;</span>
+<span class="lineNum">     319 </span>            : 
+<span class="lineNum">     320 </span><span class="lineCov">       2263 :     if( node-&gt;n == tree-&gt;b_factor*2-1 ){</span>
+<span class="lineNum">     321 </span><span class="lineCov">         23 :         s = non_leaf_new(tree);</span>
+<span class="lineNum">     322 </span><span class="lineCov">         23 :         tree-&gt;root = &amp;s-&gt;node;</span>
+<span class="lineNum">     323 </span><span class="lineCov">         23 :         s-&gt;children[0] = node;</span>
+<span class="lineNum">     324 </span><span class="lineCov">         23 :         _split_child(tree,&amp;s-&gt;node,0);</span>
+<span class="lineNum">     325 </span><span class="lineCov">         23 :         _insert_nonfull(tree,&amp;s-&gt;node,key,data);</span>
+<span class="lineNum">     326 </span>            :     }
+<span class="lineNum">     327 </span>            :     else
+<span class="lineNum">     328 </span><span class="lineCov">       2240 :         _insert_nonfull(tree,node,key,data);</span>
+<span class="lineNum">     329 </span>            : 
+<span class="lineNum">     330 </span><span class="lineCov">       2263 :     return;</span>
+<span class="lineNum">     331 </span>            : }
+<a name="332"><span class="lineNum">     332 </span>            : </a>
+<span class="lineNum">     333 </span>            : static void 
+<span class="lineNum">     334 </span><span class="lineCov">       2158 : _node_key_shift_left( node_t *node, int index, int ptr_shift) </span>
+<span class="lineNum">     335 </span>            : {
+<span class="lineNum">     336 </span>            :     int idx;
+<span class="lineNum">     337 </span>            :     nonleaf_t *nln;
+<span class="lineNum">     338 </span>            :     leaf_t *ln;
+<span class="lineNum">     339 </span>            :     
+<span class="lineNum">     340 </span><span class="lineCov">       2158 :     if( node-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     341 </span><span class="lineCov">        409 :         ln = (leaf_t *)node;</span>
+<span class="lineNum">     342 </span><span class="lineCov">        781 :         for( idx=index; idx&lt;node-&gt;n-1; idx++ ){</span>
+<span class="lineNum">     343 </span><span class="lineCov">        372 :             node-&gt;key[idx] = node-&gt;key[idx+1];</span>
+<span class="lineNum">     344 </span><span class="lineCov">        372 :             ln-&gt;data[idx] = ln-&gt;data[idx+1];</span>
+<span class="lineNum">     345 </span>            :         }
+<span class="lineNum">     346 </span>            : 
+<span class="lineNum">     347 </span>            :     }
+<span class="lineNum">     348 </span>            :     else{ 
+<span class="lineNum">     349 </span>            : 
+<span class="lineNum">     350 </span><span class="lineCov">       1749 :         nln = (nonleaf_t *)node;</span>
+<span class="lineNum">     351 </span>            : 
+<span class="lineNum">     352 </span><span class="lineCov">       3984 :         for( idx=index; idx&lt;node-&gt;n-1; idx++ ){</span>
+<span class="lineNum">     353 </span><span class="lineCov">       2235 :             node-&gt;key[idx] = node-&gt;key[idx+1];</span>
+<span class="lineNum">     354 </span><span class="lineCov">       2235 :             if( ptr_shift )</span>
+<span class="lineNum">     355 </span><span class="lineCov">       2044 :                 nln-&gt;children[idx]=nln-&gt;children[idx+1];</span>
+<span class="lineNum">     356 </span>            :         }
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span><span class="lineCov">       1749 :         if( ptr_shift )</span>
+<span class="lineNum">     359 </span><span class="lineCov">       1360 :             nln-&gt;children[node-&gt;n-1]=nln-&gt;children[node-&gt;n];</span>
+<span class="lineNum">     360 </span>            :     }
+<span class="lineNum">     361 </span>            : 
+<span class="lineNum">     362 </span><span class="lineCov">       2158 :     node-&gt;n--;</span>
+<span class="lineNum">     363 </span><span class="lineCov">       2158 : }</span>
+<a name="364"><span class="lineNum">     364 </span>            : </a>
+<span class="lineNum">     365 </span>            : static void 
+<span class="lineNum">     366 </span><span class="lineCov">       1277 : _node_key_shift_right( node_t *node, int index, int ptr_shift )</span>
+<span class="lineNum">     367 </span>            : {
+<span class="lineNum">     368 </span>            : 
+<span class="lineNum">     369 </span>            :     int idx;
+<span class="lineNum">     370 </span>            :     nonleaf_t *nln;
+<span class="lineNum">     371 </span>            :     leaf_t *ln;
+<span class="lineNum">     372 </span>            :     
+<span class="lineNum">     373 </span><span class="lineCov">       1277 :     assert( index&lt;=node-&gt;n );</span>
+<span class="lineNum">     374 </span>            :     
+<span class="lineNum">     375 </span><span class="lineCov">       1277 :     if( node-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     376 </span><span class="lineCov">        409 :         ln = (leaf_t *)node;</span>
+<span class="lineNum">     377 </span><span class="lineCov">        863 :         for( idx=node-&gt;n; idx&gt;index; idx-- ){</span>
+<span class="lineNum">     378 </span><span class="lineCov">        454 :             node-&gt;key[idx] = node-&gt;key[idx-1];</span>
+<span class="lineNum">     379 </span><span class="lineCov">        454 :             ln-&gt;data[idx] = ln-&gt;data[idx-1];</span>
+<span class="lineNum">     380 </span>            :         }
+<span class="lineNum">     381 </span>            :     }
+<span class="lineNum">     382 </span>            :     else{
+<span class="lineNum">     383 </span><span class="lineCov">        868 :         nln = (nonleaf_t *)node;</span>
+<span class="lineNum">     384 </span>            : 
+<span class="lineNum">     385 </span><span class="lineCov">       1351 :         for( idx=node-&gt;n; idx&gt;index; idx-- ){</span>
+<span class="lineNum">     386 </span><span class="lineCov">        483 :             node-&gt;key[idx] = node-&gt;key[idx-1];</span>
+<span class="lineNum">     387 </span><span class="lineCov">        483 :             if( ptr_shift )</span>
+<span class="lineNum">     388 </span><span class="lineCov">        292 :                 nln-&gt;children[idx+1]=nln-&gt;children[idx]; </span>
+<span class="lineNum">     389 </span>            :         } 
+<span class="lineNum">     390 </span>            :  
+<span class="lineNum">     391 </span><span class="lineCov">        868 :         if( ptr_shift )</span>
+<span class="lineNum">     392 </span><span class="lineCov">        243 :             nln-&gt;children[idx+1]=nln-&gt;children[idx]; </span>
+<span class="lineNum">     393 </span>            :     }
+<span class="lineNum">     394 </span>            :     
+<span class="lineNum">     395 </span><span class="lineCov">       1277 :     node-&gt;key[index] = INVALID_KEY;</span>
+<span class="lineNum">     396 </span>            :     
+<span class="lineNum">     397 </span><span class="lineCov">       1277 :     node-&gt;n++;</span>
+<span class="lineNum">     398 </span><span class="lineCov">       1277 : }</span>
+<a name="399"><span class="lineNum">     399 </span>            : </a>
+<span class="lineNum">     400 </span>            : static void 
+<span class="lineNum">     401 </span><span class="lineCov">       1277 : _move_key( int key, node_t *src, node_t *dest, int src_ptr_shift, int dest_ptr_shift )</span>
+<span class="lineNum">     402 </span>            : {
+<span class="lineNum">     403 </span><span class="lineCov">       1277 :     int src_pos = 0;</span>
+<span class="lineNum">     404 </span><span class="lineCov">       1277 :     int dest_pos = 0;</span>
+<span class="lineNum">     405 </span>            : 
+<span class="lineNum">     406 </span><span class="lineCov">       4020 :     while( src_pos&lt;src-&gt;n &amp;&amp; key&gt;src-&gt;key[src_pos] )</span>
+<span class="lineNum">     407 </span><span class="lineCov">       1466 :         src_pos++;</span>
+<span class="lineNum">     408 </span>            :     
+<span class="lineNum">     409 </span><span class="lineCov">       4020 :     while( dest_pos&lt;dest-&gt;n &amp;&amp; key&gt;dest-&gt;key[dest_pos] )</span>
+<span class="lineNum">     410 </span><span class="lineCov">       1466 :         dest_pos++;</span>
+<span class="lineNum">     411 </span>            :     
+<span class="lineNum">     412 </span><span class="lineCov">       1277 :     _node_key_shift_right( dest, dest_pos, dest_ptr_shift );</span>
+<span class="lineNum">     413 </span>            :     
+<span class="lineNum">     414 </span><span class="lineCov">       1277 :     dest-&gt;key[ dest_pos ] = src-&gt;key[src_pos]; </span>
+<span class="lineNum">     415 </span>            : 
+<span class="lineNum">     416 </span><span class="lineCov">       1277 :     if( dest-&gt;type == BPLUS_TREE_LEAF )</span>
+<span class="lineNum">     417 </span><span class="lineCov">        409 :         ((leaf_t *)dest)-&gt;data[ dest_pos ] = ((leaf_t *)src)-&gt;data[src_pos]; </span>
+<span class="lineNum">     418 </span>            :     
+<span class="lineNum">     419 </span><span class="lineCov">       1277 :     _node_key_shift_left( src, src_pos, src_ptr_shift );</span>
+<span class="lineNum">     420 </span>            :     
+<span class="lineNum">     421 </span>            :     //DISK_WRITE(src);
+<span class="lineNum">     422 </span>            :     //DISK_WRITE(dest);
+<span class="lineNum">     423 </span><span class="lineCov">       1277 : }</span>
+<a name="424"><span class="lineNum">     424 </span>            : </a>
+<span class="lineNum">     425 </span>            : static void 
+<span class="lineNum">     426 </span><span class="lineCov">       1263 : _merge_node( node_t *left, node_t *right )</span>
+<span class="lineNum">     427 </span>            : {
+<span class="lineNum">     428 </span>            :     int k;
+<span class="lineNum">     429 </span>            :     nonleaf_t *l_nln, *r_nln;
+<span class="lineNum">     430 </span>            :     leaf_t *l_ln, *r_ln;
+<span class="lineNum">     431 </span>            :     
+<span class="lineNum">     432 </span><span class="lineCov">       1263 :     assert( left-&gt;type == right-&gt;type );</span>
+<span class="lineNum">     433 </span>            : 
+<span class="lineNum">     434 </span><span class="lineCov">       1263 :     if( left-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     435 </span><span class="lineCov">        881 :         l_ln = (leaf_t *) left;</span>
+<span class="lineNum">     436 </span><span class="lineCov">        881 :         r_ln = (leaf_t *) right;</span>
+<span class="lineNum">     437 </span>            :     }
+<span class="lineNum">     438 </span>            :     else{
+<span class="lineNum">     439 </span><span class="lineCov">        382 :         l_nln = (nonleaf_t *) left;</span>
+<span class="lineNum">     440 </span><span class="lineCov">        382 :         r_nln = (nonleaf_t *) right;</span>
+<span class="lineNum">     441 </span>            :     }
+<span class="lineNum">     442 </span>            : 
+<span class="lineNum">     443 </span><span class="lineCov">       1263 :     if( left-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     444 </span><span class="lineCov">       2643 :         for( k=0; k&lt;right-&gt;n; k++ ){</span>
+<span class="lineNum">     445 </span><span class="lineCov">       1762 :             left-&gt;key[left-&gt;n+k] = right-&gt;key[k];</span>
+<span class="lineNum">     446 </span><span class="lineCov">       1762 :             l_ln-&gt;data[left-&gt;n+k] = r_ln-&gt;data[k];</span>
+<span class="lineNum">     447 </span>            :         }
+<span class="lineNum">     448 </span>            :     }
+<span class="lineNum">     449 </span>            :     else{ 
+<span class="lineNum">     450 </span><span class="lineCov">       1146 :         for( k=0; k&lt;right-&gt;n; k++ ){</span>
+<span class="lineNum">     451 </span><span class="lineCov">        764 :             left-&gt;key[left-&gt;n+k] = right-&gt;key[k];</span>
+<span class="lineNum">     452 </span><span class="lineCov">        764 :             l_nln-&gt;children[left-&gt;n+k] = r_nln-&gt;children[k];</span>
+<span class="lineNum">     453 </span>            :         }
+<span class="lineNum">     454 </span>            :     
+<span class="lineNum">     455 </span><span class="lineCov">        382 :         l_nln-&gt;children[left-&gt;n+right-&gt;n] = r_nln-&gt;children[right-&gt;n];</span>
+<span class="lineNum">     456 </span>            :     }
+<span class="lineNum">     457 </span>            :     
+<span class="lineNum">     458 </span><span class="lineCov">       1263 :     left-&gt;n += right-&gt;n;</span>
+<span class="lineNum">     459 </span>            : 
+<span class="lineNum">     460 </span><span class="lineCov">       1263 :     if( left-&gt;type == BPLUS_TREE_LEAF )</span>
+<span class="lineNum">     461 </span><span class="lineCov">        881 :         l_ln-&gt;next = r_ln-&gt;next;</span>
+<span class="lineNum">     462 </span>            :     
+<span class="lineNum">     463 </span><span class="lineCov">       1263 :     if( right-&gt;type==BPLUS_TREE_NON_LEAF )</span>
+<span class="lineNum">     464 </span><span class="lineCov">        382 :         non_leaf_destroy(&amp;r_nln);</span>
+<span class="lineNum">     465 </span>            :     else
+<span class="lineNum">     466 </span><span class="lineCov">        881 :         leaf_destroy(&amp;r_ln);</span>
+<span class="lineNum">     467 </span>            :     
+<span class="lineNum">     468 </span>            :     //DISK_WRITE(left);
+<span class="lineNum">     469 </span>            :     //DISK_WRITE(right);
+<span class="lineNum">     470 </span><span class="lineCov">       1263 : }</span>
+<a name="471"><span class="lineNum">     471 </span>            : </a>
+<span class="lineNum">     472 </span>            : static void
+<span class="lineNum">     473 </span><span class="lineCov">       2263 : _remove_from_leaf( node_t *node, int idx )</span>
+<span class="lineNum">     474 </span>            : {
+<span class="lineNum">     475 </span><span class="lineCov">       2263 :     int i = idx;</span>
+<span class="lineNum">     476 </span><span class="lineCov">       2263 :     leaf_t *ln = (leaf_t *)node;</span>
+<span class="lineNum">     477 </span>            :     
+<span class="lineNum">     478 </span><span class="lineCov">       2263 :     assert( node-&gt;type == BPLUS_TREE_LEAF);</span>
+<span class="lineNum">     479 </span><span class="lineCov">       2263 :     assert( idx&lt;node-&gt;n );</span>
+<span class="lineNum">     480 </span>            :     
+<span class="lineNum">     481 </span><span class="lineCov">       7123 :     while( i&lt;node-&gt;n-1 ){</span>
+<span class="lineNum">     482 </span><span class="lineCov">       2597 :         node-&gt;key[i] = node-&gt;key[i+1];</span>
+<span class="lineNum">     483 </span><span class="lineCov">       2597 :         ln-&gt;data[i] = ln-&gt;data[i+1];</span>
+<span class="lineNum">     484 </span><span class="lineCov">       2597 :         i++;</span>
+<span class="lineNum">     485 </span>            :     }
+<span class="lineNum">     486 </span>            :     
+<span class="lineNum">     487 </span><span class="lineCov">       2263 :     node-&gt;n--;</span>
+<span class="lineNum">     488 </span>            :     
+<span class="lineNum">     489 </span><span class="lineCov">       2263 :     return;</span>
+<span class="lineNum">     490 </span>            : }
+<a name="491"><span class="lineNum">     491 </span>            : </a>
+<span class="lineNum">     492 </span>            : static node_t *
+<span class="lineNum">     493 </span><span class="lineCov">       7813 : _pre_descend_child( node_t *parent, int idx )</span>
+<span class="lineNum">     494 </span>            : {
+<span class="lineNum">     495 </span><span class="lineCov">       7813 :     node_t *child = NULL;</span>
+<span class="lineNum">     496 </span><span class="lineCov">       7813 :     node_t *lsibling = NULL;</span>
+<span class="lineNum">     497 </span><span class="lineCov">       7813 :     node_t *rsibling = NULL;</span>
+<span class="lineNum">     498 </span>            :     nonleaf_t *nln_parent;
+<span class="lineNum">     499 </span>            :     nonleaf_t *nln_child, *nln_lsibling, *nln_rsibling;
+<span class="lineNum">     500 </span>            : 
+<span class="lineNum">     501 </span>            :     int parent_key, predecessor_key, successor_key;
+<span class="lineNum">     502 </span>            :     
+<span class="lineNum">     503 </span><span class="lineCov">       7813 :     int t = parent-&gt;b_factor;</span>
+<span class="lineNum">     504 </span>            : 
+<span class="lineNum">     505 </span><span class="lineCov">       7813 :     nln_parent = (nonleaf_t *)parent;</span>
+<span class="lineNum">     506 </span>            : 
+<span class="lineNum">     507 </span><span class="lineCov">       7813 :     child = nln_parent-&gt;children[idx]; </span>
+<span class="lineNum">     508 </span>            :     
+<span class="lineNum">     509 </span><span class="lineCov">       7813 :     if( child-&gt;n&gt;t-1 ) // not a minimal node</span>
+<span class="lineNum">     510 </span><span class="lineCov">       5898 :         return child;</span>
+<span class="lineNum">     511 </span>            : 
+<span class="lineNum">     512 </span><span class="lineCov">       1915 :     if ( idx == parent-&gt;n ){   </span>
+<span class="lineNum">     513 </span><span class="lineCov">        840 :         lsibling = nln_parent-&gt;children[idx-1];</span>
+<span class="lineNum">     514 </span><span class="lineCov">        840 :         rsibling = NULL; </span>
+<span class="lineNum">     515 </span><span class="lineCov">       1075 :     }else if ( idx == 0 ) {</span>
+<span class="lineNum">     516 </span><span class="lineCov">        821 :         lsibling = NULL;</span>
+<span class="lineNum">     517 </span><span class="lineCov">        821 :         rsibling = nln_parent-&gt;children[1];</span>
+<span class="lineNum">     518 </span>            :     }else {
+<span class="lineNum">     519 </span><span class="lineCov">        254 :         lsibling = nln_parent-&gt;children[idx - 1]; </span>
+<span class="lineNum">     520 </span><span class="lineCov">        254 :         rsibling = nln_parent-&gt;children[idx + 1];</span>
+<span class="lineNum">     521 </span>            :     }
+<span class="lineNum">     522 </span>            :     
+<span class="lineNum">     523 </span><span class="lineCov">       1915 :     if( lsibling &amp;&amp; lsibling-&gt;n &gt; t-1 ){ </span>
+<span class="lineNum">     524 </span><span class="lineCov">        373 :         assert(idx&gt;0);</span>
+<span class="lineNum">     525 </span>            :         
+<span class="lineNum">     526 </span><span class="lineCov">        373 :         predecessor_key = lsibling-&gt;key[lsibling-&gt;n-1];</span>
+<span class="lineNum">     527 </span>            : 
+<span class="lineNum">     528 </span><span class="lineCov">        746 :         if( child-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     529 </span><span class="lineCov">        227 :             parent-&gt;key[idx-1] = lsibling-&gt;key[lsibling-&gt;n-2];</span>
+<span class="lineNum">     530 </span><span class="lineCov">        227 :             _move_key( predecessor_key, lsibling, child, 1, 1 );</span>
+<span class="lineNum">     531 </span>            :         }
+<span class="lineNum">     532 </span>            :         else{
+<span class="lineNum">     533 </span><span class="lineCov">        146 :             parent_key = parent-&gt;key[idx-1];</span>
+<span class="lineNum">     534 </span><span class="lineCov">        146 :             if( parent_key != child-&gt;key[0] )</span>
+<span class="lineNum">     535 </span><span class="lineCov">        146 :                 _move_key( parent_key, parent, child, 0, 1 );//move 1-level down</span>
+<span class="lineNum">     536 </span>            :             //parent-&gt;key[idx-1] = lsibling-&gt;key[lsibling-&gt;n-1];
+<span class="lineNum">     537 </span>            : 
+<span class="lineNum">     538 </span><span class="lineCov">        146 :             nln_child = (nonleaf_t *)child;</span>
+<span class="lineNum">     539 </span><span class="lineCov">        146 :             nln_lsibling = (nonleaf_t *)lsibling;</span>
+<span class="lineNum">     540 </span><span class="lineCov">        146 :             nln_child-&gt;children[0] = nln_lsibling-&gt;children[lsibling-&gt;n];</span>
+<span class="lineNum">     541 </span>            :             
+<span class="lineNum">     542 </span><span class="lineCov">        146 :             _move_key( predecessor_key, lsibling, parent, 0, 0 );</span>
+<span class="lineNum">     543 </span>            :         }
+<span class="lineNum">     544 </span>            :     }
+<span class="lineNum">     545 </span><span class="lineCov">       1542 :     else if( rsibling &amp;&amp; rsibling-&gt;n &gt; t-1 ){</span>
+<span class="lineNum">     546 </span>            :         
+<span class="lineNum">     547 </span><span class="lineCov">        279 :         successor_key = rsibling-&gt;key[0];</span>
+<span class="lineNum">     548 </span>            : 
+<span class="lineNum">     549 </span><span class="lineCov">        558 :         if( child-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     550 </span><span class="lineCov">        182 :             parent-&gt;key[idx] = successor_key;</span>
+<span class="lineNum">     551 </span><span class="lineCov">        182 :             _move_key( successor_key, rsibling, child, 1, 1 );</span>
+<span class="lineNum">     552 </span>            :         }
+<span class="lineNum">     553 </span>            :         else{
+<span class="lineNum">     554 </span><span class="lineCov">         97 :             parent_key = parent-&gt;key[idx];</span>
+<span class="lineNum">     555 </span><span class="lineCov">         97 :             if( parent_key != child-&gt;key[child-&gt;n-1] )</span>
+<span class="lineNum">     556 </span><span class="lineCov">         97 :                 _move_key( parent_key, parent, child, 0, 1 );//move 1-level down</span>
+<span class="lineNum">     557 </span>            :             //parent-&gt;key[idx] = successor_key;
+<span class="lineNum">     558 </span>            : 
+<span class="lineNum">     559 </span><span class="lineCov">         97 :             nln_child = (nonleaf_t *)child;</span>
+<span class="lineNum">     560 </span><span class="lineCov">         97 :             nln_rsibling = (nonleaf_t *)rsibling;</span>
+<span class="lineNum">     561 </span><span class="lineCov">         97 :             nln_child-&gt;children[child-&gt;n] = nln_rsibling-&gt;children[0];</span>
+<span class="lineNum">     562 </span>            :             
+<span class="lineNum">     563 </span><span class="lineCov">         97 :             _move_key( successor_key, rsibling, parent, 1, 0 );</span>
+<span class="lineNum">     564 </span>            :         }
+<span class="lineNum">     565 </span>            : 
+<span class="lineNum">     566 </span>            :     }
+<span class="lineNum">     567 </span><span class="lineCov">       1263 :     else if( lsibling &amp;&amp; (lsibling-&gt;n == t-1) ){</span>
+<span class="lineNum">     568 </span><span class="lineCov">        672 :         assert(idx&gt;0);</span>
+<span class="lineNum">     569 </span>            :         
+<span class="lineNum">     570 </span><span class="lineCov">        672 :         if( child-&gt;type == BPLUS_TREE_NON_LEAF ){</span>
+<span class="lineNum">     571 </span><span class="lineCov">        198 :             parent_key = parent-&gt;key[idx-1];</span>
+<span class="lineNum">     572 </span><span class="lineCov">        198 :             if( parent_key != lsibling-&gt;key[lsibling-&gt;n-1] )</span>
+<span class="lineNum">     573 </span><span class="lineCov">        198 :                 _move_key( parent_key, parent, lsibling, 1, 0 );//move 1-level down</span>
+<span class="lineNum">     574 </span>            :         }
+<span class="lineNum">     575 </span>            :         else
+<span class="lineNum">     576 </span><span class="lineCov">        474 :             _node_key_shift_left( parent, idx-1, 1 );</span>
+<span class="lineNum">     577 </span>            : 
+<span class="lineNum">     578 </span><span class="lineCov">        672 :         _merge_node( lsibling, child );</span>
+<span class="lineNum">     579 </span><span class="lineCov">        672 :         nln_parent-&gt;children[idx-1] = lsibling;</span>
+<span class="lineNum">     580 </span>            :         
+<span class="lineNum">     581 </span><span class="lineCov">        672 :         child = lsibling;</span>
+<span class="lineNum">     582 </span>            :     }
+<span class="lineNum">     583 </span><span class="lineCov">        591 :     else if( rsibling &amp;&amp; (rsibling-&gt;n == t-1) ){</span>
+<span class="lineNum">     584 </span>            :         
+<span class="lineNum">     585 </span><span class="lineCov">        591 :         if( child-&gt;type == BPLUS_TREE_NON_LEAF ){</span>
+<span class="lineNum">     586 </span><span class="lineCov">        184 :             parent_key = parent-&gt;key[idx];</span>
+<span class="lineNum">     587 </span><span class="lineCov">        184 :             if( parent_key != child-&gt;key[child-&gt;n-1] )</span>
+<span class="lineNum">     588 </span><span class="lineCov">        184 :                 _move_key( parent_key, parent, child, 1, 0 );//move 1-level down</span>
+<span class="lineNum">     589 </span>            :         }
+<span class="lineNum">     590 </span>            :         else
+<span class="lineNum">     591 </span><span class="lineCov">        407 :             _node_key_shift_left( parent, idx, 1 );</span>
+<span class="lineNum">     592 </span>            : 
+<span class="lineNum">     593 </span><span class="lineCov">        591 :         _merge_node( child, rsibling );</span>
+<span class="lineNum">     594 </span><span class="lineCov">        591 :         nln_parent-&gt;children[idx] = child;</span>
+<span class="lineNum">     595 </span>            :     }
+<span class="lineNum">     596 </span>            :     else
+<span class="lineNum">     597 </span><span class="lineNoCov">          0 :         assert(0);</span>
+<span class="lineNum">     598 </span>            :     
+<span class="lineNum">     599 </span><span class="lineCov">       1915 :     return child;</span>
+<span class="lineNum">     600 </span>            : }
+<span class="lineNum">     601 </span>            : 
+<a name="602"><span class="lineNum">     602 </span>            : </a>
+<span class="lineNum">     603 </span>            : static void
+<span class="lineNum">     604 </span><span class="lineCov">      10076 : _descend( bpt_t *tree, node_t *node, int key )</span>
+<span class="lineNum">     605 </span>            : {
+<span class="lineNum">     606 </span>            :     int i;
+<span class="lineNum">     607 </span>            :     nonleaf_t *nln;
+<span class="lineNum">     608 </span>            :     leaf_t *ln;
+<span class="lineNum">     609 </span>            :     node_t *child;
+<span class="lineNum">     610 </span>            : 
+<span class="lineNum">     611 </span><span class="lineCov">      10076 :     i = key_binary_search(node-&gt;key, node-&gt;n, key);</span>
+<span class="lineNum">     612 </span>            : 
+<span class="lineNum">     613 </span><span class="lineCov">      10076 :     if( i&gt;= 0 ){ //key found in node </span>
+<span class="lineNum">     614 </span><span class="lineCov">       2399 :         if( node-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     615 </span><span class="lineCov">       2263 :             _remove_from_leaf( node, i );</span>
+<span class="lineNum">     616 </span><span class="lineCov">       2263 :             if( node-&gt;n==0 &amp;&amp; node==tree-&gt;root ){</span>
+<span class="lineNum">     617 </span><span class="lineCov">          6 :                 ln = (leaf_t *)node;</span>
+<span class="lineNum">     618 </span><span class="lineCov">          6 :                 leaf_destroy(&amp;ln);</span>
+<span class="lineNum">     619 </span><span class="lineCov">          6 :                 tree-&gt;root = NULL;</span>
+<span class="lineNum">     620 </span>            :             }
+<span class="lineNum">     621 </span><span class="lineCov">       2263 :             return;</span>
+<span class="lineNum">     622 </span>            :         }
+<span class="lineNum">     623 </span>            :     }
+<span class="lineNum">     624 </span>            :         
+<span class="lineNum">     625 </span>            :     //key not found in the node
+<span class="lineNum">     626 </span><span class="lineCov">       7813 :     if( node-&gt;type == BPLUS_TREE_LEAF ){</span>
+<span class="lineNum">     627 </span><span class="lineNoCov">          0 :         printf(&quot; The key %d does not exist in the tree\n&quot;, key );</span>
+<span class="lineNum">     628 </span><span class="lineNoCov">          0 :         return;</span>
+<span class="lineNum">     629 </span>            :     }
+<span class="lineNum">     630 </span>            :     
+<span class="lineNum">     631 </span><span class="lineCov">       7813 :     assert( node-&gt;type == BPLUS_TREE_NON_LEAF );</span>
+<span class="lineNum">     632 </span>            : 
+<span class="lineNum">     633 </span><span class="lineCov">       7813 :     nln = (nonleaf_t *)node;</span>
+<span class="lineNum">     634 </span>            :     
+<span class="lineNum">     635 </span><span class="lineCov">       7813 :     if (i &lt; 0) </span>
+<span class="lineNum">     636 </span><span class="lineCov">       7677 :         i = -i - 1;</span>
+<span class="lineNum">     637 </span>            : 
+<span class="lineNum">     638 </span><span class="lineCov">       7813 :     child = _pre_descend_child( node, i );</span>
+<span class="lineNum">     639 </span>            :     
+<span class="lineNum">     640 </span><span class="lineCov">       7813 :     _descend( tree, child, key );</span>
+<span class="lineNum">     641 </span>            :     
+<span class="lineNum">     642 </span><span class="lineCov">       7813 :     if( node-&gt;n==0 &amp;&amp; node==tree-&gt;root ){</span>
+<span class="lineNum">     643 </span><span class="lineCov">         23 :         non_leaf_destroy(&amp;nln);</span>
+<span class="lineNum">     644 </span><span class="lineCov">         23 :         tree-&gt;root = child;</span>
+<span class="lineNum">     645 </span>            :     }
+<span class="lineNum">     646 </span>            :     
+<span class="lineNum">     647 </span><span class="lineCov">       7813 :     return;</span>
+<span class="lineNum">     648 </span>            : }
+<a name="649"><span class="lineNum">     649 </span>            : </a>
+<span class="lineNum">     650 </span>            : void
+<span class="lineNum">     651 </span><span class="lineCov">       2264 : bptRemove( bpt_t *tree, int key ){</span>
+<span class="lineNum">     652 </span>            :     
+<span class="lineNum">     653 </span><span class="lineCov">       2264 :     if( !tree-&gt;root )</span>
+<span class="lineNum">     654 </span><span class="lineCov">          1 :         printf(&quot;Empty tree! No deletion\n&quot;);</span>
+<span class="lineNum">     655 </span>            :     else
+<span class="lineNum">     656 </span><span class="lineCov">       2263 :         return _descend( tree, tree-&gt;root, key );</span>
+<span class="lineNum">     657 </span>            : }
+<a name="658"><span class="lineNum">     658 </span>            : </a>
+<span class="lineNum">     659 </span>            : bpt_t *
+<span class="lineNum">     660 </span><span class="lineCov">          1 : bptInit( int b )</span>
+<span class="lineNum">     661 </span>            : {
+<span class="lineNum">     662 </span>            :     bpt_t *t;
+<span class="lineNum">     663 </span>            : 
+<span class="lineNum">     664 </span><span class="lineCov">          1 :     assert( b&gt;2 );</span>
+<span class="lineNum">     665 </span>            : 
+<span class="lineNum">     666 </span><span class="lineCov">          1 :     t = ( bpt_t * ) malloc ( sizeof(bpt_t) );</span>
+<span class="lineNum">     667 </span>            :     
+<span class="lineNum">     668 </span><span class="lineCov">          1 :     if( t ){</span>
+<span class="lineNum">     669 </span><span class="lineCov">          1 :         t-&gt;b_factor = b;</span>
+<span class="lineNum">     670 </span><span class="lineCov">          1 :         t-&gt;root = NULL;</span>
+<span class="lineNum">     671 </span>            :     }
+<span class="lineNum">     672 </span>            :     
+<span class="lineNum">     673 </span>            :     //to be removed
+<span class="lineNum">     674 </span>            :     //memset(bplus_tree-&gt;head, 0, MAX_LEVEL * sizeof(struct node *));
+<span class="lineNum">     675 </span>            : 
+<span class="lineNum">     676 </span><span class="lineCov">          1 :     return t;</span>
+<span class="lineNum">     677 </span>            : }
+<a name="678"><span class="lineNum">     678 </span>            : </a>
+<span class="lineNum">     679 </span>            : void
+<span class="lineNum">     680 </span><span class="lineCov">          1 : bptDestroy( bpt_t *tree ){</span>
+<span class="lineNum">     681 </span>            : 
+<span class="lineNum">     682 </span><span class="lineCov">          1 :     if( tree )</span>
+<span class="lineNum">     683 </span><span class="lineCov">          1 :         free(tree);</span>
+<span class="lineNum">     684 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     685 </span>            : 
+<span class="lineNum">     686 </span>            : #ifdef DEBUG
+<span class="lineNum">     687 </span>            : static void
+<span class="lineNum">     688 </span>            : _dump( node_t *node ){
+<span class="lineNum">     689 </span>            : 
+<span class="lineNum">     690 </span>            :     int i;
+<span class="lineNum">     691 </span>            : 
+<span class="lineNum">     692 </span>            :     if( !node ){
+<span class="lineNum">     693 </span>            :         printf(&quot;NULL node&quot;);
+<span class="lineNum">     694 </span>            :         return;
+<span class="lineNum">     695 </span>            :     }
+<span class="lineNum">     696 </span>            : 
+<span class="lineNum">     697 </span>            :     if( node-&gt;type == BPLUS_TREE_LEAF )
+<span class="lineNum">     698 </span>            :         printf(&quot;Type: leaf\n&quot; );
+<span class="lineNum">     699 </span>            :     else if( node-&gt;type == BPLUS_TREE_NON_LEAF )
+<span class="lineNum">     700 </span>            :         printf(&quot;Type: non-leaf\n&quot; );
+<span class="lineNum">     701 </span>            :     else
+<span class="lineNum">     702 </span>            :         assert(0);
+<span class="lineNum">     703 </span>            : 
+<span class="lineNum">     704 </span>            :     printf(&quot;B Factor = %d\n&quot;, node-&gt;b_factor );
+<span class="lineNum">     705 </span>            :     printf(&quot;# keys = %d\n&quot;, node-&gt;n );
+<span class="lineNum">     706 </span>            :     
+<span class="lineNum">     707 </span>            :     for( i=0; i&lt;node-&gt;n; i++){
+<span class="lineNum">     708 </span>            :         printf(&quot;keys[%d] = %d&quot;, i, node-&gt;key[i] );
+<span class="lineNum">     709 </span>            :         if( node-&gt;type == BPLUS_TREE_LEAF )
+<span class="lineNum">     710 </span>            :             printf(&quot;\t data[%d] = %d\n&quot;, i, ((leaf_t *)node)-&gt;data[i] );
+<span class="lineNum">     711 </span>            :         else
+<span class="lineNum">     712 </span>            :             printf(&quot;\n&quot;);
+<span class="lineNum">     713 </span>            :     }
+<span class="lineNum">     714 </span>            : 
+<span class="lineNum">     715 </span>            :     return;
+<span class="lineNum">     716 </span>            : 
+<span class="lineNum">     717 </span>            : }
+<span class="lineNum">     718 </span>            : 
+<span class="lineNum">     719 </span>            : 
+<span class="lineNum">     720 </span>            : void _d( bpt_t *t )
+<span class="lineNum">     721 </span>            : {
+<span class="lineNum">     722 </span>            :     int i,j;
+<span class="lineNum">     723 </span>            :     int ichildren;
+<span class="lineNum">     724 </span>            :     node_t *node;
+<span class="lineNum">     725 </span>            :     leaf_t *leaf;
+<span class="lineNum">     726 </span>            :     nonleaf_t *nln;
+<span class="lineNum">     727 </span>            : 
+<span class="lineNum">     728 </span>            :     if( !t )
+<span class="lineNum">     729 </span>            :         return;
+<span class="lineNum">     730 </span>            :     
+<span class="lineNum">     731 </span>            :     node = t-&gt;root;
+<span class="lineNum">     732 </span>            : 
+<span class="lineNum">     733 </span>            :     printf( &quot;Level root: &quot;);
+<span class="lineNum">     734 </span>            :     for( i = 0; i&lt;node-&gt;n; i++ ){
+<span class="lineNum">     735 </span>            :         printf(&quot; &lt;%d&gt; &quot;, node-&gt;key[i]);
+<span class="lineNum">     736 </span>            :     }
+<span class="lineNum">     737 </span>            :     printf( &quot;\n&quot;);
+<span class="lineNum">     738 </span>            : 
+<span class="lineNum">     739 </span>            :     if( node-&gt;n &gt; 0 ){
+<span class="lineNum">     740 </span>            :         nln = (nonleaf_t *)node;
+<span class="lineNum">     741 </span>            :         ichildren = node-&gt;n;
+<span class="lineNum">     742 </span>            :         printf( &quot;Level 2: &quot;);
+<span class="lineNum">     743 </span>            :         for( i = 0; i&lt;=ichildren; i++ ){
+<span class="lineNum">     744 </span>            :             node = nln-&gt;children[i];
+<span class="lineNum">     745 </span>            :             for( j = 0; j&lt;node-&gt;n; j++ ){
+<span class="lineNum">     746 </span>            :                 printf(&quot; &lt;%d&gt; &quot;, node-&gt;key[j]);
+<span class="lineNum">     747 </span>            :             }
+<span class="lineNum">     748 </span>            :             printf( &quot;|\t&quot;);
+<span class="lineNum">     749 </span>            :         }
+<span class="lineNum">     750 </span>            :         printf( &quot;\n&quot;);
+<span class="lineNum">     751 </span>            :     }
+<span class="lineNum">     752 </span>            :     
+<span class="lineNum">     753 </span>            :     printf( &quot;Leaf level: &quot;);
+<span class="lineNum">     754 </span>            :     node = t-&gt;root;
+<span class="lineNum">     755 </span>            : 
+<span class="lineNum">     756 </span>            :     while( node-&gt;type == BPLUS_TREE_NON_LEAF )
+<span class="lineNum">     757 </span>            :         node = ((nonleaf_t *)node)-&gt;children[0];
+<span class="lineNum">     758 </span>            :         
+<span class="lineNum">     759 </span>            :     assert( node-&gt;type == BPLUS_TREE_LEAF );
+<span class="lineNum">     760 </span>            : 
+<span class="lineNum">     761 </span>            :     leaf = (leaf_t *) node;
+<span class="lineNum">     762 </span>            : 
+<span class="lineNum">     763 </span>            :     while( leaf ){
+<span class="lineNum">     764 </span>            :         for(i=0; i&lt;leaf-&gt;node.n; i++){
+<span class="lineNum">     765 </span>            :             printf(&quot; &lt;%d,%d&gt; &quot;, leaf-&gt;node.key[i], leaf-&gt;data[i]);                
+<span class="lineNum">     766 </span>            :         }
+<span class="lineNum">     767 </span>            :         printf( &quot;|\t&quot;);
+<span class="lineNum">     768 </span>            :         leaf = leaf-&gt;next;
+<span class="lineNum">     769 </span>            :     }
+<span class="lineNum">     770 </span>            :     printf(&quot;\n&quot;);
+<span class="lineNum">     771 </span>            : }
+<span class="lineNum">     772 </span>            : 
+<span class="lineNum">     773 </span>            : #endif
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
