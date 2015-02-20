@@ -68,7 +68,6 @@ _nodeInit( node_t *new, bpt_t *tree, int type )
     int nKeys = tree->b_factor*2-1;
 
     new->type = type;
-    new->b_factor = tree->b_factor;
     new->n = 0;
     
     new->key =  (int *) malloc ( sizeof(int)*nKeys );
@@ -518,7 +517,7 @@ _remove_from_leaf( node_t *node, int idx )
 }
 
 static node_t *
-_pre_descend_child( node_t *parent, int idx )
+_pre_descend_child( bpt_t *tree, node_t *parent, int idx )
 {
     node_t *child = NULL;
     node_t *lsibling = NULL;
@@ -528,7 +527,7 @@ _pre_descend_child( node_t *parent, int idx )
 
     int parent_key, predecessor_key, successor_key;
     
-    int t = parent->b_factor;
+    int t = tree->b_factor;
 
     nln_parent = (nonleaf_t *)parent;
 
@@ -663,7 +662,7 @@ _descend( bpt_t *tree, node_t *node, int key )
     if (i < 0) 
         i = -i - 1;
 
-    child = _pre_descend_child( node, i );
+    child = _pre_descend_child( tree, node, i );
     
     _descend( tree, child, key );
     
@@ -697,9 +696,6 @@ bptInit( int b )
         t->b_factor = b;
         t->root = NULL;
     }
-    
-    //to be removed
-    //memset(bplus_tree->head, 0, MAX_LEVEL * sizeof(struct node *));
 
     return t;
 }
@@ -713,7 +709,7 @@ bptDestroy( bpt_t *tree ){
 
 #ifdef DEBUG
 static void
-_dump( node_t *node ){
+_dump( bpt_t *tree, node_t *node ){
 
     int i;
 
@@ -729,7 +725,7 @@ _dump( node_t *node ){
     else
         assert(0);
 
-    printf("B Factor = %d\n", node->b_factor );
+    printf("B Factor = %d\n", tree->b_factor );
     printf("# keys = %d\n", node->n );
     
     for( i=0; i<node->n; i++){
