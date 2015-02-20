@@ -51,11 +51,9 @@ enum {
 };
 
 typedef struct node {
-    int type;
-    int b_factor;
-    int n;
-    
     int *key;
+    int type;
+    int n;
 }node_t;
 
 typedef struct non_leaf {
@@ -72,7 +70,6 @@ typedef struct leaf {
 struct tree {
     int b_factor;
     struct node *root;
-    struct node *head[MAX_LEVEL]; //to be removed
 };
 
 typedef struct tree bpt_t;
