@@ -38,11 +38,13 @@
 #include <string.h>
 
 #include "bplustree.h"
+#include "queue.h"
 
 static void _descend( bpt_t *tree, node_t *node, int key );
+static void _dump( node_t *node );
 
 static int
-key_binary_search(int *arr, int len, int key)
+_key_binary_search(int *arr, int len, int key)
 {
     int low = -1;
     int high = len;
@@ -69,6 +71,8 @@ _nodeInit( node_t *new, bpt_t *tree, int type )
 
     new->type = type;
     new->n = 0;
+    new->id = ++tree->max_node_id;
+    new->wr_count=0;
     
     new->key =  (int *) malloc ( sizeof(int)*nKeys );
     memset( new->key, 0xff, nKeys * sizeof(int) );
@@ -77,7 +81,7 @@ _nodeInit( node_t *new, bpt_t *tree, int type )
 }
 
 static void
-_nodeDestroy( node_t *node )
+_destroy_node( node_t *node )
 {
     free( node->key );
 
@@ -85,7 +89,7 @@ _nodeDestroy( node_t *node )
 }
 
 static struct non_leaf *
-non_leaf_new( bpt_t *tree )
+_create_nonleaf( bpt_t *tree )
 {
     int nKeys = tree->b_factor*2-1;
     int nChildren = nKeys+1;
@@ -103,10 +107,10 @@ non_leaf_new( bpt_t *tree )
 }
 
 static void 
-non_leaf_destroy( nonleaf_t **nonleaf )
+_destroy_nonleaf( nonleaf_t **nonleaf )
 {
     free( (*nonleaf)->children );
-    _nodeDestroy( &(*nonleaf)->node );
+    _destroy_node( &(*nonleaf)->node );
     free( *nonleaf );
     *nonleaf = NULL;
 
@@ -114,7 +118,7 @@ non_leaf_destroy( nonleaf_t **nonleaf )
 }
 
 static leaf_t *
-leaf_new( bpt_t *tree )
+_create_leaf( bpt_t *tree )
 {
     int nKeys = tree->b_factor*2-1;
 
@@ -134,16 +138,41 @@ leaf_new( bpt_t *tree )
 }
 
 static void
-leaf_destroy( leaf_t **leaf )
+_destroy_leaf( leaf_t **leaf )
 {
     free( (*leaf)->data );
-    _nodeDestroy( &(*leaf)->node );
+    _destroy_node( &(*leaf)->node );
     free( *leaf );
     *leaf = NULL;
 
     return;
 }
 
+void
+_destroy( node_t *subroot )
+{
+    int i;
+
+    nonleaf_t *nln;
+    leaf_t *ln;
+
+    if( subroot->type == BPLUS_TREE_LEAF ){
+        ln = (leaf_t *)subroot;
+        _destroy_leaf( &ln );
+        return;
+    }
+    
+    nln = (nonleaf_t *)subroot;
+
+    for( i=0; i<=subroot->n; i++ )
+        _destroy( nln->children[i] );
+
+    _destroy_nonleaf( &nln );
+
+    return;
+}
+
+//routines used by query
 static int
 _node_search( node_t *node, int key ){
     
@@ -155,7 +184,7 @@ _node_search( node_t *node, int key ){
 
     if( node->type == BPLUS_TREE_LEAF ){
         ln = (leaf_t *)node;
-        i = key_binary_search(ln->node.key, ln->node.n, key );
+        i = _key_binary_search(ln->node.key, ln->node.n, key );
         if (i >= 0)
             return ln->data[i];
         else 
@@ -165,7 +194,7 @@ _node_search( node_t *node, int key ){
     assert( node->type == BPLUS_TREE_NON_LEAF );
     
     nln = (nonleaf_t *)node;
-    i = key_binary_search(nln->node.key, nln->node.n, key );
+    i = _key_binary_search(nln->node.key, nln->node.n, key );
 
     if(i >= 0)
         child = nln->children[i];
@@ -177,51 +206,69 @@ _node_search( node_t *node, int key ){
     return _node_search( child, key );
 }
 
-void
-bptDump(bpt_t *tree)
+inline void
+_node_write( node_t *node )
+{
+    node->wr_count ++;
+}
+
+// routines used by traverse
+static void
+_dfs( node_t *subroot )
 {
     int i;
-    node_t *node;
-    leaf_t *leaf;
+    nonleaf_t *nln;
 
-    printf("*******Tree dump*******\n");
-
-    if( !tree->root ){
-        printf("Empty tree\n");
+    if( subroot->type == BPLUS_TREE_LEAF ){
+        _dump(subroot);
         return;
     }
+    
+    nln = (nonleaf_t *)subroot;
 
-    node = tree->root;
-
-    while( node )
-        if( node->type == BPLUS_TREE_NON_LEAF )
-            node = ((nonleaf_t *)node)->children[0];
-        else
-            break;
-        
-    assert( node->type == BPLUS_TREE_LEAF );
-
-    leaf = (leaf_t *) node;
-
-    while( leaf ){
-        for(i=0; i<leaf->node.n; i++)
-            printf("Key=%d, data=%d\n", leaf->node.key[i], leaf->data[i] );  
-
-        leaf = leaf->next;
+    for( i=0; i<=subroot->n; i++ ){
+        _dfs( nln->children[i] );
     }
+
+    _dump(subroot);
 
     return;
 }
 
-int
-bptGet( bpt_t *tree, int key )
+static void
+_bfs( node_t *subroot )
 {
-    if( !tree->root )
-        return 0;
+    int i;
+    nonleaf_t *nln;
+    fifo_t *q;
+    node_t *node;
 
-    return _node_search( tree->root, key );
+    q = _fifo_init( 1000 );
+
+    _fifo_push( q, subroot );
+
+    while( ! _fifo_empty(q) ){
+    
+        //dequque a node 
+        node = _fifo_peek(q);
+        _dump(node);
+
+        if( node->type == BPLUS_TREE_NON_LEAF ){
+            //enqueue the children
+            nln = (nonleaf_t *)node;
+            for( i=0; i<=node->n; i++ )
+                _fifo_push( q, nln->children[i] );
+        }
+
+        _fifo_pop(q);
+    }
+
+    _fifo_destroy(q);
+
+    return;
 }
 
+// routines used by insertion
 static void
 _split_child( bpt_t *tree, node_t *node, int i )
 {
@@ -236,12 +283,12 @@ _split_child( bpt_t *tree, node_t *node, int i )
     
     if( y->type == BPLUS_TREE_LEAF ){
         y_ln = (leaf_t *)y;
-        z_ln = leaf_new(tree);
+        z_ln = _create_leaf(tree);
         z = &z_ln->node;
     }
     else{
         y_nln = (nonleaf_t *)y;
-        z_nln = non_leaf_new(tree);
+        z_nln = _create_nonleaf(tree);
         z = &z_nln->node;
     }
 
@@ -250,7 +297,6 @@ _split_child( bpt_t *tree, node_t *node, int i )
     //move the largest t-1 keys and tchildren of y into z
     for( j=0; j<z->n; j++ )
         z->key[j] = y->key[t+j];
-    
 
     if( y->type != BPLUS_TREE_LEAF ){
         for( j=0; j<=z->n; j++ )
@@ -282,9 +328,9 @@ _split_child( bpt_t *tree, node_t *node, int i )
     node->key[i] = y->key[t-1];
     node->n++;
 
-    //NODE_WRITE(y);
-    //NODE_WRITE(z);
-    //NODE_WRITE(node);
+    _node_write(y);
+    _node_write(z);
+    _node_write(node);
 
 }
 
@@ -307,7 +353,7 @@ _insert_nonfull( bpt_t *tree, node_t *node, int key, int data )
         ln->data[i] = data;
 
         node->n ++;
-        //NODE_WRITE(node);
+        _node_write(node);
     }
     else{
         assert( node->type == BPLUS_TREE_NON_LEAF );
@@ -330,33 +376,7 @@ _insert_nonfull( bpt_t *tree, node_t *node, int key, int data )
     }
 }
 
-
-void
-bptPut( bpt_t *tree, int key, int data)
-{
-    node_t *node;
-    nonleaf_t *s;
-
-    if (tree->root == NULL) { //empty tree
-        leaf_t *leaf = leaf_new(tree);
-        tree->root = &leaf->node;
-    }
-
-    node = tree->root;
-
-    if( node->n == tree->b_factor*2-1 ){
-        s = non_leaf_new(tree);
-        tree->root = &s->node;
-        s->children[0] = node;
-        _split_child(tree,&s->node,0);
-        _insert_nonfull(tree,&s->node,key,data);
-    }
-    else
-        _insert_nonfull(tree,node,key,data);
-
-    return;
-}
-
+// routines used by deletion
 static void 
 _node_key_shift_left( node_t *node, int index, int ptr_shift) 
 {
@@ -488,9 +508,9 @@ _merge_node( node_t *left, node_t *right )
         l_ln->next = r_ln->next;
     
     if( right->type==BPLUS_TREE_NON_LEAF )
-        non_leaf_destroy(&r_nln);
+        _destroy_nonleaf(&r_nln);
     else
-        leaf_destroy(&r_ln);
+        _destroy_leaf(&r_ln);
     
     //DISK_WRITE(left);
     //DISK_WRITE(right);
@@ -635,14 +655,14 @@ _descend( bpt_t *tree, node_t *node, int key )
     leaf_t *ln;
     node_t *child;
 
-    i = key_binary_search(node->key, node->n, key);
+    i = _key_binary_search(node->key, node->n, key);
 
     if( i>= 0 ){ //key found in node 
         if( node->type == BPLUS_TREE_LEAF ){
             _remove_from_leaf( node, i );
             if( node->n==0 && node==tree->root ){
                 ln = (leaf_t *)node;
-                leaf_destroy(&ln);
+                _destroy_leaf(&ln);
                 tree->root = NULL;
             }
             return;
@@ -667,10 +687,84 @@ _descend( bpt_t *tree, node_t *node, int key )
     _descend( tree, child, key );
     
     if( node->n==0 && node==tree->root ){
-        non_leaf_destroy(&nln);
+        _destroy_nonleaf(&nln);
         tree->root = child;
     }
     
+    return;
+}
+
+
+// public APIs
+void
+bptDump(bpt_t *tree)
+{
+    int i;
+    node_t *node;
+    leaf_t *leaf;
+
+    printf("*******Tree dump*******\n");
+
+    if( !tree->root ){
+        printf("Empty tree\n");
+        return;
+    }
+
+    node = tree->root;
+
+    while( node )
+        if( node->type == BPLUS_TREE_NON_LEAF )
+            node = ((nonleaf_t *)node)->children[0];
+        else
+            break;
+        
+    assert( node->type == BPLUS_TREE_LEAF );
+
+    leaf = (leaf_t *) node;
+
+    while( leaf ){
+        for(i=0; i<leaf->node.n; i++)
+            printf("Key=%d, data=%d\n", leaf->node.key[i], leaf->data[i] );  
+
+        leaf = leaf->next;
+    }
+
+    return;
+}
+
+int
+bptGet( bpt_t *tree, int key )
+{
+    if( !tree->root )
+        return 0;
+
+    return _node_search( tree->root, key );
+}
+
+
+void
+bptPut( bpt_t *tree, int key, int data)
+{
+    node_t *node;
+    nonleaf_t *s;
+
+    if (tree->root == NULL) { //empty tree
+        leaf_t *leaf = _create_leaf(tree);
+        tree->root = &leaf->node;
+    }
+
+    node = tree->root;
+
+    if( node->n == tree->b_factor*2-1 ){
+        s = _create_nonleaf(tree);
+        tree->root = &s->node;
+        s->children[0] = node;
+        _split_child(tree,&s->node,0);
+        _insert_nonfull(tree,&s->node,key,data);
+    }
+    else
+        _insert_nonfull(tree,node,key,data);
+
     return;
 }
 
@@ -681,6 +775,25 @@ bptRemove( bpt_t *tree, int key ){
         printf("Empty tree! No deletion\n");
     else
         return _descend( tree, tree->root, key );
+}
+
+
+void 
+bptTraverse( bpt_t *tree, int search_type )
+{
+    if( !tree->root ){
+        printf("Empty tree! No deletion\n");
+        return;
+    }
+
+    if( search_type == BPLUS_TREE_DFS )
+        _dfs( tree->root );
+    else if( search_type == BPLUS_TREE_BFS )
+        _bfs( tree->root );
+    else
+        assert(0);
+
+    return;
 }
 
 bpt_t *
@@ -695,6 +808,7 @@ bptInit( int b )
     if( t ){
         t->b_factor = b;
         t->root = NULL;
+        t->max_node_id=0;
     }
 
     return t;
@@ -704,12 +818,14 @@ void
 bptDestroy( bpt_t *tree ){
 
     if( tree )
-        free(tree);
+        _destroy(tree->root);
+
+    free(tree);
 }
 
 #ifdef DEBUG
 static void
-_dump( bpt_t *tree, node_t *node ){
+_dump( node_t *node ){
 
     int i;
 
@@ -717,27 +833,32 @@ _dump( bpt_t *tree, node_t *node ){
         printf("NULL node");
         return;
     }
+    
+    printf("Node %d, ", node->id );
 
     if( node->type == BPLUS_TREE_LEAF )
-        printf("Type: leaf\n" );
+        printf("leaf, " );
     else if( node->type == BPLUS_TREE_NON_LEAF )
-        printf("Type: non-leaf\n" );
+        printf("non-leaf, " );
     else
         assert(0);
 
-    printf("B Factor = %d\n", tree->b_factor );
-    printf("# keys = %d\n", node->n );
+    printf("%d, ", node->n );
     
     for( i=0; i<node->n; i++){
-        printf("keys[%d] = %d", i, node->key[i] );
-        if( node->type == BPLUS_TREE_LEAF )
-            printf("\t data[%d] = %d\n", i, ((leaf_t *)node)->data[i] );
-        else
-            printf("\n");
+        printf("<%d>", node->key[i] );
+        //if( node->type == BPLUS_TREE_LEAF )
+        //    printf("\t data[%d] = %d\n", i, ((leaf_t *)node)->data[i] );
+        //else
+        //    printf("\n");
     }
 
-    return;
+    printf(", ");
+    printf("%d ", node->wr_count);
+    
+    printf("\n");
 
+    return;
 }
 
 
