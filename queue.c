@@ -1,4 +1,4 @@
-/*  bplustree.h
+/*  queue.c
  *  Author: Yue Yang ( yueyang2010@gmail.com )
  *
  *
@@ -31,62 +31,78 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *                          
 */
-#ifndef _HEADER_BPLUSTREE_
-#define _HEADER_BPLUSTREE_
 
 #include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
+#include "queue.h"
 
-#define MAX_LEVEL (20)
-#define KEY_NOT_FOUND (-1)
-#define DATA_NOT_EXIST (-1)
-#define INVALID_KEY (-1)
-enum {
-    BPLUS_TREE_LEAF,
-    BPLUS_TREE_NON_LEAF = 1,
-};
+fifo_t *
+_fifo_init( int n )
+{
+    fifo_t *fifo;
 
-enum {
-    BPLUS_TREE_BFS,
-    BPLUS_TREE_DFS = 1,
-};
+    fifo = (fifo_t *)malloc( sizeof(fifo_t) );
 
-typedef struct node {
-    int *key;
-    int id;
-    int type;
-    int n;
+    fifo->array= (node_t **)malloc(n*sizeof(node_t*));
+    fifo->firstIdx = 0;
+    fifo->lastIdx = 0;
+    fifo->cnt = 0;
+    fifo->len = n;
 
-    int wr_count;
-}node_t;
+    return fifo;
+}
 
-typedef struct non_leaf {
-    node_t node;
-    node_t **children;
-}nonleaf_t;
+void
+_fifo_destroy( fifo_t *fifo )
+{
+    free( fifo->array );
+    free( fifo );
+}
 
-typedef struct leaf {
-    node_t node;
-    struct leaf *next;
-    int *data;
-}leaf_t;
+void 
+_fifo_push( fifo_t *fifo, node_t *node )
+{
+    fifo->array[fifo->lastIdx++] = node;
 
-struct tree {
-    int b_factor;
-    struct node *root;
+    if (fifo->lastIdx == fifo->len)
+        fifo->lastIdx = 0;
+    
+    fifo->cnt++;
 
-    int leaf_size;
-    int nonleaf_size;
+    /* Check if queue is full */
+    if (fifo->cnt>fifo->len)
+    {
+        fifo->cnt = fifo->len;
 
-    uint32_t max_node_id;
-};
+        fifo->firstIdx++;
+        if (fifo->firstIdx == fifo->len)
+            fifo->firstIdx = 0;
+    }
+}
 
-typedef struct tree bpt_t;
+void
+_fifo_pop( fifo_t *fifo )
+{
+    if( fifo->cnt>0 )
+    {
+        fifo->firstIdx++;
+        if (fifo->firstIdx == fifo->len)
+            fifo->firstIdx = 0;
+        
+        fifo->cnt--;
+    }
+}
 
-bpt_t * bptInit( int );
-void bptDestroy( bpt_t * );
-int bptGet( bpt_t *, int );
-void bptPut( bpt_t *, int, int );
-void bptRemove( bpt_t *, int );
-void bptDump( bpt_t * );
-void bptTraverse( bpt_t *, int );
-#endif
+node_t *
+_fifo_peek( fifo_t *fifo )
+{
+    return fifo->cnt>0 ? fifo->array[fifo->firstIdx] : NULL;
+}
+
+int
+_fifo_empty(fifo_t *fifo)
+{
+    return fifo->cnt==0;
+}
+

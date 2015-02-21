@@ -99,7 +99,7 @@ int main( int argc, char *argv[] ){
     if( !t )
         return -1;    
 
-#if 1  
+#if 0  
      bptPut(t, 90, 0);
      bptDump(t);
      bptPut(t, 88, 0);
@@ -179,13 +179,13 @@ int main( int argc, char *argv[] ){
 #endif
      
      int i;
-#if 1
+#if 0
      /* Ordered insertion and deletion */
      for (i = 1; i <= n; i++) {
          bptPut(t, i, i);
      }
      
-     bptDump(t);
+     bptTraverse(t);
      
      for (i = 1; i <= n; i++) {
          bptRemove(t, i);
@@ -228,17 +228,18 @@ int main( int argc, char *argv[] ){
      create_array( &keys[0], MAX, MAX );
      
      for (i = n; i > 0; i--) {
+         //bptPut(t, i, i);
          bptPut(t, keys[i], keys[i]);
      }
      bptDump(t);
      
-     for (i = n; i > 0; i--) {
-         bptRemove(t, keys[i]);
-     }
+     //for (i = n; i > 0; i--) {
+     //    bptRemove(t, keys[i]);
+     //}
 
-     bptDump(t);
+     bptTraverse(t,BPLUS_TREE_BFS);
 #endif
-     bptRemove(t, keys[0]);
+     //bptRemove(t, keys[0]);
 
      bptDestroy( t );
     reset_array( keys, TC_0_TRIAL);
