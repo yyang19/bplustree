@@ -1,0 +1,8088 @@
+137 3,leaf,
+
+130 1,leaf,
+
+102 2,non-leaf,
+
+100 7,leaf,
+
+96 8,leaf,
+
+95 4,leaf,
+
+95 15,leaf,
+
+94 12,leaf,
+
+94 10,leaf,
+
+91 6,leaf,
+
+89 39,leaf,
+
+87 59,leaf,
+
+86 38,leaf,
+
+85 9,leaf,
+
+85 35,leaf,
+
+85 31,leaf,
+
+85 21,leaf,
+
+85 14,leaf,
+
+84 18,leaf,
+
+84 27,leaf,
+
+83 29,leaf,
+
+83 34,leaf,
+
+81 5,leaf,
+
+81 13,leaf,
+
+80 16,leaf,
+
+80 23,non-leaf,
+
+79 45,leaf,
+
+79 40,leaf,
+
+79 80,leaf,
+
+78 57,leaf,
+
+78 11,leaf,
+
+78 112,leaf,
+
+77 64,leaf,
+
+77 28,leaf,
+
+75 58,leaf,
+
+75 24,leaf,
+
+75 42,leaf,
+
+75 41,non-leaf,
+
+74 79,leaf,
+
+74 43,leaf,
+
+73 30,leaf,
+
+73 17,leaf,
+
+73 51,leaf,
+
+72 67,leaf,
+
+72 94,leaf,
+
+71 26,leaf,
+
+71 47,leaf,
+
+71 54,leaf,
+
+71 46,non-leaf,
+
+70 60,leaf,
+
+70 19,leaf,
+
+69 85,leaf,
+
+68 32,leaf,
+
+68 103,leaf,
+
+68 66,leaf,
+
+66 71,leaf,
+
+66 48,leaf,
+
+65 153,leaf,
+
+65 25,leaf,
+
+65 44,leaf,
+
+65 183,leaf,
+
+65 20,leaf,
+
+65 62,leaf,
+
+65 77,leaf,
+
+64 88,leaf,
+
+64 76,leaf,
+
+64 151,leaf,
+
+64 215,leaf,
+
+63 63,leaf,
+
+63 98,non-leaf,
+
+63 106,leaf,
+
+63 179,leaf,
+
+63 110,leaf,
+
+63 96,leaf,
+
+63 108,leaf,
+
+63 50,leaf,
+
+62 65,leaf,
+
+62 83,non-leaf,
+
+62 49,leaf,
+
+62 75,leaf,
+
+61 139,leaf,
+
+61 102,leaf,
+
+61 36,leaf,
+
+61 22,non-leaf,
+
+60 158,leaf,
+
+60 91,non-leaf,
+
+60 114,leaf,
+
+60 81,non-leaf,
+
+60 55,leaf,
+
+59 120,leaf,
+
+59 86,leaf,
+
+59 157,leaf,
+
+59 84,leaf,
+
+59 221,leaf,
+
+58 73,leaf,
+
+58 129,leaf,
+
+58 37,leaf,
+
+58 90,leaf,
+
+58 61,leaf,
+
+58 74,leaf,
+
+58 69,leaf,
+
+58 56,leaf,
+
+57 72,leaf,
+
+57 173,non-leaf,
+
+57 174,leaf,
+
+57 111,leaf,
+
+57 211,leaf,
+
+57 95,leaf,
+
+57 135,leaf,
+
+57 116,leaf,
+
+57 150,leaf,
+
+56 196,leaf,
+
+56 163,leaf,
+
+56 147,leaf,
+
+56 82,leaf,
+
+56 134,leaf,
+
+56 188,leaf,
+
+56 107,leaf,
+
+56 99,leaf,
+
+56 254,leaf,
+
+56 182,leaf,
+
+56 119,leaf,
+
+56 100,leaf,
+
+56 89,leaf,
+
+56 338,leaf,
+
+55 33,leaf,
+
+55 166,leaf,
+
+55 130,leaf,
+
+55 162,leaf,
+
+55 122,leaf,
+
+55 70,leaf,
+
+55 169,leaf,
+
+55 131,leaf,
+
+55 167,leaf,
+
+54 125,leaf,
+
+54 124,leaf,
+
+54 53,leaf,
+
+54 172,leaf,
+
+54 203,non-leaf,
+
+54 264,leaf,
+
+53 402,leaf,
+
+53 204,leaf,
+
+53 175,leaf,
+
+53 217,leaf,
+
+53 101,leaf,
+
+53 177,leaf,
+
+53 93,leaf,
+
+53 328,leaf,
+
+53 192,leaf,
+
+53 133,leaf,
+
+53 132,leaf,
+
+52 176,leaf,
+
+52 275,leaf,
+
+52 280,leaf,
+
+52 128,leaf,
+
+51 140,leaf,
+
+51 184,leaf,
+
+51 288,leaf,
+
+51 142,non-leaf,
+
+51 378,leaf,
+
+51 68,leaf,
+
+51 123,leaf,
+
+51 249,leaf,
+
+50 193,non-leaf,
+
+50 144,leaf,
+
+50 290,leaf,
+
+50 359,leaf,
+
+49 307,leaf,
+
+49 52,leaf,
+
+49 213,leaf,
+
+49 117,leaf,
+
+49 180,leaf,
+
+49 155,non-leaf,
+
+49 126,leaf,
+
+49 87,leaf,
+
+49 330,leaf,
+
+49 115,leaf,
+
+49 289,leaf,
+
+49 224,leaf,
+
+49 165,non-leaf,
+
+49 170,leaf,
+
+49 121,leaf,
+
+49 148,leaf,
+
+48 398,leaf,
+
+48 372,leaf,
+
+48 207,leaf,
+
+48 214,leaf,
+
+48 78,leaf,
+
+48 266,leaf,
+
+48 271,non-leaf,
+
+48 233,leaf,
+
+48 314,leaf,
+
+48 210,leaf,
+
+47 229,leaf,
+
+47 321,leaf,
+
+47 168,leaf,
+
+47 227,leaf,
+
+47 684,leaf,
+
+47 105,leaf,
+
+47 97,leaf,
+
+47 200,leaf,
+
+47 92,leaf,
+
+46 216,leaf,
+
+46 320,leaf,
+
+46 145,leaf,
+
+46 159,leaf,
+
+46 234,non-leaf,
+
+46 190,leaf,
+
+46 303,leaf,
+
+46 178,leaf,
+
+46 161,leaf,
+
+46 432,leaf,
+
+46 189,non-leaf,
+
+46 164,leaf,
+
+46 208,leaf,
+
+46 327,leaf,
+
+46 272,leaf,
+
+46 185,leaf,
+
+46 253,leaf,
+
+45 261,leaf,
+
+45 263,leaf,
+
+45 181,leaf,
+
+45 377,leaf,
+
+45 677,leaf,
+
+45 403,leaf,
+
+45 318,non-leaf,
+
+45 209,leaf,
+
+45 371,leaf,
+
+45 104,leaf,
+
+45 393,leaf,
+
+45 339,leaf,
+
+45 219,leaf,
+
+45 354,leaf,
+
+45 274,leaf,
+
+45 296,leaf,
+
+44 348,leaf,
+
+44 156,leaf,
+
+44 127,leaf,
+
+44 278,leaf,
+
+44 332,leaf,
+
+44 235,leaf,
+
+44 273,leaf,
+
+44 395,leaf,
+
+44 319,leaf,
+
+44 376,leaf,
+
+44 230,leaf,
+
+44 220,leaf,
+
+44 315,leaf,
+
+44 450,leaf,
+
+44 212,leaf,
+
+44 225,leaf,
+
+43 291,leaf,
+
+43 232,leaf,
+
+43 546,leaf,
+
+43 194,leaf,
+
+43 138,leaf,
+
+43 206,leaf,
+
+43 419,leaf,
+
+43 305,leaf,
+
+43 426,leaf,
+
+43 258,leaf,
+
+43 285,leaf,
+
+43 507,leaf,
+
+43 361,leaf,
+
+43 202,leaf,
+
+43 251,leaf,
+
+43 445,leaf,
+
+42 417,leaf,
+
+42 344,leaf,
+
+42 228,leaf,
+
+42 136,leaf,
+
+42 357,leaf,
+
+42 434,leaf,
+
+42 252,leaf,
+
+42 353,leaf,
+
+42 323,leaf,
+
+42 137,leaf,
+
+42 160,leaf,
+
+42 410,leaf,
+
+42 343,non-leaf,
+
+42 486,leaf,
+
+41 622,leaf,
+
+41 517,leaf,
+
+41 553,leaf,
+
+41 306,leaf,
+
+41 425,leaf,
+
+41 141,leaf,
+
+41 414,leaf,
+
+41 223,leaf,
+
+41 295,non-leaf,
+
+41 242,leaf,
+
+41 698,leaf,
+
+41 201,leaf,
+
+41 152,leaf,
+
+41 231,leaf,
+
+41 360,leaf,
+
+41 350,leaf,
+
+41 437,leaf,
+
+41 146,leaf,
+
+41 524,leaf,
+
+41 198,leaf,
+
+40 316,non-leaf,
+
+40 293,non-leaf,
+
+40 368,leaf,
+
+40 149,leaf,
+
+40 239,leaf,
+
+40 218,leaf,
+
+40 388,non-leaf,
+
+40 407,leaf,
+
+40 342,leaf,
+
+39 355,leaf,
+
+39 523,leaf,
+
+39 382,leaf,
+
+39 287,leaf,
+
+39 301,leaf,
+
+39 243,leaf,
+
+39 260,leaf,
+
+39 309,leaf,
+
+39 362,leaf,
+
+39 197,leaf,
+
+39 352,leaf,
+
+39 187,leaf,
+
+39 446,leaf,
+
+39 281,leaf,
+
+38 334,leaf,
+
+38 248,leaf,
+
+38 205,leaf,
+
+38 708,leaf,
+
+38 186,leaf,
+
+38 324,non-leaf,
+
+38 405,leaf,
+
+38 143,leaf,
+
+38 415,leaf,
+
+38 825,leaf,
+
+38 247,leaf,
+
+38 543,leaf,
+
+38 370,leaf,
+
+38 245,leaf,
+
+38 409,non-leaf,
+
+38 154,leaf,
+
+38 336,leaf,
+
+38 554,leaf,
+
+38 335,non-leaf,
+
+38 384,leaf,
+
+38 498,leaf,
+
+37 609,leaf,
+
+37 413,leaf,
+
+37 351,leaf,
+
+37 565,leaf,
+
+37 366,leaf,
+
+37 356,leaf,
+
+37 566,leaf,
+
+37 241,leaf,
+
+37 268,leaf,
+
+37 349,leaf,
+
+37 341,leaf,
+
+37 452,leaf,
+
+37 322,non-leaf,
+
+37 572,leaf,
+
+37 430,leaf,
+
+37 375,non-leaf,
+
+37 329,leaf,
+
+37 739,leaf,
+
+37 277,leaf,
+
+37 717,leaf,
+
+37 367,leaf,
+
+37 545,leaf,
+
+37 381,leaf,
+
+37 250,leaf,
+
+37 199,leaf,
+
+37 171,leaf,
+
+37 363,leaf,
+
+37 118,leaf,
+
+37 385,leaf,
+
+37 298,leaf,
+
+36 270,leaf,
+
+36 699,leaf,
+
+36 538,leaf,
+
+36 443,leaf,
+
+36 257,leaf,
+
+36 347,non-leaf,
+
+36 537,leaf,
+
+36 462,leaf,
+
+36 333,leaf,
+
+36 421,non-leaf,
+
+36 460,leaf,
+
+36 748,leaf,
+
+36 577,leaf,
+
+36 534,leaf,
+
+36 466,leaf,
+
+36 451,leaf,
+
+36 530,non-leaf,
+
+36 399,leaf,
+
+36 431,leaf,
+
+36 294,leaf,
+
+36 265,leaf,
+
+35 226,leaf,
+
+35 531,leaf,
+
+35 1010,leaf,
+
+35 244,leaf,
+
+35 259,leaf,
+
+35 929,leaf,
+
+35 746,leaf,
+
+35 195,leaf,
+
+35 441,leaf,
+
+35 340,leaf,
+
+35 422,leaf,
+
+35 757,leaf,
+
+35 279,leaf,
+
+35 1019,leaf,
+
+35 459,leaf,
+
+35 482,leaf,
+
+35 491,leaf,
+
+35 284,leaf,
+
+35 299,leaf,
+
+35 692,leaf,
+
+35 470,leaf,
+
+35 826,leaf,
+
+35 509,leaf,
+
+35 406,leaf,
+
+35 472,leaf,
+
+35 761,leaf,
+
+34 528,leaf,
+
+34 540,leaf,
+
+34 238,leaf,
+
+34 423,leaf,
+
+34 389,leaf,
+
+34 358,leaf,
+
+34 515,leaf,
+
+34 113,leaf,
+
+34 487,leaf,
+
+34 529,leaf,
+
+34 429,leaf,
+
+34 643,leaf,
+
+34 392,non-leaf,
+
+34 447,leaf,
+
+34 971,leaf,
+
+34 497,leaf,
+
+34 420,leaf,
+
+34 513,non-leaf,
+
+34 1173,leaf,
+
+34 255,leaf,
+
+34 282,leaf,
+
+34 312,leaf,
+
+34 558,non-leaf,
+
+34 364,leaf,
+
+34 662,leaf,
+
+34 729,leaf,
+
+34 612,leaf,
+
+34 519,leaf,
+
+34 587,leaf,
+
+34 478,leaf,
+
+34 379,leaf,
+
+34 629,leaf,
+
+34 598,leaf,
+
+34 404,non-leaf,
+
+34 495,non-leaf,
+
+34 574,leaf,
+
+34 654,leaf,
+
+34 424,non-leaf,
+
+34 763,leaf,
+
+33 489,leaf,
+
+33 652,leaf,
+
+33 821,leaf,
+
+33 1012,leaf,
+
+33 433,leaf,
+
+33 468,leaf,
+
+33 555,leaf,
+
+33 1170,leaf,
+
+33 525,leaf,
+
+33 694,leaf,
+
+33 240,leaf,
+
+33 390,leaf,
+
+33 548,leaf,
+
+33 416,leaf,
+
+33 435,leaf,
+
+33 448,leaf,
+
+33 582,leaf,
+
+33 560,leaf,
+
+33 191,leaf,
+
+33 589,leaf,
+
+33 109,leaf,
+
+33 286,leaf,
+
+33 428,leaf,
+
+33 937,leaf,
+
+33 934,leaf,
+
+33 300,leaf,
+
+33 636,leaf,
+
+33 501,leaf,
+
+33 614,leaf,
+
+33 932,leaf,
+
+33 832,leaf,
+
+33 600,leaf,
+
+33 661,leaf,
+
+33 373,leaf,
+
+33 313,leaf,
+
+33 346,leaf,
+
+33 304,leaf,
+
+33 365,leaf,
+
+33 222,leaf,
+
+33 735,leaf,
+
+33 464,leaf,
+
+33 383,leaf,
+
+33 726,leaf,
+
+33 481,leaf,
+
+33 374,leaf,
+
+33 473,leaf,
+
+33 269,leaf,
+
+33 276,leaf,
+
+33 493,leaf,
+
+33 485,leaf,
+
+33 436,leaf,
+
+33 256,leaf,
+
+33 816,leaf,
+
+33 602,leaf,
+
+33 455,leaf,
+
+32 596,leaf,
+
+32 815,leaf,
+
+32 738,leaf,
+
+32 559,non-leaf,
+
+32 345,leaf,
+
+32 948,leaf,
+
+32 394,leaf,
+
+32 884,leaf,
+
+32 772,leaf,
+
+32 504,leaf,
+
+32 310,leaf,
+
+32 668,leaf,
+
+32 561,leaf,
+
+32 292,leaf,
+
+32 511,leaf,
+
+32 302,leaf,
+
+32 604,leaf,
+
+32 637,leaf,
+
+32 453,leaf,
+
+32 727,leaf,
+
+32 701,leaf,
+
+32 686,leaf,
+
+32 369,leaf,
+
+32 556,leaf,
+
+32 620,non-leaf,
+
+31 400,leaf,
+
+31 840,leaf,
+
+31 246,leaf,
+
+31 311,leaf,
+
+31 499,non-leaf,
+
+31 283,leaf,
+
+31 469,leaf,
+
+31 457,leaf,
+
+31 386,leaf,
+
+31 496,leaf,
+
+31 755,leaf,
+
+31 792,leaf,
+
+31 484,leaf,
+
+31 754,leaf,
+
+31 570,leaf,
+
+31 783,leaf,
+
+31 308,leaf,
+
+31 490,leaf,
+
+31 427,leaf,
+
+31 976,leaf,
+
+31 603,leaf,
+
+31 796,leaf,
+
+31 458,leaf,
+
+31 510,leaf,
+
+31 527,leaf,
+
+31 720,leaf,
+
+31 831,leaf,
+
+31 438,leaf,
+
+31 1312,leaf,
+
+31 297,leaf,
+
+31 839,leaf,
+
+31 1115,leaf,
+
+30 1017,leaf,
+
+30 411,leaf,
+
+30 631,leaf,
+
+30 899,leaf,
+
+30 628,leaf,
+
+30 722,leaf,
+
+30 442,leaf,
+
+30 780,leaf,
+
+30 918,leaf,
+
+30 236,leaf,
+
+30 1119,leaf,
+
+30 449,leaf,
+
+30 262,leaf,
+
+30 557,leaf,
+
+30 588,non-leaf,
+
+30 551,non-leaf,
+
+30 518,leaf,
+
+30 397,leaf,
+
+30 704,leaf,
+
+30 594,leaf,
+
+30 575,leaf,
+
+30 586,leaf,
+
+30 871,leaf,
+
+30 474,leaf,
+
+30 770,leaf,
+
+30 813,leaf,
+
+30 679,non-leaf,
+
+30 747,leaf,
+
+30 645,leaf,
+
+30 829,leaf,
+
+30 965,leaf,
+
+29 731,leaf,
+
+29 599,leaf,
+
+29 536,leaf,
+
+29 630,leaf,
+
+29 828,leaf,
+
+29 715,leaf,
+
+29 440,leaf,
+
+29 638,leaf,
+
+29 1004,leaf,
+
+29 767,leaf,
+
+29 331,leaf,
+
+29 868,leaf,
+
+29 412,leaf,
+
+29 508,leaf,
+
+29 741,leaf,
+
+29 775,leaf,
+
+29 850,leaf,
+
+29 476,leaf,
+
+29 387,leaf,
+
+29 827,leaf,
+
+29 471,leaf,
+
+29 1184,leaf,
+
+29 1400,leaf,
+
+29 391,leaf,
+
+29 705,leaf,
+
+29 1225,leaf,
+
+29 502,leaf,
+
+29 682,leaf,
+
+29 1318,leaf,
+
+29 742,leaf,
+
+29 533,leaf,
+
+29 1145,leaf,
+
+29 337,leaf,
+
+29 480,leaf,
+
+29 267,leaf,
+
+29 777,leaf,
+
+29 613,leaf,
+
+29 1055,leaf,
+
+29 723,non-leaf,
+
+29 592,non-leaf,
+
+29 648,non-leaf,
+
+29 702,leaf,
+
+29 758,leaf,
+
+29 461,leaf,
+
+29 619,leaf,
+
+29 591,non-leaf,
+
+29 797,leaf,
+
+29 627,leaf,
+
+29 665,leaf,
+
+29 716,non-leaf,
+
+29 883,leaf,
+
+29 593,leaf,
+
+29 745,non-leaf,
+
+28 492,leaf,
+
+28 488,leaf,
+
+28 752,leaf,
+
+28 849,leaf,
+
+28 541,leaf,
+
+28 1572,leaf,
+
+28 626,leaf,
+
+28 644,leaf,
+
+28 789,leaf,
+
+28 793,leaf,
+
+28 1066,leaf,
+
+28 961,leaf,
+
+28 583,leaf,
+
+28 730,leaf,
+
+28 639,leaf,
+
+28 928,leaf,
+
+28 676,leaf,
+
+28 237,leaf,
+
+28 549,leaf,
+
+28 710,leaf,
+
+28 562,leaf,
+
+28 439,leaf,
+
+28 552,leaf,
+
+28 576,leaf,
+
+28 691,leaf,
+
+28 522,leaf,
+
+28 809,leaf,
+
+28 408,leaf,
+
+28 1038,leaf,
+
+28 607,leaf,
+
+28 1242,leaf,
+
+28 798,leaf,
+
+27 1088,leaf,
+
+27 988,leaf,
+
+27 456,leaf,
+
+27 1254,leaf,
+
+27 506,leaf,
+
+27 646,leaf,
+
+27 916,leaf,
+
+27 1006,leaf,
+
+27 584,leaf,
+
+27 728,leaf,
+
+27 697,non-leaf,
+
+27 544,leaf,
+
+27 664,leaf,
+
+27 734,leaf,
+
+27 910,leaf,
+
+27 931,leaf,
+
+27 864,leaf,
+
+27 1180,leaf,
+
+27 791,leaf,
+
+27 658,leaf,
+
+27 667,leaf,
+
+27 685,leaf,
+
+27 617,non-leaf,
+
+27 569,leaf,
+
+27 641,leaf,
+
+27 1001,leaf,
+
+27 564,leaf,
+
+27 1257,leaf,
+
+27 651,leaf,
+
+27 465,leaf,
+
+27 680,leaf,
+
+27 997,leaf,
+
+27 1121,leaf,
+
+27 942,leaf,
+
+27 590,leaf,
+
+27 905,leaf,
+
+27 503,leaf,
+
+27 690,non-leaf,
+
+27 467,leaf,
+
+27 670,leaf,
+
+27 835,leaf,
+
+27 823,leaf,
+
+26 951,leaf,
+
+26 689,leaf,
+
+26 806,leaf,
+
+26 879,leaf,
+
+26 618,leaf,
+
+26 1059,leaf,
+
+26 1162,leaf,
+
+26 396,leaf,
+
+26 326,leaf,
+
+26 479,leaf,
+
+26 964,leaf,
+
+26 860,leaf,
+
+26 787,leaf,
+
+26 766,leaf,
+
+26 1489,leaf,
+
+26 786,leaf,
+
+26 750,non-leaf,
+
+26 721,leaf,
+
+26 621,leaf,
+
+26 1336,leaf,
+
+26 719,leaf,
+
+26 810,leaf,
+
+26 1135,leaf,
+
+26 563,leaf,
+
+26 807,leaf,
+
+26 601,leaf,
+
+26 1146,leaf,
+
+26 896,leaf,
+
+26 1083,leaf,
+
+26 1127,leaf,
+
+26 463,leaf,
+
+26 944,leaf,
+
+26 1018,leaf,
+
+26 653,leaf,
+
+26 954,leaf,
+
+26 696,non-leaf,
+
+26 936,leaf,
+
+26 855,leaf,
+
+26 687,non-leaf,
+
+26 1424,leaf,
+
+26 660,leaf,
+
+26 801,leaf,
+
+26 707,non-leaf,
+
+26 1056,leaf,
+
+26 454,leaf,
+
+26 714,leaf,
+
+25 1382,leaf,
+
+25 1293,leaf,
+
+25 886,leaf,
+
+25 1235,leaf,
+
+25 571,leaf,
+
+25 830,leaf,
+
+25 1204,leaf,
+
+25 920,leaf,
+
+25 1166,leaf,
+
+25 904,leaf,
+
+25 713,leaf,
+
+25 688,leaf,
+
+25 778,leaf,
+
+25 872,leaf,
+
+25 800,leaf,
+
+25 794,non-leaf,
+
+25 615,leaf,
+
+25 784,leaf,
+
+25 568,leaf,
+
+25 581,leaf,
+
+25 656,leaf,
+
+25 1037,leaf,
+
+25 633,leaf,
+
+25 836,non-leaf,
+
+25 1585,leaf,
+
+25 494,leaf,
+
+25 749,leaf,
+
+25 865,leaf,
+
+25 526,leaf,
+
+25 851,leaf,
+
+25 579,leaf,
+
+25 1468,leaf,
+
+25 867,non-leaf,
+
+25 516,leaf,
+
+25 444,leaf,
+
+25 799,leaf,
+
+25 547,leaf,
+
+25 990,leaf,
+
+25 753,leaf,
+
+25 325,leaf,
+
+25 1011,leaf,
+
+25 673,leaf,
+
+25 842,leaf,
+
+25 771,leaf,
+
+25 1147,leaf,
+
+25 1071,leaf,
+
+25 1028,leaf,
+
+25 535,leaf,
+
+25 837,leaf,
+
+25 1167,leaf,
+
+25 1153,leaf,
+
+25 790,non-leaf,
+
+24 1452,leaf,
+
+24 585,leaf,
+
+24 623,leaf,
+
+24 681,leaf,
+
+24 922,leaf,
+
+24 982,leaf,
+
+24 834,leaf,
+
+24 1026,leaf,
+
+24 1022,leaf,
+
+24 898,non-leaf,
+
+24 957,leaf,
+
+24 986,leaf,
+
+24 972,leaf,
+
+24 1358,leaf,
+
+24 811,non-leaf,
+
+24 970,leaf,
+
+24 674,leaf,
+
+24 1524,leaf,
+
+24 893,leaf,
+
+24 963,leaf,
+
+24 1098,leaf,
+
+24 1327,leaf,
+
+24 693,leaf,
+
+24 1060,leaf,
+
+24 975,leaf,
+
+24 657,non-leaf,
+
+24 863,leaf,
+
+24 764,leaf,
+
+24 380,leaf,
+
+24 1375,leaf,
+
+24 647,leaf,
+
+24 824,leaf,
+
+24 1029,leaf,
+
+24 861,leaf,
+
+24 892,leaf,
+
+24 483,leaf,
+
+24 908,leaf,
+
+24 838,leaf,
+
+24 841,leaf,
+
+24 994,leaf,
+
+24 1896,leaf,
+
+24 853,leaf,
+
+24 663,leaf,
+
+24 1172,leaf,
+
+24 573,leaf,
+
+24 635,leaf,
+
+24 1485,leaf,
+
+24 1036,leaf,
+
+24 1091,leaf,
+
+24 856,leaf,
+
+24 779,leaf,
+
+24 732,leaf,
+
+24 911,non-leaf,
+
+24 520,leaf,
+
+24 1024,leaf,
+
+24 902,leaf,
+
+24 712,leaf,
+
+24 1508,non-leaf,
+
+24 1379,leaf,
+
+24 1232,leaf,
+
+24 941,leaf,
+
+24 1051,leaf,
+
+24 802,leaf,
+
+24 1120,leaf,
+
+24 877,leaf,
+
+24 909,leaf,
+
+24 567,leaf,
+
+24 1150,leaf,
+
+24 418,leaf,
+
+24 1105,leaf,
+
+23 740,non-leaf,
+
+23 890,leaf,
+
+23 973,leaf,
+
+23 1902,leaf,
+
+23 1236,leaf,
+
+23 1035,leaf,
+
+23 1131,leaf,
+
+23 998,leaf,
+
+23 875,non-leaf,
+
+23 768,leaf,
+
+23 1475,leaf,
+
+23 650,leaf,
+
+23 987,leaf,
+
+23 833,leaf,
+
+23 550,leaf,
+
+23 803,leaf,
+
+23 891,leaf,
+
+23 666,leaf,
+
+23 1161,leaf,
+
+23 887,non-leaf,
+
+23 606,leaf,
+
+23 1093,leaf,
+
+23 1196,leaf,
+
+23 1045,leaf,
+
+23 947,leaf,
+
+23 935,non-leaf,
+
+23 895,leaf,
+
+23 709,leaf,
+
+23 1049,leaf,
+
+23 1287,leaf,
+
+23 632,leaf,
+
+23 869,leaf,
+
+23 1031,leaf,
+
+23 401,leaf,
+
+23 1299,leaf,
+
+23 724,leaf,
+
+23 1128,leaf,
+
+23 1260,leaf,
+
+23 1550,leaf,
+
+23 1032,leaf,
+
+23 597,leaf,
+
+23 915,leaf,
+
+23 1123,leaf,
+
+23 1053,non-leaf,
+
+23 539,leaf,
+
+23 812,leaf,
+
+23 1122,leaf,
+
+23 1238,leaf,
+
+23 900,leaf,
+
+23 1125,non-leaf,
+
+23 1655,leaf,
+
+23 1085,leaf,
+
+23 532,leaf,
+
+23 514,leaf,
+
+23 862,leaf,
+
+23 913,non-leaf,
+
+23 874,non-leaf,
+
+23 1230,leaf,
+
+23 737,leaf,
+
+23 949,leaf,
+
+23 1518,leaf,
+
+23 1151,non-leaf,
+
+23 1321,leaf,
+
+23 610,leaf,
+
+23 1337,leaf,
+
+23 1076,leaf,
+
+23 1273,leaf,
+
+23 1466,leaf,
+
+23 512,leaf,
+
+23 1732,leaf,
+
+22 848,leaf,
+
+22 669,leaf,
+
+22 1282,leaf,
+
+22 912,leaf,
+
+22 1243,leaf,
+
+22 1163,leaf,
+
+22 743,leaf,
+
+22 1193,leaf,
+
+22 927,leaf,
+
+22 580,leaf,
+
+22 857,leaf,
+
+22 1126,leaf,
+
+22 1821,leaf,
+
+22 1391,leaf,
+
+22 1171,leaf,
+
+22 1449,leaf,
+
+22 923,leaf,
+
+22 1118,leaf,
+
+22 475,leaf,
+
+22 1504,leaf,
+
+22 1596,leaf,
+
+22 1117,leaf,
+
+22 866,leaf,
+
+22 1086,leaf,
+
+22 776,leaf,
+
+22 1048,leaf,
+
+22 1007,leaf,
+
+22 907,leaf,
+
+22 1040,leaf,
+
+22 1041,leaf,
+
+22 1043,leaf,
+
+22 678,leaf,
+
+22 700,leaf,
+
+22 711,leaf,
+
+22 1079,leaf,
+
+22 1169,leaf,
+
+22 1182,leaf,
+
+22 1442,leaf,
+
+22 1343,leaf,
+
+21 1463,leaf,
+
+21 608,leaf,
+
+21 695,leaf,
+
+21 1074,leaf,
+
+21 1198,non-leaf,
+
+21 751,leaf,
+
+21 960,leaf,
+
+21 1025,leaf,
+
+21 1418,leaf,
+
+21 959,non-leaf,
+
+21 1783,leaf,
+
+21 521,leaf,
+
+21 1061,non-leaf,
+
+21 1330,leaf,
+
+21 1244,leaf,
+
+21 1069,leaf,
+
+21 675,leaf,
+
+21 1200,leaf,
+
+21 1253,leaf,
+
+21 1058,leaf,
+
+21 1384,leaf,
+
+21 542,leaf,
+
+21 985,leaf,
+
+21 1789,leaf,
+
+21 822,leaf,
+
+21 1575,leaf,
+
+21 1338,leaf,
+
+21 1065,leaf,
+
+21 1306,leaf,
+
+21 1364,leaf,
+
+21 1701,leaf,
+
+21 1213,leaf,
+
+21 1002,leaf,
+
+21 989,leaf,
+
+21 505,leaf,
+
+21 760,leaf,
+
+21 1319,leaf,
+
+21 500,leaf,
+
+21 1113,leaf,
+
+21 1344,leaf,
+
+21 1357,leaf,
+
+21 1412,leaf,
+
+21 611,leaf,
+
+21 1527,leaf,
+
+21 1152,leaf,
+
+21 1606,leaf,
+
+21 818,leaf,
+
+21 1154,non-leaf,
+
+21 814,leaf,
+
+21 1326,leaf,
+
+21 1265,leaf,
+
+21 1582,leaf,
+
+21 817,leaf,
+
+21 804,leaf,
+
+21 1377,leaf,
+
+21 1218,leaf,
+
+21 625,leaf,
+
+21 765,leaf,
+
+20 1515,leaf,
+
+20 1388,leaf,
+
+20 1624,leaf,
+
+20 759,leaf,
+
+20 882,leaf,
+
+20 1014,leaf,
+
+20 1063,leaf,
+
+20 1414,non-leaf,
+
+20 1106,leaf,
+
+20 1290,leaf,
+
+20 744,leaf,
+
+20 914,non-leaf,
+
+20 1042,leaf,
+
+20 788,leaf,
+
+20 1398,leaf,
+
+20 781,leaf,
+
+20 1220,leaf,
+
+20 795,leaf,
+
+20 903,leaf,
+
+20 805,leaf,
+
+20 859,leaf,
+
+20 1183,leaf,
+
+20 956,leaf,
+
+20 1619,leaf,
+
+20 808,leaf,
+
+20 1469,leaf,
+
+20 1181,leaf,
+
+20 1453,leaf,
+
+20 999,leaf,
+
+20 1233,leaf,
+
+20 595,leaf,
+
+20 967,non-leaf,
+
+20 897,leaf,
+
+20 1519,leaf,
+
+20 901,leaf,
+
+20 894,leaf,
+
+20 1423,leaf,
+
+20 1421,leaf,
+
+20 317,non-leaf,
+
+20 1212,leaf,
+
+20 1111,leaf,
+
+20 1470,leaf,
+
+20 1080,leaf,
+
+20 1044,leaf,
+
+20 634,leaf,
+
+20 1239,leaf,
+
+20 1160,non-leaf,
+
+20 1705,leaf,
+
+20 846,leaf,
+
+20 1487,leaf,
+
+20 773,leaf,
+
+20 1356,leaf,
+
+20 1138,leaf,
+
+20 1360,leaf,
+
+20 917,leaf,
+
+20 1133,leaf,
+
+20 1208,leaf,
+
+20 979,non-leaf,
+
+20 955,leaf,
+
+20 974,leaf,
+
+20 1714,leaf,
+
+20 1385,leaf,
+
+20 1510,leaf,
+
+20 847,leaf,
+
+20 1114,leaf,
+
+19 1717,leaf,
+
+19 1555,leaf,
+
+19 945,leaf,
+
+19 1165,leaf,
+
+19 969,leaf,
+
+19 703,leaf,
+
+19 1320,leaf,
+
+19 671,leaf,
+
+19 785,leaf,
+
+19 1149,leaf,
+
+19 1323,non-leaf,
+
+19 1221,leaf,
+
+19 1435,leaf,
+
+19 672,leaf,
+
+19 1104,leaf,
+
+19 968,leaf,
+
+19 1408,leaf,
+
+19 1237,leaf,
+
+19 706,leaf,
+
+19 1195,leaf,
+
+19 1309,leaf,
+
+19 1939,leaf,
+
+19 995,leaf,
+
+19 1134,leaf,
+
+19 876,leaf,
+
+19 1552,leaf,
+
+19 1307,leaf,
+
+19 1509,leaf,
+
+19 1216,leaf,
+
+19 1075,leaf,
+
+19 1252,leaf,
+
+19 1054,leaf,
+
+19 1381,non-leaf,
+
+19 1246,non-leaf,
+
+19 1780,leaf,
+
+19 477,leaf,
+
+19 1100,leaf,
+
+19 1130,leaf,
+
+19 1749,leaf,
+
+19 774,leaf,
+
+19 1754,leaf,
+
+19 1410,leaf,
+
+19 1529,leaf,
+
+19 1176,leaf,
+
+19 946,leaf,
+
+19 858,leaf,
+
+19 1670,leaf,
+
+19 1541,leaf,
+
+19 1335,leaf,
+
+19 1194,leaf,
+
+19 1211,leaf,
+
+19 1177,leaf,
+
+19 1179,leaf,
+
+19 919,leaf,
+
+19 1769,leaf,
+
+19 1355,leaf,
+
+19 1455,leaf,
+
+19 1073,leaf,
+
+19 1733,leaf,
+
+19 1047,non-leaf,
+
+19 1567,leaf,
+
+19 1241,non-leaf,
+
+19 977,leaf,
+
+19 1548,leaf,
+
+19 2226,leaf,
+
+19 1266,non-leaf,
+
+19 1347,leaf,
+
+19 983,leaf,
+
+19 1202,leaf,
+
+19 1448,leaf,
+
+19 1248,leaf,
+
+19 1231,leaf,
+
+18 958,leaf,
+
+18 1207,leaf,
+
+18 1474,leaf,
+
+18 1432,leaf,
+
+18 683,leaf,
+
+18 1021,leaf,
+
+18 1558,leaf,
+
+18 854,leaf,
+
+18 1027,leaf,
+
+18 1579,leaf,
+
+18 1110,leaf,
+
+18 1039,leaf,
+
+18 1467,leaf,
+
+18 1178,leaf,
+
+18 1325,non-leaf,
+
+18 1016,leaf,
+
+18 1719,leaf,
+
+18 881,leaf,
+
+18 1157,leaf,
+
+18 1124,leaf,
+
+18 1511,leaf,
+
+18 1222,leaf,
+
+18 1960,leaf,
+
+18 1192,leaf,
+
+18 1116,leaf,
+
+18 1539,leaf,
+
+18 1199,non-leaf,
+
+18 624,leaf,
+
+18 1078,leaf,
+
+18 1302,leaf,
+
+18 1141,leaf,
+
+18 1084,leaf,
+
+18 1203,leaf,
+
+18 1210,leaf,
+
+18 1308,leaf,
+
+18 1989,leaf,
+
+18 1261,leaf,
+
+18 2018,leaf,
+
+18 1034,leaf,
+
+18 733,leaf,
+
+18 1523,leaf,
+
+18 2004,leaf,
+
+18 1095,leaf,
+
+18 1437,leaf,
+
+18 1565,leaf,
+
+18 1201,leaf,
+
+18 993,leaf,
+
+18 1741,leaf,
+
+18 1174,leaf,
+
+18 1276,leaf,
+
+18 1097,leaf,
+
+18 1664,leaf,
+
+18 1594,leaf,
+
+18 1735,leaf,
+
+18 843,leaf,
+
+18 991,leaf,
+
+18 1258,leaf,
+
+18 2212,leaf,
+
+18 1003,leaf,
+
+17 1404,leaf,
+
+17 2015,leaf,
+
+17 1324,leaf,
+
+17 1070,leaf,
+
+17 1562,non-leaf,
+
+17 939,leaf,
+
+17 1129,leaf,
+
+17 888,leaf,
+
+17 1954,leaf,
+
+17 1434,leaf,
+
+17 1429,leaf,
+
+17 1137,non-leaf,
+
+17 762,leaf,
+
+17 1526,non-leaf,
+
+17 1436,leaf,
+
+17 1721,leaf,
+
+17 1873,leaf,
+
+17 1745,leaf,
+
+17 1168,leaf,
+
+17 1747,leaf,
+
+17 2046,leaf,
+
+17 756,leaf,
+
+17 1288,leaf,
+
+17 1057,leaf,
+
+17 1329,non-leaf,
+
+17 1374,leaf,
+
+17 1536,leaf,
+
+17 1228,leaf,
+
+17 1867,leaf,
+
+17 1396,leaf,
+
+17 1491,leaf,
+
+17 1295,leaf,
+
+17 1109,leaf,
+
+17 1362,leaf,
+
+17 2025,leaf,
+
+17 1264,leaf,
+
+17 1256,leaf,
+
+17 1363,non-leaf,
+
+17 1991,leaf,
+
+17 1270,non-leaf,
+
+17 1715,leaf,
+
+17 1013,leaf,
+
+17 2199,leaf,
+
+17 1758,leaf,
+
+17 1395,leaf,
+
+17 1285,non-leaf,
+
+17 1814,leaf,
+
+17 1636,leaf,
+
+17 2408,leaf,
+
+17 605,leaf,
+
+17 1175,leaf,
+
+17 769,leaf,
+
+17 852,leaf,
+
+17 1571,leaf,
+
+17 1096,leaf,
+
+17 1052,leaf,
+
+17 1832,leaf,
+
+17 1140,leaf,
+
+17 1904,leaf,
+
+17 1144,leaf,
+
+17 1756,leaf,
+
+17 924,leaf,
+
+17 1698,non-leaf,
+
+17 1995,leaf,
+
+17 1775,leaf,
+
+17 1965,leaf,
+
+17 1005,leaf,
+
+17 1251,leaf,
+
+17 880,leaf,
+
+17 1908,leaf,
+
+17 1089,leaf,
+
+17 981,leaf,
+
+17 1191,leaf,
+
+17 1454,leaf,
+
+17 1380,non-leaf,
+
+17 978,leaf,
+
+17 844,leaf,
+
+17 2275,leaf,
+
+17 1361,leaf,
+
+17 1738,leaf,
+
+17 1461,leaf,
+
+16 1921,leaf,
+
+16 1206,leaf,
+
+16 2142,leaf,
+
+16 1638,leaf,
+
+16 1341,leaf,
+
+16 2267,leaf,
+
+16 1087,leaf,
+
+16 1428,leaf,
+
+16 2350,leaf,
+
+16 578,leaf,
+
+16 1993,leaf,
+
+16 1433,leaf,
+
+16 1625,leaf,
+
+16 1724,leaf,
+
+16 938,leaf,
+
+16 1158,leaf,
+
+16 1279,leaf,
+
+16 1532,leaf,
+
+16 1342,non-leaf,
+
+16 1413,leaf,
+
+16 1020,leaf,
+
+16 1446,leaf,
+
+16 1331,leaf,
+
+16 1298,leaf,
+
+16 1787,leaf,
+
+16 1186,non-leaf,
+
+16 1333,leaf,
+
+16 1603,leaf,
+
+16 878,leaf,
+
+16 1353,leaf,
+
+16 1833,leaf,
+
+16 1711,leaf,
+
+16 1283,leaf,
+
+16 925,leaf,
+
+16 1300,leaf,
+
+16 1653,leaf,
+
+16 1505,leaf,
+
+16 1155,non-leaf,
+
+16 1482,leaf,
+
+16 1365,leaf,
+
+16 1393,leaf,
+
+16 1383,leaf,
+
+16 1760,leaf,
+
+16 649,leaf,
+
+16 1372,leaf,
+
+16 1644,leaf,
+
+16 1520,leaf,
+
+16 1650,leaf,
+
+16 718,leaf,
+
+16 1671,leaf,
+
+16 640,leaf,
+
+16 1349,leaf,
+
+16 1249,leaf,
+
+16 1303,leaf,
+
+16 1495,leaf,
+
+16 1366,leaf,
+
+16 1974,leaf,
+
+16 1803,leaf,
+
+16 2309,leaf,
+
+16 1722,leaf,
+
+16 1143,leaf,
+
+16 1493,non-leaf,
+
+16 1370,leaf,
+
+16 1805,leaf,
+
+16 1852,leaf,
+
+16 1369,non-leaf,
+
+16 1402,leaf,
+
+16 1267,leaf,
+
+16 1743,leaf,
+
+16 1189,leaf,
+
+16 1807,leaf,
+
+16 1441,non-leaf,
+
+16 1354,leaf,
+
+16 1597,non-leaf,
+
+16 1540,non-leaf,
+
+16 1843,leaf,
+
+16 1240,non-leaf,
+
+16 1920,leaf,
+
+16 1274,leaf,
+
+16 1094,leaf,
+
+16 1447,leaf,
+
+16 1460,leaf,
+
+16 1289,leaf,
+
+16 1368,leaf,
+
+16 1030,leaf,
+
+16 782,leaf,
+
+16 1438,leaf,
+
+16 1957,leaf,
+
+16 1853,leaf,
+
+16 1836,leaf,
+
+16 1739,leaf,
+
+16 2094,leaf,
+
+16 1456,leaf,
+
+16 1622,leaf,
+
+16 1390,leaf,
+
+16 1188,non-leaf,
+
+16 1645,leaf,
+
+16 2232,leaf,
+
+16 1978,leaf,
+
+16 1427,leaf,
+
+16 1891,leaf,
+
+16 1350,leaf,
+
+16 1224,leaf,
+
+16 616,leaf,
+
+16 1387,leaf,
+
+16 1067,leaf,
+
+16 1159,leaf,
+
+16 1445,leaf,
+
+16 1082,leaf,
+
+16 1291,non-leaf,
+
+16 1334,leaf,
+
+16 1250,leaf,
+
+15 1958,leaf,
+
+15 1866,leaf,
+
+15 1885,leaf,
+
+15 1578,leaf,
+
+15 642,leaf,
+
+15 1245,leaf,
+
+15 933,leaf,
+
+15 1464,leaf,
+
+15 2729,leaf,
+
+15 921,leaf,
+
+15 1102,leaf,
+
+15 1234,leaf,
+
+15 1618,leaf,
+
+15 1588,leaf,
+
+15 1605,leaf,
+
+15 1556,non-leaf,
+
+15 1586,leaf,
+
+15 1834,leaf,
+
+15 1568,leaf,
+
+15 1440,leaf,
+
+15 2078,leaf,
+
+15 1837,leaf,
+
+15 1662,leaf,
+
+15 1297,non-leaf,
+
+15 1656,leaf,
+
+15 2166,leaf,
+
+15 1072,leaf,
+
+15 1688,leaf,
+
+15 2036,leaf,
+
+15 1406,leaf,
+
+15 1549,leaf,
+
+15 1394,leaf,
+
+15 1632,leaf,
+
+15 2012,leaf,
+
+15 1397,leaf,
+
+15 1694,leaf,
+
+15 2035,leaf,
+
+15 1696,leaf,
+
+15 2022,leaf,
+
+15 2693,leaf,
+
+15 2216,leaf,
+
+15 1214,leaf,
+
+15 1107,leaf,
+
+15 1092,leaf,
+
+15 1255,leaf,
+
+15 1281,leaf,
+
+15 1164,leaf,
+
+15 1422,leaf,
+
+15 1136,leaf,
+
+15 2096,leaf,
+
+15 1462,leaf,
+
+15 1185,leaf,
+
+15 2532,leaf,
+
+15 1574,leaf,
+
+15 1419,leaf,
+
+15 1403,leaf,
+
+15 1386,leaf,
+
+15 980,leaf,
+
+15 2002,leaf,
+
+15 950,leaf,
+
+15 1000,leaf,
+
+15 1190,leaf,
+
+15 1472,non-leaf,
+
+15 1699,leaf,
+
+15 1976,leaf,
+
+15 2641,leaf,
+
+15 1768,non-leaf,
+
+15 1761,leaf,
+
+15 2144,leaf,
+
+15 1951,leaf,
+
+15 926,leaf,
+
+15 1477,non-leaf,
+
+15 1692,leaf,
+
+15 1046,leaf,
+
+15 2048,leaf,
+
+15 1187,leaf,
+
+15 1672,leaf,
+
+15 1815,leaf,
+
+15 962,leaf,
+
+15 1687,leaf,
+
+15 1559,leaf,
+
+15 1641,leaf,
+
+15 1401,leaf,
+
+15 1702,leaf,
+
+15 1763,leaf,
+
+15 889,leaf,
+
+15 952,leaf,
+
+15 1709,leaf,
+
+15 1913,leaf,
+
+15 1263,leaf,
+
+15 992,leaf,
+
+15 1587,non-leaf,
+
+15 1584,non-leaf,
+
+15 1859,leaf,
+
+15 1430,leaf,
+
+15 1774,leaf,
+
+15 1590,leaf,
+
+15 1513,leaf,
+
+15 1947,leaf,
+
+15 1292,leaf,
+
+15 1507,leaf,
+
+15 1889,leaf,
+
+15 1609,leaf,
+
+15 2405,leaf,
+
+15 1316,leaf,
+
+15 1720,leaf,
+
+14 1142,leaf,
+
+14 1439,leaf,
+
+14 1268,leaf,
+
+14 1373,leaf,
+
+14 1371,leaf,
+
+14 1905,leaf,
+
+14 1649,leaf,
+
+14 1634,leaf,
+
+14 1728,leaf,
+
+14 2056,leaf,
+
+14 1580,leaf,
+
+14 1736,leaf,
+
+14 1723,leaf,
+
+14 2208,leaf,
+
+14 1537,leaf,
+
+14 2091,leaf,
+
+14 1828,leaf,
+
+14 1332,leaf,
+
+14 1972,leaf,
+
+14 1517,leaf,
+
+14 1501,non-leaf,
+
+14 2390,leaf,
+
+14 2105,leaf,
+
+14 1132,leaf,
+
+14 1651,leaf,
+
+14 1788,leaf,
+
+14 1451,leaf,
+
+14 1544,non-leaf,
+
+14 1822,non-leaf,
+
+14 2285,leaf,
+
+14 2008,leaf,
+
+14 2103,leaf,
+
+14 953,leaf,
+
+14 1205,leaf,
+
+14 2296,leaf,
+
+14 725,leaf,
+
+14 1975,leaf,
+
+14 2367,leaf,
+
+14 1685,leaf,
+
+14 2432,leaf,
+
+14 1305,leaf,
+
+14 1322,leaf,
+
+14 1871,leaf,
+
+14 1845,leaf,
+
+14 659,leaf,
+
+14 1930,leaf,
+
+14 1959,leaf,
+
+14 1948,leaf,
+
+14 2037,leaf,
+
+14 2030,leaf,
+
+14 2191,leaf,
+
+14 1712,leaf,
+
+14 1865,leaf,
+
+14 1484,leaf,
+
+14 870,leaf,
+
+14 2108,leaf,
+
+14 1631,leaf,
+
+14 1272,leaf,
+
+14 1870,leaf,
+
+14 1915,non-leaf,
+
+14 1731,leaf,
+
+14 1604,non-leaf,
+
+14 1841,non-leaf,
+
+14 930,leaf,
+
+14 1766,leaf,
+
+14 1405,leaf,
+
+14 943,leaf,
+
+14 1271,leaf,
+
+14 1922,leaf,
+
+14 1101,leaf,
+
+14 1968,leaf,
+
+14 1663,leaf,
+
+14 1862,leaf,
+
+14 1262,leaf,
+
+14 1009,leaf,
+
+14 1677,leaf,
+
+14 1077,leaf,
+
+14 2114,leaf,
+
+14 906,leaf,
+
+14 1674,leaf,
+
+14 2116,leaf,
+
+14 2308,leaf,
+
+14 1050,leaf,
+
+14 1569,leaf,
+
+14 1710,non-leaf,
+
+14 1277,leaf,
+
+14 2111,leaf,
+
+14 1346,leaf,
+
+14 1139,leaf,
+
+14 1008,leaf,
+
+14 1879,leaf,
+
+14 1639,leaf,
+
+14 1301,leaf,
+
+14 1835,leaf,
+
+14 2136,leaf,
+
+14 2233,leaf,
+
+14 2135,leaf,
+
+14 2163,leaf,
+
+14 1420,leaf,
+
+14 1666,leaf,
+
+14 2128,leaf,
+
+14 2129,leaf,
+
+14 1755,leaf,
+
+14 1378,leaf,
+
+14 1223,leaf,
+
+14 2439,leaf,
+
+14 1860,leaf,
+
+14 1612,leaf,
+
+14 1800,non-leaf,
+
+14 1496,leaf,
+
+14 1864,leaf,
+
+14 1657,leaf,
+
+14 1156,leaf,
+
+13 819,leaf,
+
+13 1064,leaf,
+
+13 1901,leaf,
+
+13 1553,leaf,
+
+13 1726,non-leaf,
+
+13 1829,leaf,
+
+13 2636,leaf,
+
+13 1359,leaf,
+
+13 2362,leaf,
+
+13 1900,leaf,
+
+13 1392,leaf,
+
+13 2042,leaf,
+
+13 2578,leaf,
+
+13 2058,leaf,
+
+13 1955,leaf,
+
+13 1492,leaf,
+
+13 1750,leaf,
+
+13 1611,leaf,
+
+13 1927,leaf,
+
+13 1551,leaf,
+
+13 2067,non-leaf,
+
+13 2566,leaf,
+
+13 2043,leaf,
+
+13 2044,leaf,
+
+13 1790,leaf,
+
+13 1269,leaf,
+
+13 2235,leaf,
+
+13 1918,leaf,
+
+13 1661,leaf,
+
+13 1340,leaf,
+
+13 1652,leaf,
+
+13 1425,non-leaf,
+
+13 1969,leaf,
+
+13 1545,leaf,
+
+13 1516,leaf,
+
+13 2140,leaf,
+
+13 1764,non-leaf,
+
+13 1499,leaf,
+
+13 1486,leaf,
+
+13 1897,leaf,
+
+13 1937,leaf,
+
+13 1906,leaf,
+
+13 1669,leaf,
+
+13 1729,leaf,
+
+13 2203,leaf,
+
+13 1546,leaf,
+
+13 1339,leaf,
+
+13 2082,leaf,
+
+13 1626,leaf,
+
+13 1620,leaf,
+
+13 1892,leaf,
+
+13 1593,leaf,
+
+13 1259,leaf,
+
+13 1776,leaf,
+
+13 1668,leaf,
+
+13 1683,leaf,
+
+13 1983,leaf,
+
+13 1681,leaf,
+
+13 1608,leaf,
+
+13 2214,leaf,
+
+13 1480,leaf,
+
+13 2366,leaf,
+
+13 1560,leaf,
+
+13 1538,leaf,
+
+13 2427,leaf,
+
+13 1227,leaf,
+
+13 1773,non-leaf,
+
+13 1099,leaf,
+
+13 1916,leaf,
+
+13 1108,leaf,
+
+13 2347,leaf,
+
+13 1459,leaf,
+
+13 2335,leaf,
+
+13 1851,leaf,
+
+13 1658,leaf,
+
+13 1443,leaf,
+
+13 1771,leaf,
+
+13 1351,leaf,
+
+13 1286,leaf,
+
+13 1310,leaf,
+
+13 1791,non-leaf,
+
+13 2677,leaf,
+
+13 1416,leaf,
+
+13 1648,leaf,
+
+13 2425,leaf,
+
+13 1984,leaf,
+
+13 1616,leaf,
+
+13 1479,leaf,
+
+13 820,leaf,
+
+13 1450,leaf,
+
+13 1457,leaf,
+
+13 2778,leaf,
+
+13 1953,leaf,
+
+13 2156,leaf,
+
+13 1753,leaf,
+
+13 1737,leaf,
+
+13 1912,leaf,
+
+13 2162,leaf,
+
+13 1490,non-leaf,
+
+13 1693,leaf,
+
+13 1924,leaf,
+
+13 1610,leaf,
+
+13 1500,leaf,
+
+13 2503,leaf,
+
+13 2386,leaf,
+
+13 1564,leaf,
+
+13 1376,leaf,
+
+13 2470,leaf,
+
+13 2122,leaf,
+
+13 2126,leaf,
+
+13 1542,leaf,
+
+13 2123,leaf,
+
+13 2248,leaf,
+
+13 1367,leaf,
+
+13 1642,leaf,
+
+13 1614,leaf,
+
+13 2271,leaf,
+
+13 1708,leaf,
+
+13 1966,leaf,
+
+13 940,leaf,
+
+13 1792,leaf,
+
+13 1304,leaf,
+
+13 1557,leaf,
+
+13 1686,leaf,
+
+13 1659,leaf,
+
+13 1458,leaf,
+
+13 2272,leaf,
+
+13 2118,leaf,
+
+13 1577,leaf,
+
+13 1884,leaf,
+
+13 2028,leaf,
+
+13 1481,leaf,
+
+13 1563,leaf,
+
+13 1348,leaf,
+
+13 1903,leaf,
+
+13 1827,leaf,
+
+13 2246,leaf,
+
+13 655,leaf,
+
+13 1296,leaf,
+
+13 1522,leaf,
+
+13 845,leaf,
+
+13 1876,leaf,
+
+13 1315,leaf,
+
+12 1842,non-leaf,
+
+12 1615,leaf,
+
+12 1826,leaf,
+
+12 1561,leaf,
+
+12 1317,leaf,
+
+12 1514,non-leaf,
+
+12 1314,leaf,
+
+12 2148,leaf,
+
+12 2610,leaf,
+
+12 2014,leaf,
+
+12 2286,leaf,
+
+12 1498,leaf,
+
+12 1284,leaf,
+
+12 1503,leaf,
+
+12 1629,leaf,
+
+12 2141,leaf,
+
+12 2604,leaf,
+
+12 2098,leaf,
+
+12 1278,leaf,
+
+12 1679,leaf,
+
+12 1725,leaf,
+
+12 1654,leaf,
+
+12 1530,leaf,
+
+12 1713,leaf,
+
+12 1617,leaf,
+
+12 1573,leaf,
+
+12 1581,leaf,
+
+12 1819,non-leaf,
+
+12 2170,leaf,
+
+12 2218,leaf,
+
+12 1727,leaf,
+
+12 2307,leaf,
+
+12 1103,leaf,
+
+12 1998,leaf,
+
+12 1219,leaf,
+
+12 2117,non-leaf,
+
+12 1623,leaf,
+
+12 1209,leaf,
+
+12 2601,non-leaf,
+
+12 1946,leaf,
+
+12 1328,leaf,
+
+12 2410,leaf,
+
+12 2721,leaf,
+
+12 1980,non-leaf,
+
+12 1217,leaf,
+
+12 2127,leaf,
+
+12 1570,leaf,
+
+12 1415,leaf,
+
+12 1407,leaf,
+
+12 1417,leaf,
+
+12 2468,leaf,
+
+12 2069,leaf,
+
+12 2185,leaf,
+
+12 1635,leaf,
+
+12 2694,leaf,
+
+12 2001,leaf,
+
+12 2019,leaf,
+
+12 2278,leaf,
+
+12 2065,non-leaf,
+
+12 1811,leaf,
+
+12 2726,leaf,
+
+12 1598,non-leaf,
+
+12 2196,leaf,
+
+12 2051,leaf,
+
+12 2171,leaf,
+
+12 2810,leaf,
+
+12 2663,leaf,
+
+12 1936,leaf,
+
+12 1081,leaf,
+
+12 1703,leaf,
+
+12 1894,leaf,
+
+12 2181,leaf,
+
+12 2062,leaf,
+
+12 1647,leaf,
+
+12 1488,leaf,
+
+12 2236,leaf,
+
+12 1697,leaf,
+
+12 1023,leaf,
+
+12 2645,leaf,
+
+12 1512,leaf,
+
+12 1226,leaf,
+
+12 2054,non-leaf,
+
+12 1494,leaf,
+
+11 2130,leaf,
+
+11 2304,leaf,
+
+11 1483,leaf,
+
+11 2033,leaf,
+
+11 1431,leaf,
+
+11 1215,leaf,
+
+11 1599,leaf,
+
+11 1543,leaf,
+
+11 2354,leaf,
+
+11 2020,leaf,
+
+11 2594,leaf,
+
+11 2574,leaf,
+
+11 2061,leaf,
+
+11 1964,leaf,
+
+11 2493,leaf,
+
+11 1682,leaf,
+
+11 2537,leaf,
+
+11 1762,leaf,
+
+11 2492,leaf,
+
+11 2243,leaf,
+
+11 1967,leaf,
+
+11 1628,leaf,
+
+11 1926,leaf,
+
+11 1426,leaf,
+
+11 2517,leaf,
+
+11 1444,leaf,
+
+11 3014,leaf,
+
+11 736,leaf,
+
+11 1781,leaf,
+
+11 2384,leaf,
+
+11 2395,leaf,
+
+11 1521,leaf,
+
+11 1591,leaf,
+
+11 2423,non-leaf,
+
+11 1817,leaf,
+
+11 2059,leaf,
+
+11 1899,leaf,
+
+11 2670,leaf,
+
+11 2546,leaf,
+
+11 2134,leaf,
+
+11 2007,non-leaf,
+
+11 1576,leaf,
+
+11 1399,leaf,
+
+11 2193,leaf,
+
+11 1793,leaf,
+
+11 2921,leaf,
+
+11 2714,leaf,
+
+11 1352,leaf,
+
+11 1497,leaf,
+
+11 1535,leaf,
+
+11 1844,leaf,
+
+11 1607,leaf,
+
+11 1684,leaf,
+
+11 2297,leaf,
+
+11 1742,leaf,
+
+11 2436,leaf,
+
+11 1938,leaf,
+
+11 2222,leaf,
+
+11 1880,leaf,
+
+11 1858,leaf,
+
+11 2189,leaf,
+
+11 1704,leaf,
+
+11 2406,leaf,
+
+11 2608,leaf,
+
+11 2370,leaf,
+
+11 1929,leaf,
+
+11 1695,leaf,
+
+11 2000,leaf,
+
+11 2220,leaf,
+
+11 1934,leaf,
+
+11 2100,leaf,
+
+11 1846,leaf,
+
+11 2445,leaf,
+
+11 2010,leaf,
+
+11 1874,leaf,
+
+11 2646,leaf,
+
+11 2173,leaf,
+
+11 2701,leaf,
+
+11 1528,leaf,
+
+11 2464,leaf,
+
+11 2239,leaf,
+
+11 2023,leaf,
+
+11 2489,leaf,
+
+11 2348,leaf,
+
+11 1784,leaf,
+
+11 2092,leaf,
+
+11 1589,leaf,
+
+11 2084,leaf,
+
+11 1786,leaf,
+
+10 2230,leaf,
+
+10 2038,leaf,
+
+10 2231,leaf,
+
+10 1740,leaf,
+
+10 1910,leaf,
+
+10 1691,leaf,
+
+10 2478,leaf,
+
+10 1914,leaf,
+
+10 1795,leaf,
+
+10 2477,leaf,
+
+10 2085,leaf,
+
+10 2045,leaf,
+
+10 2625,leaf,
+
+10 1767,leaf,
+
+10 2540,leaf,
+
+10 2649,leaf,
+
+10 2168,leaf,
+
+10 966,leaf,
+
+10 2336,leaf,
+
+10 2834,leaf,
+
+10 2289,leaf,
+
+10 2325,leaf,
+
+10 1778,leaf,
+
+10 1944,leaf,
+
+10 1877,leaf,
+
+10 2732,leaf,
+
+10 3113,leaf,
+
+10 2088,leaf,
+
+10 2582,leaf,
+
+10 2120,leaf,
+
+10 2101,leaf,
+
+10 2443,leaf,
+
+10 1830,non-leaf,
+
+10 1961,leaf,
+
+10 2317,leaf,
+
+10 1533,leaf,
+
+10 1801,leaf,
+
+10 1850,leaf,
+
+10 2361,leaf,
+
+10 1478,non-leaf,
+
+10 2774,leaf,
+
+10 1613,leaf,
+
+10 2499,leaf,
+
+10 2131,leaf,
+
+10 2021,leaf,
+
+10 1525,leaf,
+
+10 2333,leaf,
+
+10 2945,leaf,
+
+10 2349,leaf,
+
+10 2303,leaf,
+
+10 1090,leaf,
+
+10 1898,leaf,
+
+10 1798,leaf,
+
+10 2855,leaf,
+
+10 2217,leaf,
+
+10 2376,leaf,
+
+10 996,leaf,
+
+10 2099,non-leaf,
+
+10 1583,leaf,
+
+10 1971,leaf,
+
+10 1888,leaf,
+
+10 1818,leaf,
+
+10 2107,leaf,
+
+10 3019,leaf,
+
+10 1869,leaf,
+
+10 2113,leaf,
+
+10 2150,non-leaf,
+
+10 2344,non-leaf,
+
+10 2647,leaf,
+
+10 2187,leaf,
+
+10 2160,leaf,
+
+10 2075,leaf,
+
+10 2417,leaf,
+
+10 1690,leaf,
+
+10 1476,leaf,
+
+10 1932,leaf,
+
+10 1411,leaf,
+
+10 2906,leaf,
+
+10 1849,leaf,
+
+10 2053,leaf,
+
+10 2247,leaf,
+
+10 1824,non-leaf,
+
+10 1707,leaf,
+
+10 2234,leaf,
+
+10 2124,leaf,
+
+10 3152,leaf,
+
+10 2551,leaf,
+
+10 2407,leaf,
+
+10 2180,leaf,
+
+10 2533,leaf,
+
+10 2828,leaf,
+
+10 1812,leaf,
+
+10 1602,leaf,
+
+10 2079,leaf,
+
+10 2250,non-leaf,
+
+10 1823,leaf,
+
+10 1943,leaf,
+
+10 1595,leaf,
+
+10 2133,leaf,
+
+10 2112,leaf,
+
+10 1856,leaf,
+
+10 2559,leaf,
+
+10 885,leaf,
+
+10 2651,leaf,
+
+10 1911,leaf,
+
+10 1847,leaf,
+
+10 1820,leaf,
+
+10 2377,leaf,
+
+10 1985,leaf,
+
+10 2391,leaf,
+
+10 1831,leaf,
+
+10 2859,leaf,
+
+10 1794,leaf,
+
+10 2448,leaf,
+
+10 1601,leaf,
+
+10 1592,leaf,
+
+10 1294,leaf,
+
+10 2292,leaf,
+
+10 2542,leaf,
+
+9 1197,leaf,
+
+9 2034,non-leaf,
+
+9 2139,leaf,
+
+9 2016,leaf,
+
+9 2916,leaf,
+
+9 2175,leaf,
+
+9 2164,non-leaf,
+
+9 1838,leaf,
+
+9 2418,leaf,
+
+9 2953,leaf,
+
+9 2925,leaf,
+
+9 2409,leaf,
+
+9 2262,non-leaf,
+
+9 2316,leaf,
+
+9 2087,leaf,
+
+9 2049,leaf,
+
+9 2182,leaf,
+
+9 2326,leaf,
+
+9 1796,leaf,
+
+9 2223,non-leaf,
+
+9 2558,leaf,
+
+9 1855,leaf,
+
+9 2041,leaf,
+
+9 2691,leaf,
+
+9 1673,leaf,
+
+9 1765,leaf,
+
+9 1547,leaf,
+
+9 1229,leaf,
+
+9 2393,non-leaf,
+
+9 3006,leaf,
+
+9 1890,leaf,
+
+9 1886,leaf,
+
+9 2549,leaf,
+
+9 1389,leaf,
+
+9 1839,leaf,
+
+9 1982,leaf,
+
+9 1941,non-leaf,
+
+9 1627,leaf,
+
+9 2229,leaf,
+
+9 3107,leaf,
+
+9 1882,leaf,
+
+9 1345,leaf,
+
+9 2385,leaf,
+
+9 1621,leaf,
+
+9 1940,leaf,
+
+9 1881,leaf,
+
+9 2343,non-leaf,
+
+9 2374,leaf,
+
+9 2334,leaf,
+
+9 1665,leaf,
+
+9 2115,leaf,
+
+9 2055,leaf,
+
+9 2687,leaf,
+
+9 2530,leaf,
+
+9 3083,leaf,
+
+9 2375,leaf,
+
+9 3154,leaf,
+
+9 2132,leaf,
+
+9 2369,leaf,
+
+9 3237,leaf,
+
+9 3283,leaf,
+
+9 1280,leaf,
+
+9 2339,leaf,
+
+9 2338,leaf,
+
+9 2818,leaf,
+
+9 2415,leaf,
+
+9 2013,leaf,
+
+9 2288,leaf,
+
+9 2305,leaf,
+
+9 2151,leaf,
+
+9 3259,leaf,
+
+9 1863,leaf,
+
+9 2711,leaf,
+
+9 2599,leaf,
+
+9 2545,leaf,
+
+9 2760,leaf,
+
+9 2077,leaf,
+
+9 1785,leaf,
+
+9 1997,leaf,
+
+9 2474,leaf,
+
+9 2769,leaf,
+
+9 2179,non-leaf,
+
+9 1033,leaf,
+
+9 1313,leaf,
+
+9 2686,leaf,
+
+9 3196,leaf,
+
+9 1970,leaf,
+
+9 2487,leaf,
+
+9 1777,leaf,
+
+9 2265,leaf,
+
+9 2501,leaf,
+
+9 1675,leaf,
+
+9 2081,non-leaf,
+
+9 2845,leaf,
+
+9 1779,leaf,
+
+9 3042,leaf,
+
+9 1068,leaf,
+
+9 2102,leaf,
+
+9 1759,leaf,
+
+9 1640,leaf,
+
+9 2527,leaf,
+
+9 2536,leaf,
+
+9 2644,leaf,
+
+9 1700,leaf,
+
+9 2167,leaf,
+
+9 2946,leaf,
+
+9 1956,leaf,
+
+9 1999,non-leaf,
+
+9 1275,leaf,
+
+9 2768,leaf,
+
+9 2817,leaf,
+
+9 1872,leaf,
+
+9 2281,leaf,
+
+9 2352,leaf,
+
+9 2190,non-leaf,
+
+9 2300,leaf,
+
+9 2524,leaf,
+
+9 2387,non-leaf,
+
+9 1925,leaf,
+
+9 2331,leaf,
+
+9 2611,leaf,
+
+9 2970,leaf,
+
+9 2321,leaf,
+
+9 1797,leaf,
+
+9 2420,leaf,
+
+9 873,leaf,
+
+8 2486,leaf,
+
+8 2688,leaf,
+
+8 2616,leaf,
+
+8 2723,leaf,
+
+8 2523,leaf,
+
+8 2225,non-leaf,
+
+8 1813,non-leaf,
+
+8 2259,leaf,
+
+8 2739,leaf,
+
+8 2640,leaf,
+
+8 1148,leaf,
+
+8 2450,leaf,
+
+8 2606,leaf,
+
+8 1990,leaf,
+
+8 1015,leaf,
+
+8 2459,leaf,
+
+8 1942,leaf,
+
+8 1633,leaf,
+
+8 2755,leaf,
+
+8 1062,leaf,
+
+8 2063,leaf,
+
+8 2005,leaf,
+
+8 2224,non-leaf,
+
+8 2026,leaf,
+
+8 1660,leaf,
+
+8 1949,leaf,
+
+8 984,leaf,
+
+8 2900,leaf,
+
+8 2346,leaf,
+
+8 2728,leaf,
+
+8 1782,leaf,
+
+8 2575,leaf,
+
+8 2798,leaf,
+
+8 2266,leaf,
+
+8 2155,leaf,
+
+8 2528,leaf,
+
+8 2068,leaf,
+
+8 1630,leaf,
+
+8 2263,leaf,
+
+8 3033,leaf,
+
+8 1752,leaf,
+
+8 3081,leaf,
+
+8 2920,leaf,
+
+8 2905,leaf,
+
+8 2761,leaf,
+
+8 1247,leaf,
+
+8 2332,leaf,
+
+8 1808,leaf,
+
+8 3049,leaf,
+
+8 2639,leaf,
+
+8 2261,leaf,
+
+8 1923,leaf,
+
+8 2052,leaf,
+
+8 3008,leaf,
+
+8 2488,leaf,
+
+8 2481,leaf,
+
+8 2506,leaf,
+
+8 1804,leaf,
+
+8 2753,leaf,
+
+8 2073,leaf,
+
+8 1840,leaf,
+
+8 2561,leaf,
+
+8 3087,leaf,
+
+8 2398,non-leaf,
+
+8 1680,leaf,
+
+8 3013,leaf,
+
+8 2961,leaf,
+
+8 2788,leaf,
+
+8 2404,leaf,
+
+8 1933,leaf,
+
+8 2852,leaf,
+
+8 2602,leaf,
+
+8 2507,leaf,
+
+8 1809,leaf,
+
+8 1744,leaf,
+
+8 2577,non-leaf,
+
+8 2668,leaf,
+
+8 2006,leaf,
+
+8 2125,leaf,
+
+8 2831,leaf,
+
+8 2950,leaf,
+
+8 1868,leaf,
+
+8 1883,leaf,
+
+8 2903,leaf,
+
+8 1409,leaf,
+
+8 2554,leaf,
+
+8 2318,leaf,
+
+8 2844,leaf,
+
+8 2313,leaf,
+
+8 2525,leaf,
+
+8 2471,leaf,
+
+8 2483,leaf,
+
+8 2245,leaf,
+
+8 2071,leaf,
+
+8 2552,leaf,
+
+8 3027,leaf,
+
+8 2563,leaf,
+
+8 2360,leaf,
+
+8 2276,leaf,
+
+8 2580,leaf,
+
+8 2206,leaf,
+
+8 2050,leaf,
+
+8 1566,leaf,
+
+8 2557,non-leaf,
+
+8 1987,leaf,
+
+8 2665,non-leaf,
+
+8 1600,leaf,
+
+8 2560,leaf,
+
+8 3123,leaf,
+
+8 1637,leaf,
+
+8 3424,leaf,
+
+8 1996,leaf,
+
+8 1465,leaf,
+
+8 1994,leaf,
+
+8 2585,leaf,
+
+8 2632,leaf,
+
+8 2717,leaf,
+
+7 3445,leaf,
+
+7 2690,leaf,
+
+7 2851,leaf,
+
+7 2381,leaf,
+
+7 2380,non-leaf,
+
+7 1554,leaf,
+
+7 2287,leaf,
+
+7 2027,leaf,
+
+7 3197,leaf,
+
+7 3438,leaf,
+
+7 3026,leaf,
+
+7 2249,non-leaf,
+
+7 2959,leaf,
+
+7 2875,leaf,
+
+7 2342,leaf,
+
+7 2978,leaf,
+
+7 2591,leaf,
+
+7 2637,leaf,
+
+7 1917,leaf,
+
+7 2322,leaf,
+
+7 1988,leaf,
+
+7 2293,leaf,
+
+7 2718,leaf,
+
+7 3142,leaf,
+
+7 2868,non-leaf,
+
+7 2188,leaf,
+
+7 1950,leaf,
+
+7 2106,leaf,
+
+7 2228,leaf,
+
+7 2885,non-leaf,
+
+7 2496,leaf,
+
+7 2815,leaf,
+
+7 2219,leaf,
+
+7 2940,leaf,
+
+7 3433,leaf,
+
+7 1678,leaf,
+
+7 2433,non-leaf,
+
+7 3028,leaf,
+
+7 1952,leaf,
+
+7 3036,leaf,
+
+7 2312,leaf,
+
+7 3315,leaf,
+
+7 2444,leaf,
+
+7 2252,leaf,
+
+7 2881,leaf,
+
+7 2440,leaf,
+
+7 1748,leaf,
+
+7 2969,leaf,
+
+7 2283,leaf,
+
+7 2706,non-leaf,
+
+7 2364,leaf,
+
+7 2983,leaf,
+
+7 2482,leaf,
+
+7 2083,leaf,
+
+7 2264,leaf,
+
+7 1734,leaf,
+
+7 2373,leaf,
+
+7 2442,leaf,
+
+7 2363,leaf,
+
+7 2490,leaf,
+
+7 3023,leaf,
+
+7 2674,leaf,
+
+7 1716,leaf,
+
+7 2819,leaf,
+
+7 2200,leaf,
+
+7 2564,leaf,
+
+7 2767,leaf,
+
+7 2669,leaf,
+
+7 2095,leaf,
+
+7 3160,leaf,
+
+7 2097,leaf,
+
+7 1718,leaf,
+
+7 2870,leaf,
+
+7 3203,leaf,
+
+7 2258,leaf,
+
+7 2856,leaf,
+
+7 2392,leaf,
+
+7 2618,leaf,
+
+7 2238,leaf,
+
+7 2255,leaf,
+
+7 1730,leaf,
+
+7 3186,leaf,
+
+7 2394,leaf,
+
+7 2426,leaf,
+
+7 2931,leaf,
+
+7 2597,non-leaf,
+
+7 2749,leaf,
+
+7 2029,leaf,
+
+7 2169,non-leaf,
+
+7 3101,leaf,
+
+7 2086,leaf,
+
+7 1706,leaf,
+
+7 2548,leaf,
+
+7 3150,leaf,
+
+7 3492,leaf,
+
+7 2299,leaf,
+
+7 2766,leaf,
+
+7 1992,leaf,
+
+7 2365,leaf,
+
+7 1471,leaf,
+
+7 2808,leaf,
+
+7 1802,leaf,
+
+7 2138,leaf,
+
+7 2783,non-leaf,
+
+7 2291,leaf,
+
+7 2040,leaf,
+
+7 2820,non-leaf,
+
+7 3307,leaf,
+
+7 2864,leaf,
+
+7 2836,leaf,
+
+7 2526,leaf,
+
+7 2110,leaf,
+
+7 2441,non-leaf,
+
+7 2031,leaf,
+
+7 2009,leaf,
+
+7 2194,leaf,
+
+7 2512,leaf,
+
+7 2461,leaf,
+
+7 2822,leaf,
+
+7 3410,leaf,
+
+7 1534,leaf,
+
+7 3209,non-leaf,
+
+7 2513,leaf,
+
+7 2622,leaf,
+
+7 2968,leaf,
+
+7 3192,leaf,
+
+7 2057,leaf,
+
+7 2466,leaf,
+
+7 2710,leaf,
+
+7 2143,leaf,
+
+7 2812,leaf,
+
+7 2397,leaf,
+
+7 3226,leaf,
+
+7 2793,leaf,
+
+7 2154,leaf,
+
+7 2306,leaf,
+
+7 2908,leaf,
+
+7 2799,leaf,
+
+7 2529,leaf,
+
+7 3305,leaf,
+
+7 2909,leaf,
+
+7 3047,leaf,
+
+7 2177,leaf,
+
+7 2282,leaf,
+
+7 2270,leaf,
+
+7 2153,leaf,
+
+7 2178,leaf,
+
+7 2467,leaf,
+
+7 2310,non-leaf,
+
+7 2256,leaf,
+
+7 3537,leaf,
+
+7 2254,leaf,
+
+7 2917,leaf,
+
+7 2109,leaf,
+
+7 2569,leaf,
+
+7 2422,non-leaf,
+
+7 2505,leaf,
+
+7 2428,leaf,
+
+7 3110,leaf,
+
+7 2295,leaf,
+
+7 1857,leaf,
+
+7 2479,leaf,
+
+7 2841,non-leaf,
+
+7 2455,non-leaf,
+
+7 2796,leaf,
+
+7 3202,leaf,
+
+7 2614,leaf,
+
+7 2730,leaf,
+
+7 2401,non-leaf,
+
+7 2064,leaf,
+
+7 1928,leaf,
+
+6 3097,leaf,
+
+6 2383,leaf,
+
+6 3118,leaf,
+
+6 2192,leaf,
+
+6 2982,leaf,
+
+6 2672,leaf,
+
+6 3349,leaf,
+
+6 2709,leaf,
+
+6 3233,leaf,
+
+6 2207,leaf,
+
+6 2807,leaf,
+
+6 2032,leaf,
+
+6 2816,non-leaf,
+
+6 2660,leaf,
+
+6 2011,leaf,
+
+6 2547,leaf,
+
+6 2741,leaf,
+
+6 3183,leaf,
+
+6 2833,leaf,
+
+6 2337,leaf,
+
+6 3071,leaf,
+
+6 2942,leaf,
+
+6 2927,leaf,
+
+6 2581,leaf,
+
+6 1909,leaf,
+
+6 3091,leaf,
+
+6 3252,leaf,
+
+6 2449,leaf,
+
+6 2279,leaf,
+
+6 2093,leaf,
+
+6 2402,leaf,
+
+6 1825,leaf,
+
+6 3610,leaf,
+
+6 2960,leaf,
+
+6 2879,leaf,
+
+6 3423,leaf,
+
+6 2734,leaf,
+
+6 1973,leaf,
+
+6 1887,leaf,
+
+6 2328,leaf,
+
+6 2186,leaf,
+
+6 2698,leaf,
+
+6 2573,leaf,
+
+6 2341,leaf,
+
+6 3330,leaf,
+
+6 2785,leaf,
+
+6 3080,leaf,
+
+6 1962,leaf,
+
+6 2872,leaf,
+
+6 3493,leaf,
+
+6 2772,leaf,
+
+6 2104,leaf,
+
+6 2184,leaf,
+
+6 2943,leaf,
+
+6 3143,leaf,
+
+6 3207,leaf,
+
+6 2607,leaf,
+
+6 2720,leaf,
+
+6 1919,leaf,
+
+6 2447,leaf,
+
+6 3200,leaf,
+
+6 3078,leaf,
+
+6 2628,non-leaf,
+
+6 2174,leaf,
+
+6 2535,leaf,
+
+6 3104,leaf,
+
+6 2017,leaf,
+
+6 2430,leaf,
+
+6 2039,leaf,
+
+6 2977,leaf,
+
+6 2515,leaf,
+
+6 2251,leaf,
+
+6 2484,leaf,
+
+6 2738,leaf,
+
+6 2431,leaf,
+
+6 1893,leaf,
+
+6 2794,leaf,
+
+6 3176,leaf,
+
+6 3061,leaf,
+
+6 2159,leaf,
+
+6 2371,leaf,
+
+6 2172,leaf,
+
+6 2543,leaf,
+
+6 2463,non-leaf,
+
+6 2579,leaf,
+
+6 2911,leaf,
+
+6 2623,non-leaf,
+
+6 2764,leaf,
+
+6 2890,non-leaf,
+
+6 2655,leaf,
+
+6 2491,leaf,
+
+6 3129,leaf,
+
+6 2195,leaf,
+
+6 2888,leaf,
+
+6 2857,leaf,
+
+6 2642,leaf,
+
+6 2553,leaf,
+
+6 3040,leaf,
+
+6 2498,non-leaf,
+
+6 2784,non-leaf,
+
+6 3353,leaf,
+
+6 2119,leaf,
+
+6 2210,leaf,
+
+6 2211,leaf,
+
+6 2419,non-leaf,
+
+6 2985,leaf,
+
+6 2956,leaf,
+
+6 2626,leaf,
+
+6 2910,leaf,
+
+6 2345,leaf,
+
+6 2756,leaf,
+
+6 2424,leaf,
+
+6 2629,leaf,
+
+6 2453,leaf,
+
+6 2680,leaf,
+
+6 2617,leaf,
+
+6 2268,leaf,
+
+6 2521,leaf,
+
+6 3448,leaf,
+
+6 2894,leaf,
+
+6 2932,leaf,
+
+6 2511,non-leaf,
+
+6 2201,leaf,
+
+6 1643,leaf,
+
+6 2158,leaf,
+
+6 2358,leaf,
+
+6 2696,leaf,
+
+6 3487,leaf,
+
+6 3253,leaf,
+
+6 3392,leaf,
+
+6 2751,non-leaf,
+
+6 2074,leaf,
+
+6 2676,leaf,
+
+6 2904,non-leaf,
+
+6 2713,leaf,
+
+6 2889,leaf,
+
+6 3092,leaf,
+
+6 1502,leaf,
+
+6 2522,leaf,
+
+6 2722,leaf,
+
+6 2595,non-leaf,
+
+6 2823,leaf,
+
+6 2898,leaf,
+
+6 3751,leaf,
+
+6 2176,leaf,
+
+6 2237,leaf,
+
+6 3285,leaf,
+
+6 2072,leaf,
+
+6 2047,leaf,
+
+6 2302,leaf,
+
+6 2884,leaf,
+
+6 2567,leaf,
+
+6 3121,leaf,
+
+6 2273,leaf,
+
+6 2967,non-leaf,
+
+6 3069,leaf,
+
+6 3108,leaf,
+
+6 1531,leaf,
+
+6 3016,non-leaf,
+
+6 2240,leaf,
+
+6 2814,leaf,
+
+6 2621,leaf,
+
+6 2584,non-leaf,
+
+6 2145,non-leaf,
+
+6 2090,leaf,
+
+6 3153,leaf,
+
+6 2472,non-leaf,
+
+6 2314,leaf,
+
+6 2702,leaf,
+
+6 3102,leaf,
+
+6 2866,leaf,
+
+6 2509,leaf,
+
+6 2531,leaf,
+
+6 1770,leaf,
+
+6 2826,leaf,
+
+6 2744,non-leaf,
+
+6 2653,leaf,
+
+6 2320,leaf,
+
+6 2781,leaf,
+
+6 1676,leaf,
+
+6 2311,leaf,
+
+6 3712,leaf,
+
+6 1746,leaf,
+
+6 2871,leaf,
+
+6 1861,leaf,
+
+6 2290,leaf,
+
+6 2372,leaf,
+
+6 2838,leaf,
+
+6 2412,leaf,
+
+6 2315,leaf,
+
+6 3561,leaf,
+
+6 2634,leaf,
+
+6 1506,leaf,
+
+6 2779,leaf,
+
+6 2683,leaf,
+
+6 3079,leaf,
+
+6 2378,leaf,
+
+6 2319,leaf,
+
+6 2846,leaf,
+
+6 1986,leaf,
+
+5 2689,leaf,
+
+5 2830,leaf,
+
+5 2435,leaf,
+
+5 2497,leaf,
+
+5 3403,leaf,
+
+5 3296,leaf,
+
+5 3304,leaf,
+
+5 2161,leaf,
+
+5 2775,leaf,
+
+5 3591,leaf,
+
+5 1112,leaf,
+
+5 3205,leaf,
+
+5 2712,leaf,
+
+5 2776,non-leaf,
+
+5 2446,leaf,
+
+5 2146,leaf,
+
+5 2865,leaf,
+
+5 1806,leaf,
+
+5 3507,leaf,
+
+5 2149,leaf,
+
+5 3109,leaf,
+
+5 3391,leaf,
+
+5 2877,leaf,
+
+5 2480,leaf,
+
+5 2754,non-leaf,
+
+5 3475,leaf,
+
+5 2719,leaf,
+
+5 3138,leaf,
+
+5 2664,leaf,
+
+5 3626,leaf,
+
+5 3361,leaf,
+
+5 2379,non-leaf,
+
+5 3542,leaf,
+
+5 2615,leaf,
+
+5 2801,leaf,
+
+5 2215,leaf,
+
+5 3347,non-leaf,
+
+5 3086,leaf,
+
+5 3172,non-leaf,
+
+5 2789,leaf,
+
+5 2708,leaf,
+
+5 2813,leaf,
+
+5 2805,leaf,
+
+5 2912,leaf,
+
+5 3609,leaf,
+
+5 3239,leaf,
+
+5 3124,leaf,
+
+5 3269,leaf,
+
+5 2944,leaf,
+
+5 2716,leaf,
+
+5 2024,leaf,
+
+5 3397,leaf,
+
+5 3520,leaf,
+
+5 2301,leaf,
+
+5 3272,leaf,
+
+5 2659,leaf,
+
+5 2825,leaf,
+
+5 3387,leaf,
+
+5 2562,non-leaf,
+
+5 2780,leaf,
+
+5 2568,leaf,
+
+5 3399,leaf,
+
+5 2421,leaf,
+
+5 3262,leaf,
+
+5 3502,leaf,
+
+5 3002,leaf,
+
+5 3111,leaf,
+
+5 2958,leaf,
+
+5 3174,leaf,
+
+5 2850,leaf,
+
+5 1875,leaf,
+
+5 3437,leaf,
+
+5 2586,leaf,
+
+5 3374,leaf,
+
+5 2389,non-leaf,
+
+5 2541,leaf,
+
+5 3218,leaf,
+
+5 2257,leaf,
+
+5 2924,leaf,
+
+5 2892,leaf,
+
+5 1931,leaf,
+
+5 2298,leaf,
+
+5 2274,leaf,
+
+5 3504,leaf,
+
+5 3059,non-leaf,
+
+5 3541,leaf,
+
+5 3416,leaf,
+
+5 3278,leaf,
+
+5 2202,leaf,
+
+5 2070,leaf,
+
+5 2896,leaf,
+
+5 3158,leaf,
+
+5 2382,leaf,
+
+5 2697,leaf,
+
+5 3146,leaf,
+
+5 2612,leaf,
+
+5 2800,leaf,
+
+5 2901,non-leaf,
+
+5 3010,leaf,
+
+5 3312,leaf,
+
+5 2451,leaf,
+
+5 2359,leaf,
+
+5 3774,leaf,
+
+5 3053,leaf,
+
+5 2731,leaf,
+
+5 3589,leaf,
+
+5 2882,leaf,
+
+5 2502,leaf,
+
+5 2485,leaf,
+
+5 2351,leaf,
+
+5 2469,leaf,
+
+5 2758,leaf,
+
+5 2205,leaf,
+
+5 3050,leaf,
+
+5 2462,leaf,
+
+5 3201,leaf,
+
+5 2806,leaf,
+
+5 2972,leaf,
+
+5 3308,leaf,
+
+5 2624,non-leaf,
+
+5 2197,leaf,
+
+5 3126,leaf,
+
+5 2520,non-leaf,
+
+5 2748,leaf,
+
+5 3291,leaf,
+
+5 2989,leaf,
+
+5 2797,leaf,
+
+5 3017,leaf,
+
+5 2795,leaf,
+
+5 3473,leaf,
+
+5 2519,leaf,
+
+5 3694,leaf,
+
+5 2603,leaf,
+
+5 2324,leaf,
+
+5 2403,leaf,
+
+5 3254,leaf,
+
+5 2356,leaf,
+
+5 3553,leaf,
+
+5 3434,leaf,
+
+5 3360,leaf,
+
+5 2863,leaf,
+
+5 3009,leaf,
+
+5 2060,leaf,
+
+5 2667,leaf,
+
+5 2707,leaf,
+
+5 1751,leaf,
+
+5 2848,non-leaf,
+
+5 1907,leaf,
+
+5 2773,leaf,
+
+5 1854,leaf,
+
+5 1810,leaf,
+
+5 3003,leaf,
+
+5 3231,leaf,
+
+5 2327,leaf,
+
+5 1977,leaf,
+
+5 3592,leaf,
+
+5 3640,leaf,
+
+5 3173,non-leaf,
+
+5 3089,leaf,
+
+5 2891,leaf,
+
+5 2951,leaf,
+
+5 2438,leaf,
+
+5 2457,leaf,
+
+5 2514,leaf,
+
+5 3742,leaf,
+
+5 2576,non-leaf,
+
+5 2242,leaf,
+
+5 1646,leaf,
+
+5 3745,leaf,
+
+5 2539,leaf,
+
+5 2413,leaf,
+
+5 2399,leaf,
+
+5 2454,leaf,
+
+5 2555,leaf,
+
+5 3302,leaf,
+
+5 3060,leaf,
+
+5 2724,leaf,
+
+5 2209,leaf,
+
+5 3607,leaf,
+
+5 3198,leaf,
+
+5 3177,leaf,
+
+5 2899,non-leaf,
+
+5 2429,leaf,
+
+5 2847,leaf,
+
+5 2928,leaf,
+
+5 3030,leaf,
+
+5 3494,leaf,
+
+5 2121,leaf,
+
+5 2596,leaf,
+
+5 2411,leaf,
+
+5 2388,leaf,
+
+5 2277,leaf,
+
+5 3001,leaf,
+
+5 2357,leaf,
+
+5 2992,leaf,
+
+5 3232,leaf,
+
+5 2550,leaf,
+
+5 3355,leaf,
+
+5 3058,leaf,
+
+5 1895,leaf,
+
+5 3345,leaf,
+
+5 3184,leaf,
+
+5 3284,leaf,
+
+5 2598,leaf,
+
+5 3037,leaf,
+
+5 2914,non-leaf,
+
+5 2763,leaf,
+
+5 3350,leaf,
+
+5 1473,leaf,
+
+5 3462,leaf,
+
+5 3460,leaf,
+
+5 3065,leaf,
+
+5 2786,leaf,
+
+5 2682,leaf,
+
+5 2589,leaf,
+
+5 3432,leaf,
+
+5 3195,leaf,
+
+5 3043,leaf,
+
+4 3649,leaf,
+
+4 3185,leaf,
+
+4 3352,leaf,
+
+4 3100,leaf,
+
+4 3189,leaf,
+
+4 3064,leaf,
+
+4 2003,leaf,
+
+4 2886,leaf,
+
+4 3402,leaf,
+
+4 3246,leaf,
+
+4 3326,leaf,
+
+4 3038,leaf,
+
+4 3210,non-leaf,
+
+4 2746,leaf,
+
+4 2570,leaf,
+
+4 2699,leaf,
+
+4 2936,leaf,
+
+4 2735,leaf,
+
+4 3116,leaf,
+
+4 3556,leaf,
+
+4 3223,leaf,
+
+4 2080,leaf,
+
+4 3213,leaf,
+
+4 2787,non-leaf,
+
+4 3481,leaf,
+
+4 2829,leaf,
+
+4 1945,leaf,
+
+4 3076,leaf,
+
+4 3127,leaf,
+
+4 2284,leaf,
+
+4 2183,leaf,
+
+4 3220,leaf,
+
+4 3235,leaf,
+
+4 3625,leaf,
+
+4 2494,leaf,
+
+4 2979,leaf,
+
+4 2675,leaf,
+
+4 3469,leaf,
+
+4 2947,non-leaf,
+
+4 2878,leaf,
+
+4 3341,leaf,
+
+4 3816,leaf,
+
+4 3245,leaf,
+
+4 3419,leaf,
+
+4 3031,leaf,
+
+4 3371,leaf,
+
+4 3266,non-leaf,
+
+4 3191,leaf,
+
+4 2733,leaf,
+
+4 2157,leaf,
+
+4 3632,leaf,
+
+4 2671,leaf,
+
+4 2400,leaf,
+
+4 3004,leaf,
+
+4 2434,leaf,
+
+4 3549,leaf,
+
+4 3344,leaf,
+
+4 3383,leaf,
+
+4 3630,leaf,
+
+4 3294,non-leaf,
+
+4 2661,non-leaf,
+
+4 2907,leaf,
+
+4 3695,leaf,
+
+4 3672,leaf,
+
+4 3376,leaf,
+
+4 2762,leaf,
+
+4 3501,leaf,
+
+4 3068,leaf,
+
+4 2876,leaf,
+
+4 3103,leaf,
+
+4 3193,leaf,
+
+4 3147,leaf,
+
+4 2926,leaf,
+
+4 2648,leaf,
+
+4 3872,leaf,
+
+4 2619,leaf,
+
+4 2957,leaf,
+
+4 2869,leaf,
+
+4 2934,leaf,
+
+4 1667,leaf,
+
+4 3039,leaf,
+
+4 2839,leaf,
+
+4 2935,non-leaf,
+
+4 3130,leaf,
+
+4 3221,leaf,
+
+4 3306,leaf,
+
+4 3646,leaf,
+
+4 3085,leaf,
+
+4 3427,leaf,
+
+4 3756,leaf,
+
+4 3440,leaf,
+
+4 2747,leaf,
+
+4 3244,leaf,
+
+4 3288,leaf,
+
+4 3443,leaf,
+
+4 2849,leaf,
+
+4 2987,leaf,
+
+4 3380,leaf,
+
+4 3768,leaf,
+
+4 3293,leaf,
+
+4 2518,leaf,
+
+4 1799,leaf,
+
+4 2076,leaf,
+
+4 3631,leaf,
+
+4 3342,leaf,
+
+4 3510,non-leaf,
+
+4 3287,leaf,
+
+4 3546,leaf,
+
+4 2705,leaf,
+
+4 3182,leaf,
+
+4 3705,leaf,
+
+4 2587,leaf,
+
+4 3025,leaf,
+
+4 3641,leaf,
+
+4 3435,leaf,
+
+4 3365,leaf,
+
+4 3685,leaf,
+
+4 3442,leaf,
+
+4 3351,leaf,
+
+4 2939,leaf,
+
+4 3222,leaf,
+
+4 2684,leaf,
+
+4 3446,leaf,
+
+4 2842,leaf,
+
+4 3063,leaf,
+
+4 3074,leaf,
+
+4 2662,leaf,
+
+4 2329,leaf,
+
+4 3449,leaf,
+
+4 3431,leaf,
+
+4 3021,leaf,
+
+4 2213,leaf,
+
+4 3088,non-leaf,
+
+4 3571,leaf,
+
+4 3151,leaf,
+
+4 3242,leaf,
+
+4 2416,leaf,
+
+4 2821,leaf,
+
+4 3394,non-leaf,
+
+4 3749,leaf,
+
+4 3243,leaf,
+
+4 3015,leaf,
+
+4 2241,leaf,
+
+4 3980,leaf,
+
+4 3034,leaf,
+
+4 2759,leaf,
+
+4 2685,leaf,
+
+4 3139,leaf,
+
+4 2330,leaf,
+
+4 2895,leaf,
+
+4 2941,leaf,
+
+4 3011,leaf,
+
+4 2340,leaf,
+
+4 3534,leaf,
+
+4 1816,leaf,
+
+4 2495,leaf,
+
+4 2887,leaf,
+
+4 2811,leaf,
+
+4 3508,leaf,
+
+4 2974,leaf,
+
+4 2556,leaf,
+
+4 3584,leaf,
+
+4 2627,leaf,
+
+4 3328,leaf,
+
+4 2572,leaf,
+
+4 3022,leaf,
+
+4 2516,leaf,
+
+4 3396,leaf,
+
+4 2854,leaf,
+
+4 2827,leaf,
+
+4 3096,leaf,
+
+4 1757,leaf,
+
+4 2650,leaf,
+
+4 2280,leaf,
+
+4 3211,leaf,
+
+4 3945,leaf,
+
+4 3680,leaf,
+
+4 2620,leaf,
+
+4 3297,leaf,
+
+4 1979,leaf,
+
+4 2504,leaf,
+
+4 2955,leaf,
+
+4 1848,leaf,
+
+4 3292,leaf,
+
+4 3204,leaf,
+
+4 2897,leaf,
+
+4 2991,leaf,
+
+4 2253,leaf,
+
+4 3051,leaf,
+
+4 2508,leaf,
+
+4 2704,leaf,
+
+4 2715,leaf,
+
+4 3372,leaf,
+
+4 3526,leaf,
+
+4 3199,leaf,
+
+4 3325,leaf,
+
+4 3572,leaf,
+
+4 2353,leaf,
+
+4 2244,leaf,
+
+4 3491,leaf,
+
+4 3700,leaf,
+
+4 1689,leaf,
+
+4 3273,leaf,
+
+4 1311,leaf,
+
+4 3554,leaf,
+
+4 3045,leaf,
+
+4 3133,leaf,
+
+4 2809,leaf,
+
+4 3464,leaf,
+
+4 3007,leaf,
+
+4 2727,leaf,
+
+4 3441,leaf,
+
+4 3094,leaf,
+
+4 3754,leaf,
+
+4 3046,leaf,
+
+4 3400,leaf,
+
+4 3131,leaf,
+
+4 2803,leaf,
+
+4 3477,leaf,
+
+4 1878,leaf,
+
+4 2593,leaf,
+
+4 1963,leaf,
+
+4 3155,leaf,
+
+4 3169,leaf,
+
+4 3367,leaf,
+
+4 3820,leaf,
+
+4 2633,leaf,
+
+4 2757,leaf,
+
+4 3521,leaf,
+
+4 2962,leaf,
+
+4 3216,leaf,
+
+4 3029,leaf,
+
+4 3054,leaf,
+
+4 3676,leaf,
+
+4 3569,leaf,
+
+4 3671,leaf,
+
+4 3452,non-leaf,
+
+4 2963,leaf,
+
+4 3082,leaf,
+
+4 2137,leaf,
+
+4 2565,leaf,
+
+4 3005,leaf,
+
+4 3555,leaf,
+
+4 3106,leaf,
+
+4 2538,leaf,
+
+4 3137,leaf,
+
+4 2613,leaf,
+
+4 3713,leaf,
+
+4 2294,leaf,
+
+4 3168,leaf,
+
+4 2997,leaf,
+
+4 2792,leaf,
+
+4 3144,leaf,
+
+4 3136,leaf,
+
+4 2656,leaf,
+
+4 2437,leaf,
+
+4 3227,leaf,
+
+4 2544,leaf,
+
+4 2919,non-leaf,
+
+4 3593,leaf,
+
+4 2993,leaf,
+
+4 3509,leaf,
+
+4 3175,leaf,
+
+4 2692,leaf,
+
+3 3489,leaf,
+
+3 3953,leaf,
+
+3 3052,leaf,
+
+3 3420,leaf,
+
+3 3409,leaf,
+
+3 3519,leaf,
+
+3 3562,leaf,
+
+3 3012,leaf,
+
+3 3601,leaf,
+
+3 3299,leaf,
+
+3 2802,leaf,
+
+3 3090,leaf,
+
+3 2737,leaf,
+
+3 3653,leaf,
+
+3 3927,leaf,
+
+3 3900,leaf,
+
+3 3450,leaf,
+
+3 3128,non-leaf,
+
+3 3451,leaf,
+
+3 3467,leaf,
+
+3 2630,leaf,
+
+3 3117,leaf,
+
+3 3247,leaf,
+
+3 2510,leaf,
+
+3 3384,leaf,
+
+3 2605,leaf,
+
+3 3735,leaf,
+
+3 2986,leaf,
+
+3 3822,leaf,
+
+3 3000,leaf,
+
+3 3408,leaf,
+
+3 3696,leaf,
+
+3 3840,leaf,
+
+3 2666,leaf,
+
+3 3708,leaf,
+
+3 2790,leaf,
+
+3 2860,leaf,
+
+3 3809,leaf,
+
+3 3800,leaf,
+
+3 3757,leaf,
+
+3 3828,leaf,
+
+3 2673,leaf,
+
+3 2918,leaf,
+
+3 2460,leaf,
+
+3 1935,leaf,
+
+3 3651,leaf,
+
+3 2745,leaf,
+
+3 3316,leaf,
+
+3 2221,leaf,
+
+3 3418,leaf,
+
+3 2980,non-leaf,
+
+3 3290,leaf,
+
+3 2973,leaf,
+
+3 3429,leaf,
+
+3 3439,leaf,
+
+3 3598,leaf,
+
+3 3286,leaf,
+
+3 2681,leaf,
+
+3 3616,leaf,
+
+3 3346,leaf,
+
+3 3663,leaf,
+
+3 3456,leaf,
+
+3 2804,leaf,
+
+3 3378,non-leaf,
+
+3 2165,leaf,
+
+3 3773,non-leaf,
+
+3 3214,leaf,
+
+3 2368,leaf,
+
+3 3300,leaf,
+
+3 3661,leaf,
+
+3 4028,leaf,
+
+3 3514,leaf,
+
+3 3505,leaf,
+
+3 3665,leaf,
+
+3 2635,leaf,
+
+3 3370,leaf,
+
+3 3375,non-leaf,
+
+3 3159,leaf,
+
+3 2994,leaf,
+
+3 3587,leaf,
+
+3 3401,leaf,
+
+3 3650,leaf,
+
+3 3624,leaf,
+
+3 3388,non-leaf,
+
+3 3317,non-leaf,
+
+3 3668,leaf,
+
+3 3701,leaf,
+
+3 2657,leaf,
+
+3 3531,leaf,
+
+3 3596,leaf,
+
+3 2355,leaf,
+
+3 3447,leaf,
+
+3 3179,leaf,
+
+3 2922,leaf,
+
+3 3389,leaf,
+
+3 3861,leaf,
+
+3 3739,leaf,
+
+3 2227,leaf,
+
+3 3474,leaf,
+
+3 3257,leaf,
+
+3 3404,leaf,
+
+3 2456,non-leaf,
+
+3 3547,leaf,
+
+3 3480,leaf,
+
+3 3622,leaf,
+
+3 3788,leaf,
+
+3 3499,leaf,
+
+3 3748,leaf,
+
+3 3373,leaf,
+
+3 2679,leaf,
+
+3 3752,leaf,
+
+3 3660,leaf,
+
+3 3963,leaf,
+
+3 3208,leaf,
+
+3 3379,leaf,
+
+3 3761,leaf,
+
+3 3105,leaf,
+
+3 3577,non-leaf,
+
+3 3258,leaf,
+
+3 3364,leaf,
+
+3 3295,leaf,
+
+3 3512,leaf,
+
+3 3333,leaf,
+
+3 3249,leaf,
+
+3 3461,non-leaf,
+
+3 2765,leaf,
+
+3 3944,leaf,
+
+3 3831,leaf,
+
+3 3458,leaf,
+
+3 3337,leaf,
+
+3 3362,leaf,
+
+3 3679,leaf,
+
+3 3084,leaf,
+
+3 3811,leaf,
+
+3 3120,leaf,
+
+3 3798,leaf,
+
+3 3149,leaf,
+
+3 2837,leaf,
+
+3 2840,leaf,
+
+3 2260,leaf,
+
+3 3673,leaf,
+
+3 3486,leaf,
+
+3 3783,leaf,
+
+3 3838,leaf,
+
+3 2981,leaf,
+
+3 3320,non-leaf,
+
+3 3915,leaf,
+
+3 2198,leaf,
+
+3 3274,leaf,
+
+3 3122,leaf,
+
+3 3072,leaf,
+
+3 3255,non-leaf,
+
+3 4001,leaf,
+
+3 3604,leaf,
+
+3 3485,leaf,
+
+3 2654,leaf,
+
+3 3669,leaf,
+
+3 3839,leaf,
+
+3 2089,leaf,
+
+3 3550,leaf,
+
+3 3366,leaf,
+
+3 3498,non-leaf,
+
+3 3056,leaf,
+
+3 3357,leaf,
+
+3 3386,leaf,
+
+3 2458,leaf,
+
+3 2975,leaf,
+
+3 3413,leaf,
+
+3 3530,leaf,
+
+3 3093,leaf,
+
+3 3583,non-leaf,
+
+3 2883,leaf,
+
+3 3018,leaf,
+
+3 3178,leaf,
+
+3 3225,leaf,
+
+3 3340,leaf,
+
+3 3256,leaf,
+
+3 3692,leaf,
+
+3 3902,leaf,
+
+3 3343,leaf,
+
+3 3576,leaf,
+
+3 2452,leaf,
+
+3 3600,leaf,
+
+3 3732,leaf,
+
+3 2476,leaf,
+
+3 2933,leaf,
+
+3 3393,leaf,
+
+3 3356,leaf,
+
+3 3270,leaf,
+
+3 2938,leaf,
+
+3 3453,leaf,
+
+3 3484,leaf,
+
+3 3263,non-leaf,
+
+3 3948,leaf,
+
+3 3459,leaf,
+
+3 3887,leaf,
+
+3 3797,leaf,
+
+3 2966,leaf,
+
+3 2902,leaf,
+
+3 3289,leaf,
+
+3 3332,leaf,
+
+3 3062,leaf,
+
+3 3776,leaf,
+
+3 3077,leaf,
+
+3 3381,leaf,
+
+3 3933,leaf,
+
+3 3482,leaf,
+
+3 3334,leaf,
+
+3 3161,leaf,
+
+3 2952,leaf,
+
+3 3726,leaf,
+
+3 1772,leaf,
+
+3 3234,leaf,
+
+3 2996,leaf,
+
+3 2652,leaf,
+
+3 3250,non-leaf,
+
+3 3523,leaf,
+
+3 3425,leaf,
+
+3 3321,leaf,
+
+3 2631,leaf,
+
+3 3835,leaf,
+
+3 3483,leaf,
+
+3 3181,leaf,
+
+3 3095,leaf,
+
+3 2147,leaf,
+
+3 3180,leaf,
+
+3 3112,leaf,
+
+3 3382,leaf,
+
+3 3407,leaf,
+
+3 2862,leaf,
+
+3 2971,leaf,
+
+3 1981,leaf,
+
+3 3515,leaf,
+
+3 3608,leaf,
+
+3 3125,leaf,
+
+3 3518,leaf,
+
+3 3405,leaf,
+
+3 2948,leaf,
+
+3 3156,leaf,
+
+3 2995,leaf,
+
+3 3580,leaf,
+
+3 3463,leaf,
+
+3 3265,leaf,
+
+3 3815,leaf,
+
+3 3468,leaf,
+
+3 2913,leaf,
+
+3 2743,leaf,
+
+3 3566,leaf,
+
+3 3548,leaf,
+
+3 2600,leaf,
+
+3 3497,leaf,
+
+3 3758,leaf,
+
+3 2269,leaf,
+
+3 3703,leaf,
+
+3 3241,leaf,
+
+3 3931,leaf,
+
+3 3567,leaf,
+
+3 3793,leaf,
+
+3 3908,leaf,
+
+3 3114,leaf,
+
+3 3260,leaf,
+
+3 2638,leaf,
+
+3 3215,non-leaf,
+
+3 2609,non-leaf,
+
+3 3055,leaf,
+
+3 3476,leaf,
+
+3 3678,leaf,
+
+3 3958,leaf,
+
+3 3318,leaf,
+
+3 2752,leaf,
+
+3 3570,leaf,
+
+3 3336,leaf,
+
+3 3829,leaf,
+
+3 3319,leaf,
+
+3 2700,leaf,
+
+3 2323,leaf,
+
+3 3099,leaf,
+
+3 3662,leaf,
+
+3 2750,leaf,
+
+2 2643,leaf,
+
+2 3602,leaf,
+
+2 3719,leaf,
+
+2 3261,leaf,
+
+2 3552,leaf,
+
+2 2893,leaf,
+
+2 3778,leaf,
+
+2 2678,leaf,
+
+2 2874,leaf,
+
+2 3937,leaf,
+
+2 3769,non-leaf,
+
+2 3930,leaf,
+
+2 3070,leaf,
+
+2 3496,leaf,
+
+2 3581,leaf,
+
+2 3731,leaf,
+
+2 3282,non-leaf,
+
+2 3865,leaf,
+
+2 3551,leaf,
+
+2 2658,leaf,
+
+2 4032,leaf,
+
+2 3720,leaf,
+
+2 3907,leaf,
+
+2 3823,leaf,
+
+2 3814,leaf,
+
+2 2204,leaf,
+
+2 3974,leaf,
+
+2 3859,leaf,
+
+2 3936,leaf,
+
+2 2843,leaf,
+
+2 3999,leaf,
+
+2 2583,leaf,
+
+2 3983,leaf,
+
+2 2824,leaf,
+
+2 3322,leaf,
+
+2 3422,leaf,
+
+2 4008,leaf,
+
+2 3946,non-leaf,
+
+2 3275,leaf,
+
+2 3194,leaf,
+
+2 2861,leaf,
+
+2 4004,leaf,
+
+2 2414,leaf,
+
+2 3690,leaf,
+
+2 3991,leaf,
+
+2 3398,leaf,
+
+2 3170,leaf,
+
+2 3612,leaf,
+
+2 3852,leaf,
+
+2 3709,leaf,
+
+2 3613,leaf,
+
+2 3909,leaf,
+
+2 3984,leaf,
+
+2 3348,leaf,
+
+2 3558,leaf,
+
+2 3996,leaf,
+
+2 3533,leaf,
+
+2 3564,leaf,
+
+2 3506,leaf,
+
+2 3929,leaf,
+
+2 3579,leaf,
+
+2 2695,leaf,
+
+2 2500,leaf,
+
+2 3647,leaf,
+
+2 3132,non-leaf,
+
+2 2736,leaf,
+
+2 3895,leaf,
+
+2 3847,leaf,
+
+2 3951,leaf,
+
+2 3472,leaf,
+
+2 3903,leaf,
+
+2 3855,leaf,
+
+2 2534,leaf,
+
+2 3277,leaf,
+
+2 3414,leaf,
+
+2 3928,leaf,
+
+2 3298,leaf,
+
+2 3938,leaf,
+
+2 3163,leaf,
+
+2 3599,leaf,
+
+2 2571,leaf,
+
+2 3057,leaf,
+
+2 3188,leaf,
+
+2 3796,leaf,
+
+2 3369,leaf,
+
+2 3966,leaf,
+
+2 3910,leaf,
+
+2 3992,leaf,
+
+2 3335,leaf,
+
+2 3573,leaf,
+
+2 3770,leaf,
+
+2 3614,leaf,
+
+2 3657,leaf,
+
+2 3995,leaf,
+
+2 3860,leaf,
+
+2 3395,leaf,
+
+2 3918,leaf,
+
+2 3540,leaf,
+
+2 3813,leaf,
+
+2 3727,leaf,
+
+2 3744,leaf,
+
+2 3772,leaf,
+
+2 3810,leaf,
+
+2 3652,leaf,
+
+2 3802,leaf,
+
+2 3884,leaf,
+
+2 4030,leaf,
+
+2 3240,leaf,
+
+2 3857,leaf,
+
+2 3563,leaf,
+
+2 3792,leaf,
+
+2 3806,leaf,
+
+2 2923,leaf,
+
+2 3706,leaf,
+
+2 3206,leaf,
+
+2 2777,leaf,
+
+2 2873,leaf,
+
+2 2740,leaf,
+
+2 3791,leaf,
+
+2 3862,leaf,
+
+2 3067,leaf,
+
+2 3524,leaf,
+
+2 3428,leaf,
+
+2 2853,leaf,
+
+2 3041,non-leaf,
+
+2 2988,leaf,
+
+2 3406,leaf,
+
+2 3248,leaf,
+
+2 3747,leaf,
+
+2 3753,leaf,
+
+2 4034,leaf,
+
+2 3525,leaf,
+
+2 3635,leaf,
+
+2 2475,non-leaf,
+
+2 3957,leaf,
+
+2 2990,leaf,
+
+2 2588,leaf,
+
+2 3667,leaf,
+
+2 3212,leaf,
+
+2 3750,leaf,
+
+2 3801,leaf,
+
+2 3073,leaf,
+
+2 3466,leaf,
+
+2 2396,leaf,
+
+2 3760,leaf,
+
+2 3789,leaf,
+
+2 3279,leaf,
+
+2 3874,leaf,
+
+2 3901,leaf,
+
+2 3686,leaf,
+
+2 3645,leaf,
+
+2 3267,leaf,
+
+2 3817,leaf,
+
+2 3851,leaf,
+
+2 2954,leaf,
+
+2 3913,leaf,
+
+2 3967,leaf,
+
+2 3818,leaf,
+
+2 3280,leaf,
+
+2 3968,leaf,
+
+2 3741,leaf,
+
+2 3528,leaf,
+
+2 3490,leaf,
+
+2 3522,leaf,
+
+2 3539,leaf,
+
+2 3832,leaf,
+
+2 3236,leaf,
+
+2 2930,leaf,
+
+2 3313,leaf,
+
+2 3785,leaf,
+
+2 2965,leaf,
+
+2 3969,leaf,
+
+2 3919,non-leaf,
+
+2 3444,leaf,
+
+2 3098,leaf,
+
+2 2473,leaf,
+
+2 3904,leaf,
+
+2 3743,leaf,
+
+2 3830,leaf,
+
+2 3926,leaf,
+
+2 3648,leaf,
+
+2 3582,leaf,
+
+2 3740,leaf,
+
+2 3718,non-leaf,
+
+2 4005,leaf,
+
+2 3390,leaf,
+
+2 3238,leaf,
+
+2 3162,leaf,
+
+2 3921,leaf,
+
+2 3724,leaf,
+
+2 3417,leaf,
+
+2 3675,leaf,
+
+2 3309,leaf,
+
+2 2976,leaf,
+
+2 2832,leaf,
+
+2 3891,leaf,
+
+2 3923,leaf,
+
+2 3590,leaf,
+
+2 3311,leaf,
+
+2 3303,leaf,
+
+2 3824,leaf,
+
+2 2725,leaf,
+
+2 3912,leaf,
+
+2 2152,leaf,
+
+2 3636,leaf,
+
+2 3866,leaf,
+
+2 3892,leaf,
+
+2 3869,leaf,
+
+2 2964,leaf,
+
+2 4042,leaf,
+
+2 3527,leaf,
+
+2 3688,leaf,
+
+2 3873,leaf,
+
+2 3977,leaf,
+
+2 4027,leaf,
+
+2 3659,leaf,
+
+2 3842,leaf,
+
+2 3896,leaf,
+
+2 3826,leaf,
+
+2 3711,leaf,
+
+2 3426,non-leaf,
+
+2 3536,leaf,
+
+2 3689,leaf,
+
+2 3943,leaf,
+
+2 2929,leaf,
+
+2 3699,leaf,
+
+2 3251,leaf,
+
+2 3559,leaf,
+
+2 3145,leaf,
+
+2 3677,leaf,
+
+2 3916,leaf,
+
+2 3993,leaf,
+
+2 3148,leaf,
+
+2 2771,leaf,
+
+2 4040,leaf,
+
+2 3960,leaf,
+
+2 3704,leaf,
+
+2 3934,leaf,
+
+2 3942,leaf,
+
+2 3024,leaf,
+
+2 3368,non-leaf,
+
+2 3619,leaf,
+
+2 3358,leaf,
+
+2 3331,leaf,
+
+2 3454,leaf,
+
+2 2999,leaf,
+
+2 3597,leaf,
+
+2 3893,leaf,
+
+2 3119,leaf,
+
+2 3615,leaf,
+
+2 3721,leaf,
+
+2 3868,leaf,
+
+2 2867,leaf,
+
+2 4025,leaf,
+
+2 3729,leaf,
+
+2 2782,leaf,
+
+2 3922,leaf,
+
+2 3310,leaf,
+
+2 3281,leaf,
+
+2 3836,leaf,
+
+2 3271,leaf,
+
+2 3495,leaf,
+
+2 2915,leaf,
+
+2 3845,leaf,
+
+2 3633,leaf,
+
+2 3301,leaf,
+
+2 2998,leaf,
+
+2 3115,leaf,
+
+2 3654,leaf,
+
+2 3219,leaf,
+
+2 3229,leaf,
+
+2 3687,leaf,
+
+2 3736,non-leaf,
+
+2 3959,leaf,
+
+2 3323,leaf,
+
+2 2984,leaf,
+
+2 2858,leaf,
+
+2 3843,leaf,
+
+2 3048,leaf,
+
+2 3314,leaf,
+
+2 3875,leaf,
+
+2 3187,leaf,
+
+2 3821,leaf,
+
+2 3846,leaf,
+
+2 3568,leaf,
+
+2 3841,leaf,
+
+2 3338,leaf,
+
+2 3941,leaf,
+
+2 3834,leaf,
+
+2 3354,leaf,
+
+2 3228,leaf,
+
+2 3436,leaf,
+
+2 3535,leaf,
+
+2 3574,leaf,
+
+2 2703,leaf,
+
+2 3781,leaf,
+
+2 3618,leaf,
+
+2 3327,leaf,
+
+2 3465,leaf,
+
+2 2770,leaf,
+
+2 3488,leaf,
+
+2 3032,non-leaf,
+
+2 3925,leaf,
+
+2 3385,leaf,
+
+2 3898,leaf,
+
+2 3722,leaf,
+
+2 3565,leaf,
+
+2 3717,leaf,
+
+2 3644,leaf,
+
+2 4016,leaf,
+
+2 3560,leaf,
+
+2 3674,leaf,
+
+2 3268,leaf,
+
+2 3858,leaf,
+
+2 3655,leaf,
+
+2 4011,leaf,
+
+2 3658,leaf,
+
+2 3606,leaf,
+
+2 3697,leaf,
+
+2 3854,leaf,
+
+2 3165,leaf,
+
+2 3707,leaf,
+
+2 4020,leaf,
+
+2 3723,leaf,
+
+2 4012,non-leaf,
+
+2 3478,leaf,
+
+2 3529,leaf,
+
+1 3849,leaf,
+
+1 3911,non-leaf,
+
+1 3620,leaf,
+
+1 3784,leaf,
+
+1 3725,leaf,
+
+1 3639,leaf,
+
+1 4044,leaf,
+
+1 3998,leaf,
+
+1 4022,non-leaf,
+
+1 3171,leaf,
+
+1 3989,leaf,
+
+1 3883,leaf,
+
+1 3728,non-leaf,
+
+1 3870,leaf,
+
+1 4002,leaf,
+
+1 4033,leaf,
+
+1 4039,leaf,
+
+1 3471,leaf,
+
+1 3575,leaf,
+
+1 3888,leaf,
+
+1 3411,leaf,
+
+1 3638,leaf,
+
+1 3844,leaf,
+
+1 3939,leaf,
+
+1 3603,leaf,
+
+1 3982,leaf,
+
+1 3997,leaf,
+
+1 3075,leaf,
+
+1 3981,leaf,
+
+1 3670,leaf,
+
+1 2742,leaf,
+
+1 3755,leaf,
+
+1 3766,leaf,
+
+1 3020,leaf,
+
+1 3965,leaf,
+
+1 3975,leaf,
+
+1 4018,leaf,
+
+1 3141,leaf,
+
+1 4041,leaf,
+
+1 3825,leaf,
+
+1 3780,leaf,
+
+1 3786,leaf,
+
+1 3819,non-leaf,
+
+1 3455,leaf,
+
+1 4043,non-leaf,
+
+1 3359,leaf,
+
+1 3827,leaf,
+
+1 3710,leaf,
+
+1 3746,non-leaf,
+
+1 3940,leaf,
+
+1 4038,leaf,
+
+1 3628,non-leaf,
+
+1 3517,leaf,
+
+1 4029,leaf,
+
+1 3764,leaf,
+
+1 3897,non-leaf,
+
+1 3952,non-leaf,
+
+1 3698,leaf,
+
+1 3949,leaf,
+
+1 3627,leaf,
+
+1 3962,leaf,
+
+1 3881,leaf,
+
+1 4010,leaf,
+
+1 3864,leaf,
+
+1 3217,leaf,
+
+1 3715,leaf,
+
+1 3906,leaf,
+
+1 3964,leaf,
+
+1 3880,leaf,
+
+1 3777,leaf,
+
+1 3886,leaf,
+
+1 4009,leaf,
+
+1 4024,leaf,
+
+1 3853,leaf,
+
+1 3377,leaf,
+
+1 3986,leaf,
+
+1 3970,leaf,
+
+1 3899,leaf,
+
+1 3621,leaf,
+
+1 3833,leaf,
+
+1 3412,leaf,
+
+1 3157,leaf,
+
+1 3629,non-leaf,
+
+1 3871,leaf,
+
+1 3759,leaf,
+
+1 3681,non-leaf,
+
+1 3885,leaf,
+
+1 3339,leaf,
+
+1 4036,non-leaf,
+
+1 3976,non-leaf,
+
+1 3765,leaf,
+
+1 2937,leaf,
+
+1 4031,leaf,
+
+1 3642,leaf,
+
+1 3691,leaf,
+
+1 2835,leaf,
+
+1 3543,leaf,
+
+1 4017,leaf,
+
+1 4007,leaf,
+
+1 3264,leaf,
+
+1 3787,leaf,
+
+1 3805,leaf,
+
+1 3611,leaf,
+
+1 4013,non-leaf,
+
+1 3503,leaf,
+
+1 3656,leaf,
+
+1 3954,leaf,
+
+1 3979,leaf,
+
+1 3164,leaf,
+
+1 3276,leaf,
+
+1 2880,leaf,
+
+1 3935,leaf,
+
+1 3324,leaf,
+
+1 3544,leaf,
+
+1 3877,leaf,
+
+1 3479,leaf,
+
+1 3634,leaf,
+
+1 3771,leaf,
+
+1 4014,non-leaf,
+
+1 3617,leaf,
+
+1 3775,leaf,
+
+1 3135,leaf,
+
+1 3972,leaf,
+
+1 3955,leaf,
+
+1 3795,leaf,
+
+1 3890,leaf,
+
+1 3035,leaf,
+
+1 3516,leaf,
+
+1 3889,leaf,
+
+1 3803,leaf,
+
+1 3794,leaf,
+
+1 3763,leaf,
+
+1 3500,leaf,
+
+1 3586,leaf,
+
+1 3762,leaf,
+
+1 4015,non-leaf,
+
+1 3863,leaf,
+
+1 2066,leaf,
+
+1 3666,leaf,
+
+1 3956,leaf,
+
+1 3363,leaf,
+
+1 3224,leaf,
+
+1 3684,leaf,
+
+1 3682,leaf,
+
+1 3790,leaf,
+
+1 3990,leaf,
+
+1 2590,leaf,
+
+1 3044,leaf,
+
+1 3978,leaf,
+
+1 3140,non-leaf,
+
+1 3595,leaf,
+
+1 3947,non-leaf,
+
+1 3808,leaf,
+
+1 3734,leaf,
+
+1 4026,leaf,
+
+1 3950,leaf,
+
+1 3848,non-leaf,
+
+1 4003,leaf,
+
+1 3066,leaf,
+
+1 3532,leaf,
+
+1 3737,leaf,
+
+1 3470,leaf,
+
+1 3985,leaf,
+
+1 3738,non-leaf,
+
+1 3190,leaf,
+
+1 3987,leaf,
+
+1 3538,leaf,
+
+1 3961,leaf,
+
+1 3513,leaf,
+
+1 3585,leaf,
+
+1 3134,non-leaf,
+
+1 3545,non-leaf,
+
+1 3415,leaf,
+
+1 3702,leaf,
+
+1 2465,leaf,
+
+1 2791,leaf,
+
+1 3894,leaf,
+
+1 3730,leaf,
+
+1 3850,leaf,
+
+1 3167,leaf,
+
+1 3716,leaf,
+
+1 3430,leaf,
+
+1 3988,leaf,
+
+1 3643,leaf,
+
+1 3683,leaf,
+
+1 3973,leaf,
+
+1 3971,leaf,
+
+1 3714,leaf,
+
+1 3807,leaf,
+
+1 3637,non-leaf,
+
+1 3594,leaf,
+
+1 3920,leaf,
+
+1 3924,leaf,
+
+1 3917,leaf,
+
+1 4000,leaf,
+
+1 3905,non-leaf,
+
+1 4021,leaf,
+
+1 3856,leaf,
+
+1 3166,leaf,
+
+1 4019,leaf,
+
+1 2592,leaf,
+
+1 3605,leaf,
+
+1 3804,leaf,
+
+1 3882,non-leaf,
+
+1 3230,leaf,
+
+1 3914,leaf,
+
+1 3693,leaf,
+
+1 4037,leaf,
+
+1 3932,leaf,
+
+1 3779,leaf,
+
+1 3329,leaf,
+
+1 3421,leaf,
+
+1 3876,non-leaf,
+
+1 3994,non-leaf,
+
+1 3812,leaf,
+
+1 3457,leaf,
+
+1 4035,leaf,
+
+1 3837,leaf,
+
+1 3782,leaf,
+
+1 3588,leaf,
+
+1 3664,leaf,
+
+1 3879,non-leaf,
+
+1 3557,leaf,
+
+1 3623,leaf,
+
+1 3511,leaf,
+
+1 4006,leaf,
+
+1 3767,leaf,
+
+1 3733,leaf,
+
+1 3878,leaf,
+
+1 3799,leaf,
+
+1 4023,non-leaf,
+
+1 3578,non-leaf,
+
+1 3867,leaf,
+
+1 2949,leaf,
+

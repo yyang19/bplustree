@@ -6,7 +6,9 @@
 #include "bplustree.h"
 
 #define MAX (1<<10)
-#define TC_0_TRIAL (8192)
+#define TC_0_TRIAL (65535)
+
+FILE *write_log;
 
 static void
 _help( void ){
@@ -84,7 +86,7 @@ int main( int argc, char *argv[] ){
     int b,n;
     bpt_t *t; 
     int keys[TC_0_TRIAL];
-
+    
     if( argc!=3 ){
         _help();
         result = -1;
@@ -225,25 +227,28 @@ int main( int argc, char *argv[] ){
     
 #endif
 #if 1     
-     create_array( &keys[0], MAX, MAX );
+     create_array( &keys[0], n, n );
      
-     for (i = n; i > 0; i--) {
+     for (i = 0; i < n; i++) {
          //bptPut(t, i, i);
+         //bptPut(t, n-i, n-i);
          bptPut(t, keys[i], keys[i]);
      }
-     bptDump(t);
+     //bptDump(t);
      
-     //for (i = n; i > 0; i--) {
-     //    bptRemove(t, keys[i]);
-     //}
+     for (i = 0; i < n; i++) {
+         //bptRemove(t, i);
+         //bptRemove(t, n-i);
+         //bptRemove(t, keys[i]);
+     }
 
      bptTraverse(t,BPLUS_TREE_BFS);
 #endif
      //bptRemove(t, keys[0]);
 
      bptDestroy( t );
-    reset_array( keys, TC_0_TRIAL);
-     
+     reset_array( keys, TC_0_TRIAL);
+
      return result;
 }
 

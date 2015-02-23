@@ -35,6 +35,7 @@
 #define _HEADER_BPLUSTREE_
 
 #include <stdint.h>
+#include <stdio.h>
 
 #define MAX_LEVEL (20)
 #define KEY_NOT_FOUND (-1)
@@ -78,6 +79,9 @@ struct tree {
     int nonleaf_size;
 
     uint32_t max_node_id;
+
+    FILE *node_log;
+    FILE *write_log;
 };
 
 typedef struct tree bpt_t;
@@ -89,4 +93,5 @@ void bptPut( bpt_t *, int, int );
 void bptRemove( bpt_t *, int );
 void bptDump( bpt_t * );
 void bptTraverse( bpt_t *, int );
+
 #endif
