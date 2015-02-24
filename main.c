@@ -6,7 +6,7 @@
 #include "bplustree.h"
 
 #define MAX (1<<10)
-#define TC_0_TRIAL (65535)
+#define TC_0_TRIAL (10000000)
 
 FILE *write_log;
 
@@ -50,12 +50,15 @@ shuffle_array( int *a, int ub )
 
 }
 
-static void
-create_array( int *a, int n, int max ){
+static int *
+create_array( int n, int max ){
     
     int in, im;
+    int *a;
 
     im = 0;
+
+    a = (int *)malloc( n*sizeof(int) );
 
     for (in = 0; in < max && im < n; ++in) {
         int rn = max - in;
@@ -69,6 +72,7 @@ create_array( int *a, int n, int max ){
 
     shuffle_array( a, n );
 
+    return a;
 }
 
 static void
@@ -80,12 +84,17 @@ reset_array( int *a, int len )
         a[i]=-1;
 }
 
+static void
+destroy_array( int *a ){
+    free(a);
+}
+
 int main( int argc, char *argv[] ){
     
     int result = 0;
     int b,n;
     bpt_t *t; 
-    int keys[TC_0_TRIAL];
+    int *keys;
     
     if( argc!=3 ){
         _help();
@@ -227,12 +236,12 @@ int main( int argc, char *argv[] ){
     
 #endif
 #if 1     
-     create_array( &keys[0], n, n );
+     keys = create_array( n, n );
      
      for (i = 0; i < n; i++) {
          //bptPut(t, i, i);
-         //bptPut(t, n-i, n-i);
-         bptPut(t, keys[i], keys[i]);
+         bptPut(t, n-i, n-i);
+         //bptPut(t, keys[i], keys[i]);
      }
      //bptDump(t);
      
@@ -247,7 +256,8 @@ int main( int argc, char *argv[] ){
      //bptRemove(t, keys[0]);
 
      bptDestroy( t );
-     reset_array( keys, TC_0_TRIAL);
+     reset_array( keys, n);
+     destroy_array( keys );
 
      return result;
 }

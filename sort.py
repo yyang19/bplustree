@@ -18,7 +18,7 @@ sorted_list =  Counter(addr).most_common()
 #addr.sort( key = lambda x:-x[1])
 
 for item in sorted_list:
-      print>>output, item[1], item[0]
+      print>>output, item[1] #,item[0]
 
 file.close
 output.close
