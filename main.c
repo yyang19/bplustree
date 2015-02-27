@@ -8,12 +8,21 @@
 #define MAX (1<<10)
 #define TC_0_TRIAL (10000000)
 
+enum{
+    PATTERN_ASCENDING,
+    PATTERN_DESCENDING,
+    PATTERN_RANDOM
+};
+
 FILE *write_log;
 
 static void
 _help( void ){
     printf( "B+ Tree options:\n" );
     printf("\t args: [1]branching factor r \n");
+    printf("\t args: [2]total b+tree operations \n");
+    printf("\t args: [3]key space insertion pattern %d:ascending %d:descending %d:random \n", PATTERN_ASCENDING,PATTERN_DESCENDING,PATTERN_RANDOM);
+    printf("\t args: [4]key space deletion pattern %d:ascending %d:descending %d:random \n", PATTERN_ASCENDING,PATTERN_DESCENDING,PATTERN_RANDOM);
 }
 
 int 
@@ -92,18 +101,21 @@ destroy_array( int *a ){
 int main( int argc, char *argv[] ){
     
     int result = 0;
-    int b,n;
+    int b,n,pattern, pattern2;
     bpt_t *t; 
     int *keys;
     
-    if( argc!=3 ){
+    if( argc!=5 ){
         _help();
         result = -1;
+        return -1;
     }
 
     if( result == 0 ){
         b = atoi( argv[1] );
         n = atoi( argv[2] );
+        pattern = atoi( argv[3] );
+        pattern2 = atoi( argv[4] );
         t = bptInit(b);
     }
 
@@ -237,18 +249,33 @@ int main( int argc, char *argv[] ){
 #endif
 #if 1     
      keys = create_array( n, n );
-     
-     for (i = 0; i < n; i++) {
-         //bptPut(t, i, i);
-         bptPut(t, n-i, n-i);
-         //bptPut(t, keys[i], keys[i]);
+    
+     if( pattern == PATTERN_ASCENDING ){
+         for (i = 1; i <= n; i++) 
+             bptPut(t, i, i);
      }
-     //bptDump(t);
+     else if( pattern == PATTERN_DESCENDING ){
+         for (i = 0; i < n; i++) 
+             bptPut(t, n-i, n-i);
+     }
+     else{
+         for (i = 0; i < n; i++) 
+             bptPut(t, keys[i], keys[i]);
+     }
+    
+     bptLog( t, "Deletion begins \n" );
      
-     for (i = 0; i < n; i++) {
-         //bptRemove(t, i);
-         //bptRemove(t, n-i);
-         //bptRemove(t, keys[i]);
+     if( pattern2 == PATTERN_ASCENDING ){
+         for (i = 1; i <= n; i++) 
+             bptRemove(t, i);
+     }
+     else if( pattern2 == PATTERN_DESCENDING ){
+         for (i = 0; i < n; i++) 
+             bptRemove(t, n-i);
+     }
+    else if( pattern2 == PATTERN_RANDOM ){
+         for (i = 0; i < n; i++) 
+             bptRemove(t, keys[i]);
      }
 
      bptTraverse(t,BPLUS_TREE_BFS);

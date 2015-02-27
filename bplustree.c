@@ -84,7 +84,7 @@ _nodeInit( node_t *new, bpt_t *tree, int type )
 static void
 _destroy_node( node_t *node )
 {
-    _dump2( node, bptree->node_log );
+    //_dump2( node, bptree->node_log );
     free( node->key );
 
     return;
@@ -252,7 +252,7 @@ _bfs( node_t *subroot, FILE *log )
     fifo_t *q;
     node_t *node;
 
-    q = _fifo_init( 1000 );
+    q = _fifo_init( 1000000 );
 
     _fifo_push( q, subroot );
 
@@ -474,8 +474,8 @@ _move_key( int key, node_t *src, node_t *dest, int src_ptr_shift, int dest_ptr_s
     
     _node_key_shift_left( src, src_pos, src_ptr_shift );
     
-    //DISK_WRITE(src);
-    //DISK_WRITE(dest);
+    _node_write(src);
+    _node_write(dest);
 }
 
 static void 
@@ -521,8 +521,8 @@ _merge_node( node_t *left, node_t *right )
     else
         _destroy_leaf(&r_ln);
     
-    //DISK_WRITE(left);
-    //DISK_WRITE(right);
+    _node_write(left);
+    _node_write(right);
 }
 
 static void
@@ -541,6 +541,8 @@ _remove_from_leaf( node_t *node, int idx )
     }
     
     node->n--;
+    
+    _node_write(node);
     
     return;
 }
@@ -651,7 +653,9 @@ _pre_descend_child( bpt_t *tree, node_t *parent, int idx )
     }
     else
         assert(0);
-    
+   
+    _node_write( parent );
+
     return child;
 }
 
@@ -837,6 +841,12 @@ bptDestroy( bpt_t *tree ){
     fclose( tree->write_log );
      
     free(tree);
+}
+
+void
+bptLog( bpt_t *tree, char *s ){
+
+    fprintf( tree->write_log, "%s", s);
 }
 
 #ifdef DEBUG

@@ -17,8 +17,10 @@ for line in file.readlines():
 sorted_list =  Counter(addr).most_common()
 #addr.sort( key = lambda x:-x[1])
 
+rank=1
 for item in sorted_list:
-      print>>output, item[1] #,item[0]
+      print>>output, rank, item[1] ,item[0]
+      rank=rank+1
 
 file.close
 output.close

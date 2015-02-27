@@ -93,5 +93,5 @@ void bptPut( bpt_t *, int, int );
 void bptRemove( bpt_t *, int );
 void bptDump( bpt_t * );
 void bptTraverse( bpt_t *, int );
-
+void bptLog( bpt_t *, char *s );
 #endif
