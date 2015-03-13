@@ -5,7 +5,7 @@
 
 #include "bplustree.h"
 
-#define MAX (1<<10)
+#define MAX (1<<30)
 #define TC_0_TRIAL (10000000)
 
 enum{

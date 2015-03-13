@@ -72,7 +72,9 @@ _nodeInit( node_t *new, bpt_t *tree, int type )
 
     new->type = type;
     new->n = 0;
-    new->id = ++tree->max_node_id;
+
+    //if( type==BPLUS_TREE_LEAF )
+        new->id = ++tree->max_node_id;
     new->wr_count=0;
     
     new->key =  (int *) malloc ( sizeof(int)*nKeys );
@@ -341,6 +343,17 @@ _split_child( bpt_t *tree, node_t *node, int i )
     _node_write(z);
     _node_write(node);
 
+/*
+    fprintf( tree->write_log, "%d, ", y->id );
+    
+    if( y->type == BPLUS_TREE_LEAF )
+        fprintf(tree->write_log,"leaf split" );
+    else if( y->type == BPLUS_TREE_NON_LEAF )
+        fprintf(tree->write_log,"non-leaf split" );
+
+    fprintf(tree->write_log, "\n");
+
+*/
 }
 
 static void
